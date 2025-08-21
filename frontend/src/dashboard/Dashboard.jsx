@@ -6,10 +6,10 @@ import KpiGrid from "./KpiGrid";
 import InventoryList from "../inventory/InventoryList";
 import UserList from "../users/UserList";
 
-const Dashboard = () => {
+const Dashboard = ({ onLogout }) => {
   return (
     <div className="dashboard-root">
-      <Navbar />
+      <Navbar onLogout={onLogout} />
       <div className="dashboard-flex">
         <Sidebar />
         <main className="dashboard-container">

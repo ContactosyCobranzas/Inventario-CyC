@@ -19,8 +19,8 @@ const UserList = () => {
           {/* Ejemplo de fila */}
           <tr>
             <td>1</td>
-            <td>Usuario Demo</td>
-            <td>demo@email.com</td>
+            <td>Maicol</td>
+            <td>Aux.ti@contactosycobranzas.com</td>
             <td>Admin</td>
             <td><button>Editar</button></td>
           </tr>

@@ -19,7 +19,9 @@ const InventoryList = () => {
           {/* Ejemplo de fila */}
           <tr>
             <td>1</td>
-            <td>Producto de ejemplo</td>
+            <td>
+                pc
+            </td>
             <td>General</td>
             <td>10</td>
             <td>

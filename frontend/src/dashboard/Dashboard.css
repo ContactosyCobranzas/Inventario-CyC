@@ -10,14 +10,17 @@ body, html, #root {
   overflow-x: hidden;
 }
 
-body.dark-theme, body.dark-theme #root {
+body, .dashboard-root {
+  background: #f4f5f7;
+}
+
+body.dark-theme, body.dark-theme #root, body.dark-theme .dashboard-root {
   background: #181a1b;
 }
 
 .dashboard-root {
   min-height: 100vh;
   width: 100vw;
-  background: #f7f7f7;
   display: flex;
   flex-direction: column;
 }
@@ -73,7 +76,7 @@ body.dark-theme .sidebar {
 
 .dashboard-container {
   flex: 1;
-  background: #fff;
+  background: #f8f9fa;
   border-radius: 0 0 0 0;
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
   padding: 2.5rem 2rem;
