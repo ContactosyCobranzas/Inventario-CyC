@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Register from "./components/Register";
+import Register from "./Register";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [keepLogged, setKeepLogged] = useState(false);
@@ -10,7 +10,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de login aquí
+    // Aquí iría la lógica real de autenticación
+    if (onLogin) onLogin();
   };
 
   return (
@@ -81,5 +82,5 @@ const Login = () => {
     </div>
   );
 };
-
+// 
 export default Login;

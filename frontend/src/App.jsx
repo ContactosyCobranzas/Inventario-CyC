@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { useState } from 'react';
+import './App.css';
+import Login from './auth/Login';
+import Dashboard from './dashboard/Dashboard';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
-    <Login />
-  )
+    <>
+      {isLogged ? (
+        <Dashboard />
+      ) : (
+        <Login onLogin={() => setIsLogged(true)} />
+      )}
+    </>
+  );
 }
 
-  import Login from './Login';
-export default App
+export default App;
