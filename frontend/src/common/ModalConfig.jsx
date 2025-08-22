@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserForm from "../users/UserForm";
+import EditProfileForm from "../users/EditProfileForm";
 import { MdMonitor } from "react-icons/md";
 import "./ModalConfig.css";
 
@@ -48,9 +48,8 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
           {section === "perfil" && (
             editandoPerfil ? (
               <div className="modal-config-section">
-                <UserForm />
+                <EditProfileForm onCancel={() => setEditandoPerfil(false)} />
                 <div className="modal-config-actions">
-                  <button className="modal-btn confirm" onClick={() => setEditandoPerfil(false)}>Volver</button>
                   <button className="modal-btn confirm" onClick={onClose}>Cerrar</button>
                 </div>
               </div>

@@ -151,12 +151,12 @@ body.dark-theme .modal-btn.apply:hover {
   border-radius: 8px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,0.22);
   padding: 0;
-  width: 800px;
-  min-width: 800px;
-  max-width: 800px;
-  min-height: 420px;
-  max-height: 90vh;
-  height: 500px;
+  width: 1100px;
+  min-width: 1100px;
+  max-width: 99vw;
+  min-height: 600px;
+  max-height: 98vh;
+  height: 700px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -231,7 +231,7 @@ body:not(.dark-theme) .modal-config-section select {
 
 .modal-config-content {
   flex: 1;
-  padding: 2.2rem 2.8rem 1.8rem 2.8rem;
+  padding: 2.2rem 5rem 1.8rem 5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -258,6 +258,8 @@ body:not(.dark-theme) .modal-config-section select {
   justify-content: flex-start;
   min-width: 0;
   width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .modal-config-section label {

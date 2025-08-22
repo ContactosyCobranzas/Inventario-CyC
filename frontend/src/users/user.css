@@ -1,3 +1,124 @@
+/* --- Estilos para EditProfileForm --- */
+.user-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+.user-form {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #c6282822;
+  padding: 2.5rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: 1.5px solid #eee;
+}
+body.dark-theme .user-form {
+  background: #23272b;
+  color: #fff;
+  border: 1.5px solid #444;
+}
+.user-form h2 {
+  text-align: center;
+  color: #c62828;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+body.dark-theme .user-form h2 {
+  color: #ffc107;
+}
+.user-form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.user-form label {
+  font-size: 1rem;
+  color: #c62828;
+  font-weight: 600;
+}
+body.dark-theme .user-form label {
+  color: #ffc107;
+}
+.user-form input {
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #c62828;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #f6f5f2;
+  color: #222;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+body.dark-theme .user-form input {
+  border: 1.5px solid #ffc107;
+  background: #23272b;
+  color: #ffc107;
+}
+.user-form input:focus {
+  border-color: #b31217;
+  box-shadow: 0 0 0 2px #c6282822;
+}
+body.dark-theme .user-form input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 2px #ffc10733;
+}
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.user-form button[type="submit"] {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px #c6282822;
+}
+.user-form button[type="submit"]:hover {
+  background: #b71c1c;
+}
+body.dark-theme .user-form button[type="submit"] {
+  background: #ffc107;
+  color: #23272b;
+}
+body.dark-theme .user-form button[type="submit"]:hover {
+  background: #ffe066;
+  color: #23272b;
+}
+.user-form .cancel-btn {
+  background: #eee;
+  color: #c62828;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.user-form .cancel-btn:hover {
+  background: #e0e0e0;
+}
+body.dark-theme .user-form .cancel-btn {
+  background: #333;
+  color: #ffc107;
+}
+body.dark-theme .user-form .cancel-btn:hover {
+  background: #444;
+}
 .user-list {
   width: 100%;
   overflow-x: auto;
