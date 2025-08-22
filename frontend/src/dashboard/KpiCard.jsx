@@ -1,8 +1,9 @@
 import React from "react";
 import "./KpiCard.css";
 
-const KpiCard = ({ title, value, subtitle, children }) => (
-  <div className="kpi-card">
+
+const KpiCard = ({ title, value, subtitle, children, onClick }) => (
+  <div className="kpi-card" onClick={onClick} style={onClick ? { cursor: 'pointer' } : {}}>
     <div className="kpi-card-header">
       <span className="kpi-title">{title}</span>
       {children && <span className="kpi-icon">{children}</span>}

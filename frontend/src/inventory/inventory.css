@@ -31,7 +31,7 @@ body.dark-theme .inventory-list th, body.dark-theme .inventory-list td {
   font-size: 1.1rem;
 }
 body.dark-theme .inventory-list th {
-  background: #ff8a65;
+  background: #ffe066;
   color: #23272b;
 }
 
@@ -50,7 +50,7 @@ body.dark-theme .inventory-list th {
   font-weight: 500;
 }
 body.dark-theme .inventory-list button {
-  background: #ff8a65;
+  background: #ffe066;
   color: #23272b;
 }
 

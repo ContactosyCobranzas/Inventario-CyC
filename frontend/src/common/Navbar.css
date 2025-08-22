@@ -107,7 +107,7 @@ body.dark-theme .navbar-dropdown {
 }
 body.dark-theme .navbar-dropdown-item:hover {
   background: #333;
-  color: #ff8a65;
+  color: #ffe066;
 }
 
 @media (max-width: 600px) {

@@ -138,5 +138,5 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
     </div>
   );
 };
-
+//
 export default ModalConfig;

@@ -31,7 +31,7 @@ body.dark-theme .user-list th, body.dark-theme .user-list td {
   font-size: 1.1rem;
 }
 body.dark-theme .user-list th {
-  background: #ff8a65;
+  background: #ffe066;
   color: #23272b;
 }
 
@@ -50,7 +50,7 @@ body.dark-theme .user-list th {
   font-weight: 500;
 }
 body.dark-theme .user-list button {
-  background: #ff8a65;
+  background: #ffe066;
   color: #23272b;
 }
 

@@ -1,26 +1,17 @@
 import React from "react";
 import KpiCard from "./KpiCard";
-import { FaLaptop, FaMicrochip, FaKey, FaRegNewspaper, FaUserCheck, FaExchangeAlt, FaRegCommentDots, FaNetworkWired, FaKeyboard, FaDesktop } from "react-icons/fa";
+import { FaLaptop, FaUserCheck, FaNetworkWired, FaRegNewspaper, FaRegCommentDots, FaExchangeAlt } from "react-icons/fa";
 
-const KpiGrid = () => (
+const KpiGrid = ({ onCardClick }) => (
   <div className="kpi-grid">
-    <KpiCard title="Equipos Registrados" value="120" subtitle="Total en sistema">
+    <KpiCard title="Hardware" value="120" subtitle="Total en sistema" onClick={() => onCardClick && onCardClick("hardware") }>
       <FaLaptop />
     </KpiCard>
-    <KpiCard title="Componentes en Stock" value="350" subtitle="Disponibles">
-      <FaMicrochip />
+    <KpiCard title="Equipos asignados" value="78" subtitle="A usuarios">
+      <FaUserCheck />
     </KpiCard>
-    <KpiCard title="Licencias Activas" value="87" subtitle="Software">
-      <FaKey />
-    </KpiCard>
-    <KpiCard title="IPs Asignadas" value="45" subtitle="IPs en uso">
+    <KpiCard title="IPs" value="45" subtitle="IPs en uso">
       <FaNetworkWired />
-    </KpiCard>
-    <KpiCard title="Periféricos" value="210" subtitle="Conectados">
-      <FaKeyboard />
-    </KpiCard>
-    <KpiCard title="Nombre de equipo" value="PC" subtitle="Equipos principales">
-      <FaDesktop />
     </KpiCard>
     <KpiCard title="Novedades" value="3" subtitle="Actualizaciones">
       <FaRegNewspaper />
@@ -28,10 +19,7 @@ const KpiGrid = () => (
     <KpiCard title="Reportes" value="2" subtitle="Problemas reportados">
       <FaRegCommentDots />
     </KpiCard>
-    <KpiCard title="Equipos Asignados" value="78" subtitle="A usuarios">
-      <FaUserCheck />
-    </KpiCard>
-    <KpiCard title="Movimientos Recientes" value="24" subtitle="Entradas/Salidas">
+    <KpiCard title="Movimientos recientes" value="24" subtitle="Entradas/Salidas">
       <FaExchangeAlt />
     </KpiCard>
   </div>

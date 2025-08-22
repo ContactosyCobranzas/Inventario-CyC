@@ -8,7 +8,6 @@ const Register = ({ onBack }) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Lógica de registro aquí
   };
 
   return (

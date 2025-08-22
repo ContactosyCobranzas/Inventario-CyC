@@ -11,17 +11,7 @@ const Dashboard = ({ onLogout }) => {
   const [view, setView] = useState("dashboard");
 
   const handleSidebarClick = (item) => {
-    if (item === "Inventario") {
-      // No cambiar la vista, solo despliega el submenú
-      return;
-    }
-    if (item === "EquiposAsignados") {
-      setView("equipos-asignados");
-    } else if (item === "IPs") {
-      setView("ips");
-    } else {
-      setView(item.toLowerCase());
-    }
+    setView(item.toLowerCase());
   };
 
   return (
@@ -33,12 +23,15 @@ const Dashboard = ({ onLogout }) => {
           {view === "dashboard" && (
             <>
               <h1 style={{ marginBottom: "2rem" }}>Dashboard de Inventario</h1>
-              <KpiGrid onCardClick={(card) => {
-                if(card === "hardware") setView("hardware");
-              }} />
+              <KpiGrid />
             </>
           )}
-          {/* Inventario no muestra vista propia, solo despliega submenú */}
+          {view === "inventario" && (
+            <section style={{ margin: "2rem 0" }}>
+              <h2>Inventario</h2>
+              <InventoryList />
+            </section>
+          )}
           {view === "usuarios" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>Usuarios</h2>
@@ -46,18 +39,6 @@ const Dashboard = ({ onLogout }) => {
             </section>
           )}
           {view === "hardware" && <Hardware />}
-          {view === "equipos-asignados" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Equipos asignados</h2>
-              <p>No hay equipos asignados aún.</p>
-            </section>
-          )}
-          {view === "ips" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>IPs</h2>
-              <p>No hay IPs registradas aún.</p>
-            </section>
-          )}
         </main>
       </div>
     </div>

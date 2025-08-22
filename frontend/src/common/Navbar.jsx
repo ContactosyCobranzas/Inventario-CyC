@@ -9,7 +9,6 @@ const Navbar = ({ onLogout }) => {
 
   const [fontSize, setFontSizeState] = useState(() => localStorage.getItem("uiFontSize") || "100%");
 
-  // Cuando cambia el fontSize local, también lo cambiamos globalmente
   const setFontSize = (val) => {
     setFontSizeState(val);
     if (window.setGlobalFontSize) window.setGlobalFontSize(val);
@@ -31,7 +30,6 @@ const Navbar = ({ onLogout }) => {
     setDark(!dark);
   };
 
-  // Para el menú lateral (cerrar sesión real)
   const handleLogoutClick = () => {
     setShowModal(true);
   };
