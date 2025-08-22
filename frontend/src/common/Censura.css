@@ -1,0 +1,35 @@
+.censura-app {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30,30,30,0.93);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+.censura-app .censura-btn {
+  margin-top: 2rem;
+  background: #ff8a65;
+  color: #23272b;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.censura-app .censura-btn:hover {
+  background: #d21919;
+  color: #fff;
+}

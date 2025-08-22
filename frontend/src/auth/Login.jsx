@@ -10,7 +10,6 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí iría la lógica real de autenticación
     if (onLogin) onLogin();
   };
 
@@ -82,5 +81,5 @@ const Login = ({ onLogin }) => {
     </div>
   );
 };
-//
+// 
 export default Login;

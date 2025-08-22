@@ -1,6 +1,6 @@
 import React from "react";
 import KpiCard from "./KpiCard";
-import { FaLaptop, FaMicrochip, FaKey, FaRegNewspaper, FaUserCheck, FaExchangeAlt, FaRegCommentDots } from "react-icons/fa";
+import { FaLaptop, FaMicrochip, FaKey, FaRegNewspaper, FaUserCheck, FaExchangeAlt, FaRegCommentDots, FaNetworkWired, FaKeyboard, FaDesktop } from "react-icons/fa";
 
 const KpiGrid = () => (
   <div className="kpi-grid">
@@ -12,6 +12,15 @@ const KpiGrid = () => (
     </KpiCard>
     <KpiCard title="Licencias Activas" value="87" subtitle="Software">
       <FaKey />
+    </KpiCard>
+    <KpiCard title="IPs Asignadas" value="45" subtitle="IPs en uso">
+      <FaNetworkWired />
+    </KpiCard>
+    <KpiCard title="Periféricos" value="210" subtitle="Conectados">
+      <FaKeyboard />
+    </KpiCard>
+    <KpiCard title="Nombre de equipo" value="PC" subtitle="Equipos principales">
+      <FaDesktop />
     </KpiCard>
     <KpiCard title="Novedades" value="3" subtitle="Actualizaciones">
       <FaRegNewspaper />
