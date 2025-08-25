@@ -3,7 +3,6 @@ import EditProfileForm from "../users/EditProfileForm";
 import { MdMonitor } from "react-icons/md";
 import "./ModalConfig.css";
 
-
 import { FaRegUserCircle, FaRegSun, FaRegMoon, FaSignOutAlt } from "react-icons/fa";
 
 const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, onLogout }) => {

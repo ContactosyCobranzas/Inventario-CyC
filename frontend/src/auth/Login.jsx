@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import Register from "./Register";
+
+const getSystemTheme = () => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+};
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [keepLogged, setKeepLogged] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || getSystemTheme();
+    document.body.classList.toggle('dark-theme', theme === 'dark');
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -12,6 +12,13 @@ const summaryData = [
   },
   {
     icon: <FaLaptop className="hardware-icon hardware-icon-unified" />,
+    title: "Equipos",
+    value: 20,
+    desc: "Total de equipos registrados.",
+    link: "Ver Equipos"
+  },
+  {
+    icon: <FaLaptop className="hardware-icon hardware-icon-unified" />,
     title: "PC Tipos",
     value: 8,
     desc: "Tipos de PC configurados en el sistema.",
@@ -19,10 +26,10 @@ const summaryData = [
   }
 ];
 
-const Hardware = () => {
+const Computers = () => {
   return (
     <div>
-      <h2 style={{marginBottom: '2rem'}}>Hardware</h2>
+      <h2 style={{marginBottom: '2rem'}}>Computers</h2>
       <div className="hardware-summary-grid">
         {summaryData.map((item, idx) => (
           <div className="hardware-summary-card" key={idx}>
@@ -38,4 +45,4 @@ const Hardware = () => {
   );
 };
 
-export default Hardware;
+export default Computers;

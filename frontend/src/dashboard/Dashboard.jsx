@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../common/Navbar";
 import Sidebar from "../common/Sidebar";
-import Hardware from "../hardware/Hardware";
+import EquiposView from "../hardware/EquiposView";
 import InventoryList from "../inventory/InventoryList";
 import UserList from "../users/UserList";
 import KpiGrid from "./KpiGrid";
@@ -12,7 +12,6 @@ const Dashboard = ({ onLogout }) => {
 
   const handleSidebarClick = (item) => {
     if (item === "Inventario") {
-      // No cambiar la vista, solo despliega el submenú
       return;
     }
     if (item === "EquiposAsignados") {
@@ -34,24 +33,24 @@ const Dashboard = ({ onLogout }) => {
             <>
               <h1 style={{ marginBottom: "2rem" }}>Dashboard de Inventario</h1>
               <KpiGrid onCardClick={(card) => {
-                if(card === "hardware") setView("hardware");
+                if(card === "equipos") setView("equipos");
               }} />
             </>
           )}
-          {/* Inventario no muestra vista propia, solo despliega submenú */}
           {view === "usuarios" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>Usuarios</h2>
               <UserList />
             </section>
           )}
-          {view === "hardware" && <Hardware />}
+          {/* {view === "hardware" && <Computers />} */}
           {view === "equipos-asignados" && (
             <section style={{ margin: "2rem 0" }}>
-              <h2>Equipos asignados</h2>
-              <p>No hay equipos asignados aún.</p>
+              <h2>Equipos</h2>
+              <p>No hay equipos registrados aún.</p>
             </section>
           )}
+          {view === "equipos" && <EquiposView />}
           {view === "ips" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>IPs</h2>

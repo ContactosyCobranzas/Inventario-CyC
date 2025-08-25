@@ -4,10 +4,7 @@ import { FaLaptop, FaUserCheck, FaNetworkWired, FaRegNewspaper, FaRegCommentDots
 
 const KpiGrid = ({ onCardClick }) => (
   <div className="kpi-grid">
-    <KpiCard title="Hardware" value="120" subtitle="Total en sistema" onClick={() => onCardClick && onCardClick("hardware") }>
-      <FaLaptop />
-    </KpiCard>
-    <KpiCard title="Equipos asignados" value="78" subtitle="A usuarios">
+    <KpiCard title="Equipos" value="78" subtitle="Total registrados" onClick={() => onCardClick && onCardClick("equipos")}>
       <FaUserCheck />
     </KpiCard>
     <KpiCard title="IPs" value="45" subtitle="IPs en uso">

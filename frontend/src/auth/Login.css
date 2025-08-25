@@ -1,8 +1,7 @@
-/* menos mal me toc*/
 :root {
   --color-login-light: #c62828;
   --color-login-dark: #ffc107;
-/* --- REGLAS DE LOGIN MODERNO Y MINIMALISTA --- */
+  
 .login-container.card-layout {
   position: fixed;
   inset: 0;
