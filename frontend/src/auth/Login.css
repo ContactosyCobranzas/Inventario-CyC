@@ -1,11 +1,14 @@
 :root {
-  --color-login-light: #c62828;
-  --color-login-dark: #ffc107;
-  
-.login-container.card-layout {
+  --color-login-light:
+  #c62828;
+  --color-login-dark:
+  #ffc107;
+
+  .login-container.card-layout {
   position: fixed;
   inset: 0;
-  background: var(--color-bg-claro);
+  background: linear-gradient(90deg, #c62828 0%,
+  #e52d27 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,59 +21,70 @@ body.dark-theme .login-container.card-layout {
 .login-card {
   display: flex;
   flex-direction: row;
-  background: #fff;
+  background: linear-gradient(90deg, #ffca28 0%, #ffc107 100%);
+  color: #222;
   border-radius: 1.2rem;
-  box-shadow: 0 6px 24px #c6282822;
-  min-width: 370px;
-  max-width: 420px;
+  box-shadow: 0 6px 24px #ffe06688;
+  min-width: 650px;
+  max-width: 850px;
   width: 100%;
   border: 1.5px solid #eee;
   overflow: hidden;
 }
 body.dark-theme .login-card {
-  background: #23272b;
-  box-shadow: 0 6px 24px #ffc10733;
-  border: 1.5px solid #444;
+  background: var(--color-bg-oscuro, #23272b);
+  color: var(--color-texto-oscuro, #fff);
 }
 
 .login-left {
-  flex: 1;
-  padding: 2.5rem 2.2rem;
-  background: transparent;
+  flex: 2;
+  padding: 2.5rem 2.2rem 2.5rem 2.5rem;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 body.dark-theme .login-left {
-  background: transparent;
+  background: var(--color-bg-oscuro, #23272b);
 }
 
 .login-right {
-  display: none;
+  flex: 1;
+  background: #f6f5f2;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+body.dark-theme .login-right {
+  background: var(--color-bg-oscuro, #23272b);
+  color: var(--color-texto-oscuro, #fff);
 }
 
 .login-form {
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
+  background: rgba(255,255,255,0.97);
+  padding: 3.5rem 2.7rem;
+  border-radius: 1.7rem;
+  box-shadow: 0 16px 48px rgba(179,18,23,0.18), 0 2px 12px rgba(229,45,39,0.10);
   width: 100%;
-  max-width: 340px;
-  min-width: 0;
+  max-width: 440px;
+  min-width: 340px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  border: none;
+  gap: 2.2rem;
+  transition: box-shadow 0.2s;
+  border: 2.5px solid #e52d27;
 }
 
 .login-form h2, .login-left h2 {
   text-align: center;
-  color: var(--color-login-light);
+  color: #b31217;
   margin-bottom: 1.2rem;
   font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: 1px;
+  text-shadow: 0 2px 8px #ff512f33;
 }
 body.dark-theme .login-form h2, body.dark-theme .login-left h2 {
   color: var(--color-login-dark);
@@ -78,7 +92,7 @@ body.dark-theme .login-form h2, body.dark-theme .login-left h2 {
 
 .input-group label {
   font-size: 1.08rem;
-  color: var(--color-login-light);
+  color: #b31217;
   font-weight: 600;
 }
 body.dark-theme .input-group label {
@@ -87,7 +101,7 @@ body.dark-theme .input-group label {
 
 .input-group input {
   padding: 0.7rem 1rem;
-  border: 1.5px solid var(--color-login-light);
+  border: 1.5px solid #c62828;
   border-radius: 0.5rem;
   font-size: 1rem;
   background: #f6f5f2;
@@ -97,21 +111,17 @@ body.dark-theme .input-group label {
   transition: border 0.2s, box-shadow 0.2s;
 }
 body.dark-theme .input-group input {
-  border: 1.5px solid var(--color-login-dark);
+  border: 1.5px solid #ffc107;
   background: #23272b;
   color: #ffc107;
 }
 .input-group input:focus {
-  border-color: var(--color-login-light);
-  box-shadow: 0 0 0 2px #c6282822;
-}
-body.dark-theme .input-group input:focus {
-  border-color: var(--color-login-dark);
-  box-shadow: 0 0 0 2px #ffc10733;
+  border-color: #b31217;
+  box-shadow: 0 0 0 2px #e52d2733;
 }
 
 button[type="submit"] {
-  background: var(--color-login-light);
+  background: linear-gradient(90deg, #b31217 0%, #e52d27 60%, #ff512f 100%);
   color: #fff;
   border: none;
   padding: 1.1rem 0;
@@ -120,34 +130,43 @@ button[type="submit"] {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px #c6282822;
+  box-shadow: 0 2px 12px #e52d2733;
   letter-spacing: 0.7px;
+  text-shadow: 0 1px 4px #b3121722;
 }
 button[type="submit"]:hover {
-  background: #e52d27;
-  box-shadow: 0 6px 24px #c6282844;
+  background: linear-gradient(90deg, #ff512f 0%, #e52d27 60%, #b31217 100%);
+  box-shadow: 0 6px 24px #b3121744;
 }
-body.dark-theme button[type="submit"] {
-  background: var(--color-login-dark);
-  color: #222;
-  box-shadow: 0 2px 12px #ffc10733;
-}
-body.dark-theme button[type="submit"]:hover {
-  background: #ffe066;
-  color: #222;
-  box-shadow: 0 6px 24px #ffc10744;
+
+@media (max-width: 900px) {
+  .login-card {
+    min-width: 340px;
+    max-width: 98vw;
+    flex-direction: column;
+    min-height: unset;
+    border-radius: 0.7rem;
+  }
+  .login-left, .login-right {
+    min-width: unset;
+    width: 100%;
+    border-radius: 0;
+  }
+  .login-right {
+    min-height: 100px;
+    padding: 1.2rem 0;
+  }
 }
 
 @media (max-width: 700px) {
-  .login-card {
-    min-width: 0;
-    max-width: 98vw;
-    flex-direction: column;
-    border-radius: 0.7rem;
-  }
-  .login-left {
+  .login-form {
     padding: 1.5rem 0.7rem;
-    width: 100%;
+    max-width: 98vw;
+    min-width: unset;
+  }
+  .login-container {
+    padding: 0;
+    overflow: hidden;
   }
 }
   --color-principal: #ffc107;
@@ -161,6 +180,7 @@ body.dark-theme button[type="submit"]:hover {
   --color-hover: #ffca28;
   --color-danger: #c62828;
 }
+
 .login-container.card-layout {
   position: fixed;
   inset: 0;
@@ -177,7 +197,7 @@ body.dark-theme button[type="submit"]:hover {
     letter-spacing: 1px;
     box-shadow: 0 2px 12px #c6282844;
     transition: background 0.2s, box-shadow 0.2s;
-
+}
 .login-card {
     background: linear-gradient(90deg, #e52d27 0%, #c62828 100%);
     box-shadow: 0 6px 24px #c6282888;
@@ -472,11 +492,12 @@ body.dark-theme .login-btn {
   outline: none;
   opacity: 1;
   transition: border 0.2s, box-shadow 0.2s;
-
+}
 body.dark-theme .input-group input {
   border: 1.5px solid #ffc107;
   background: #23272b;
   color: #ffc107;
+}
 .input-group input:focus {
   border-color: #b31217;
   box-shadow: 0 0 0 2px #e52d2733;

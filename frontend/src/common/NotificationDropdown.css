@@ -1,0 +1,184 @@
+.notification-dropdown {
+  transform: none !important;
+}
+.notification-dropdown {
+  min-width: 340px;
+  max-width: 400px;
+  right: 0;
+  top: 56px;
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 1.5px 8px 0 rgba(198,40,40,0.10);
+  border-radius: 22px;
+  padding: 0;
+  position: absolute;
+  z-index: 1001;
+  color: var(--notif-text, #222);
+  border: 1.5px solid rgba(200,200,200,0.18);
+  opacity: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, opacity 0.25s;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+.notification-dropdown.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.navbar-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(198,40,40,0.92);
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(198,40,40,0.08);
+  transition: background 0.2s;
+  border-bottom: 1.5px solid rgba(255,255,255,0.13);
+  backdrop-filter: blur(8px);
+}
+.navbar-dropdown-title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.22rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+.notification-close-btn {
+  background: rgba(255,255,255,0.10);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.25rem 0.25rem 0.25rem 0.6rem;
+  border-radius: 50%;
+  transition: background 0.18s, color 0.18s;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.notification-close-btn:hover {
+  background: rgba(255,255,255,0.22);
+  color: #c62828;
+}
+.notification-divider {
+  height: 1.5px;
+  background: rgba(255,255,255,0.18);
+  width: 100%;
+  transition: background 0.2s;
+}
+.notification-list {
+  max-height: 320px;
+  overflow-y: auto;
+  background: transparent;
+  padding-bottom: 0.5rem;
+}
+.navbar-dropdown-item {
+  font-size: 1rem;
+  color: #222;
+  border-radius: 14px;
+  margin: 0.5rem 1rem;
+  padding: 0.95rem 1.2rem;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 1px 8px 0 rgba(198,40,40,0.04);
+  animation: fadeInNotif 0.4s;
+  gap: 0.7rem;
+  backdrop-filter: blur(4px);
+}
+.navbar-dropdown-item:hover {
+  background: rgba(198,40,40,0.08);
+  color: #c62828;
+  box-shadow: 0 2px 12px 0 rgba(198,40,40,0.10);
+}
+.notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(198,40,40,0.10);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  color: #c62828;
+  font-size: 1.25rem;
+  margin-right: 0.2rem;
+  box-shadow: 0 1px 4px 0 rgba(198,40,40,0.10);
+}
+.notification-text {
+  flex: 1;
+  font-size: 1.04rem;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+ .notification-dropdown .navbar-dropdown-item:hover {
+  background: #fbe9e7;
+  color: #c62828;
+}
+
+
+
+.notification-dropdown-empty {
+  padding: 1.7rem 1.2rem;
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+@keyframes fadeInNotif {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+body.dark-theme .notification-dropdown {
+  background: rgba(35,39,43,0.82);
+  color: #f5f5f5;
+  border: 1.5px solid rgba(60,60,60,0.22);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+  backdrop-filter: blur(18px) saturate(160%);
+}
+body.dark-theme .notification-dropdown .navbar-dropdown-header {
+  background: rgba(35,39,43,0.98);
+  color: #fff;
+  border-bottom: 1.5px solid rgba(255,255,255,0.10);
+}
+body.dark-theme .notification-list {
+  background: transparent;
+}
+body.dark-theme .navbar-dropdown-item {
+  background: rgba(35,39,43,0.92);
+  color: #f5f5f5;
+  box-shadow: 0 1px 8px 0 rgba(198,40,40,0.10);
+}
+body.dark-theme .navbar-dropdown-item:hover {
+  background: rgba(198,40,40,0.13);
+  color: #ffb3b3;
+  box-shadow: 0 2px 12px 0 rgba(198,40,40,0.18);
+}
+body.dark-theme .notification-icon {
+  background: rgba(198,40,40,0.18);
+  color: #ffb3b3;
+}
+body.dark-theme .notification-text {
+  color: #f5f5f5;
+}
+body.dark-theme .notification-dropdown-empty {
+  color: #b0b0b0;
+}

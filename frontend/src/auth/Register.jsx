@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { showToast } from '../common/toastNotify';
 
 const Register = ({ onBack }) => {
   const [nombre, setNombre] = useState("");
@@ -6,8 +7,22 @@ const Register = ({ onBack }) => {
   const [passwordReg, setPasswordReg] = useState("");
   const [password2Reg, setPassword2Reg] = useState("");
 
+  const getSystemTheme = () => {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
+    const theme = localStorage.getItem('theme') || getSystemTheme();
+    showToast({
+      message: '¡Registro exitoso! Bienvenido.',
+      type: 'success',
+      theme
+    });
+    // Aquí iría la lógica real de registro
   };
 
   return (

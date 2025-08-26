@@ -5,7 +5,7 @@ const UserForm = ({ initialData = {}, onSubmit }) => {
   const [email, setEmail] = useState(initialData.email || "");
   const [password, setPassword] = useState("");
   const [preview, setPreview] = useState(initialData.profilePic || null);
-
+// 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {

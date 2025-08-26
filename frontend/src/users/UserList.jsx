@@ -16,7 +16,6 @@ const UserList = () => {
           </tr>
         </thead>
         <tbody>
-          {/* Ejemplo de fila */}
           <tr>
             <td>1</td>
             <td>Maicol</td>
