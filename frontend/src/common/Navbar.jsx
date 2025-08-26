@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { FaBell, FaCog, FaMoon, FaSun, FaSignOutAlt, FaSearch } from "react-icons/fa";
-import NotificationDropdown from "./NotificationDropdown";
+import ModalNotifications from "./ModalNotifications";
 import ModalConfirm from "./ModalConfirm";
 import ModalConfig from "./ModalConfig";
 import "./Navbar.css";  
-//  
+
 const Navbar = ({ onLogout }) => {
   const [showConfig, setShowConfig] = useState(false);
-
   const [fontSize, setFontSizeState] = useState(() => localStorage.getItem("uiFontSize") || "100%");
-// 
   const setFontSize = (val) => {
     setFontSizeState(val);
     if (window.setGlobalFontSize) window.setGlobalFontSize(val);
@@ -21,58 +17,27 @@ const Navbar = ({ onLogout }) => {
     return saved ? saved === "dark" : true;
   });
   const [showModal, setShowModal] = useState(false);
-  const notifBtnRef = useRef(null);
-
+  const [showNotifications, setShowNotifications] = useState(false);
   useEffect(() => {
     document.body.classList.toggle("dark-theme", dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
-
-
-
   const handleTheme = () => {
     setDark(!dark);
   };
-
   const handleLogoutClick = () => {
     setShowModal(true);
   };
-
   const handleConfirmLogout = () => {
     setShowModal(false);
     onLogout && onLogout();
   };
-
-  // Notificaciones tipo Steam
+  // Notificaciones para el modal
   const notifications = [
     { id: 1, text: "Nuevo usuario registrado" },
     { id: 2, text: "Equipo asignado" },
     { id: 3, text: "Inventario actualizado" },
   ];
-
-  const showSteamToasts = () => {
-    notifications.forEach(n => {
-      toast.info(n.text, {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        icon: <FaBell style={{ color: '#c62828' }} />,
-        style: {
-          background: '#23272b',
-          color: '#fff',
-          fontWeight: 500,
-          fontSize: '1.08rem',
-          boxShadow: '0 4px 24px 0 rgba(0,0,0,0.22)',
-          borderRadius: '14px',
-        }
-      });
-    });
-  };
-
   return (
     <nav className="navbar">
       <span className="navbar-title">Inventario CyC</span>
@@ -84,10 +49,9 @@ const Navbar = ({ onLogout }) => {
           <button
             className="navbar-icon-btn"
             title="Notificaciones"
-            ref={notifBtnRef}
-            onClick={showSteamToasts}
+            onClick={() => setShowNotifications(true)}
             aria-haspopup="true"
-            aria-expanded={false}
+            aria-expanded={showNotifications}
           >
             <FaBell size={22} />
           </button>
@@ -112,7 +76,15 @@ const Navbar = ({ onLogout }) => {
         handleTheme={handleTheme}
         onLogout={handleLogoutClick}
       />
-      <ToastContainer />
+      <div style={{ position: 'relative' }}>
+        <ModalNotifications
+          open={showNotifications}
+          notifications={notifications}
+          onClose={() => setShowNotifications(false)}
+          dark={dark}
+          fontSize={fontSize}
+        />
+      </div>
     </nav>
   );
 };

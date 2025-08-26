@@ -1,0 +1,186 @@
+.modal-notifications-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(35,39,43,0.55);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-notifications {
+  background: #23272b;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22);
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.modal-notifications-dropdown {
+  position: absolute;
+  right: 0;
+  top: 56px;
+  min-width: 370px;
+  max-width: 420px;
+  z-index: 2000;
+  animation: dropdownSlide 0.35s cubic-bezier(.4,1.4,.6,1) both;
+  padding-top: 0.5rem;
+}
+.modal-notifications.dark {
+  background: #23272b;
+  color: #f5f5f5;
+  border: 1.5px solid rgba(60,60,60,0.22);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+}
+.modal-notifications.dark .modal-notifications-header {
+  background: #ffe066;
+  color: #23272b;
+}
+.modal-notifications.dark .modal-notifications-title {
+  color: #23272b;
+}
+.modal-notifications.dark .modal-notifications-close {
+  color: #23272b;
+  background: rgba(255,224,102,0.10);
+}
+.modal-notifications.dark .modal-notifications-close:hover {
+  background: rgba(255,224,102,0.22);
+  color: #23272b;
+}
+.modal-notifications.dark .modal-notifications-item {
+  background: #393e46;
+  color: #fff;
+}
+.modal-notifications.dark .modal-notifications-item:hover {
+  background: #ffe066;
+  color: #23272b;
+}
+.modal-notifications.dark .modal-notifications-icon {
+  background: rgba(255,224,102,0.18);
+  color: #ffe066;
+}
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+/* Eliminar líneas sueltas fuera de selectores */
+.modal-notifications-close {
+  background: rgba(255,255,255,0.10);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3rem 0.5rem;
+  transition: background 0.18s, color 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.3rem;
+}
+.modal-notifications-close:hover {
+  background: rgba(255,255,255,0.22);
+  color: #c62828;
+}
+.modal-notifications-divider {
+  height: 1.5px;
+  background: #23272b;
+  width: 100%;
+}
+.modal-notifications-list {
+  padding: 1rem 0.5rem 1.5rem 0.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-notifications-item {
+  display: flex;
+  align-items: center;
+  background: #393e46;
+  border-radius: 14px;
+  margin: 0.7rem 1rem;
+  padding: 0.95rem 1.2rem;
+  box-shadow: 0 1px 8px 0 rgba(198,40,40,0.04);
+  gap: 0.7rem;
+  font-size: 1.04rem;
+  font-weight: 500;
+  color: #fff;
+  animation: fadeInNotif 0.4s;
+}
+.modal-notifications-item:hover {
+  background: #c62828;
+  color: #fff;
+}
+.modal-notifications-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(198,40,40,0.10);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  color: #c62828;
+  font-size: 1.25rem;
+  margin-right: 0.2rem;
+  box-shadow: 0 1px 4px 0 rgba(198,40,40,0.10);
+}
+.modal-notifications-text {
+  flex: 1;
+  font-size: 1.04rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.modal-notifications-empty {
+  padding: 1.7rem 1.2rem;
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+@keyframes fadeInNotifModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeInNotif {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-notifications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #c62828;
+  color: #fff;
+  padding: 0.8rem 1.2rem 0.8rem 1.2rem;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 2px 8px 0 rgba(198,40,40,0.08);
+  min-height: 48px;
+}
+.modal-notifications-title {
+  font-weight: 700;
+  font-size: 1.18rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}

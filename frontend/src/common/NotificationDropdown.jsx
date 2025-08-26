@@ -9,7 +9,6 @@ const notifications = [
   { id: 3, text: "Inventario actualizado" },
 ];
 
-
 const NotificationDropdown = ({ open, onClose }) => {
   const [visible, setVisible] = React.useState(open);
   React.useEffect(() => {
