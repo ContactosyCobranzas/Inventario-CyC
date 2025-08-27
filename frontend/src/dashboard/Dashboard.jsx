@@ -5,6 +5,7 @@ import EquiposView from "../hardware/EquiposView";
 import InventoryList from "../inventory/InventoryList";
 import UserList from "../users/UserList";
 import KpiGrid from "./KpiGrid";
+import Novedades from "./Novedades";
 import "./Dashboard.css";
 
 const Dashboard = ({ onLogout }) => {
@@ -34,9 +35,11 @@ const Dashboard = ({ onLogout }) => {
               <h1 style={{ marginBottom: "2rem" }}>Dashboard de Inventario</h1>
               <KpiGrid onCardClick={(card) => {
                 if(card === "equipos") setView("equipos");
+                if(card === "novedades") setView("novedades");
               }} />
             </>
           )}
+          {view === "novedades" && <Novedades />}
           {view === "usuarios" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>Usuarios</h2>

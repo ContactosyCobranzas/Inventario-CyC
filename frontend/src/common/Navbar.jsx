@@ -41,7 +41,7 @@ const Navbar = ({ onLogout }) => {
   return (
     <nav className="navbar">
       <span className="navbar-title">Inventario CyC</span>
-      <div className="navbar-actions" style={{ position: 'relative' }}>
+      <div className="navbar-actions" style={{ position: 'relative', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.5rem' }}>
         <button className="navbar-icon-btn" title="Buscar">
           <FaSearch size={22} />
         </button>
@@ -55,6 +55,14 @@ const Navbar = ({ onLogout }) => {
           >
             <FaBell size={22} />
           </button>
+          {/* Modal de notificaciones alineado justo debajo del icono */}
+          <ModalNotifications
+            open={showNotifications}
+            notifications={notifications}
+            onClose={() => setShowNotifications(false)}
+            dark={dark}
+            fontSize={fontSize}
+          />
         </div>
         <button className="navbar-icon-btn" title="Configuración" onClick={() => setShowConfig(true)}>
           <FaCog size={22} />
@@ -76,15 +84,6 @@ const Navbar = ({ onLogout }) => {
         handleTheme={handleTheme}
         onLogout={handleLogoutClick}
       />
-      <div style={{ position: 'relative' }}>
-        <ModalNotifications
-          open={showNotifications}
-          notifications={notifications}
-          onClose={() => setShowNotifications(false)}
-          dark={dark}
-          fontSize={fontSize}
-        />
-      </div>
     </nav>
   );
 };

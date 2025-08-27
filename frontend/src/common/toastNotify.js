@@ -1,19 +1,20 @@
+import React from 'react';
 import { toast } from 'react-toastify';
 import { FaBell, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
-
+// 
 export function showToast({
   message,
-  type = 'info', // 'info', 'success', 'error', 'warning'
+  type = 'info',
   icon,
   autoClose = 4000,
   position = 'bottom-right',
-  theme = 'dark', // 'dark' o 'light'
+  theme = 'dark',
 }) {
   let toastIcon = icon;
   if (!icon) {
-    if (type === 'success') toastIcon = <FaCheckCircle style={{ color: theme === 'dark' ? '#43a047' : '#388e3c' }} />;
-    else if (type === 'error') toastIcon = <FaExclamationCircle style={{ color: theme === 'dark' ? '#c62828' : '#d32f2f' }} />;
-    else toastIcon = <FaBell style={{ color: theme === 'dark' ? '#c62828' : '#1976d2' }} />;
+    if (type === 'success') toastIcon = getSuccessIcon(theme);
+    else if (type === 'error') toastIcon = getErrorIcon(theme);
+    else toastIcon = getInfoIcon(theme);
   }
   const styleDark = {
     background: '#23272b',
@@ -28,9 +29,18 @@ export function showToast({
     color: '#23272b',
     fontWeight: 500,
     fontSize: '1.08rem',
-    boxShadow: '0 4px 24px 0 rgba(0,0,0,0.10)',
-    borderRadius: '14px',
   };
+  // ...existing code...
+
+function getSuccessIcon(theme) {
+  return FaCheckCircle ? React.createElement(FaCheckCircle, { style: { color: theme === 'dark' ? '#43a047' : '#388e3c' } }) : null;
+}
+function getErrorIcon(theme) {
+  return FaExclamationCircle ? React.createElement(FaExclamationCircle, { style: { color: theme === 'dark' ? '#c62828' : '#d32f2f' } }) : null;
+}
+function getInfoIcon(theme) {
+  return FaBell ? React.createElement(FaBell, { style: { color: theme === 'dark' ? '#c62828' : '#1976d2' } }) : null;
+}
   toast[type](message, {
     position,
     autoClose,
