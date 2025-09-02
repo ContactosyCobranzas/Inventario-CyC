@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { FaBell, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
-// 
+
 export function showToast({
   message,
   type = 'info',
@@ -16,19 +16,31 @@ export function showToast({
     else if (type === 'error') toastIcon = getErrorIcon(theme);
     else toastIcon = getInfoIcon(theme);
   }
+  // Estilos personalizados por tipo y tema
+  const borderColors = {
+    success: theme === 'dark' ? '#43a047' : '#388e3c',
+    error: theme === 'dark' ? '#c62828' : '#d32f2f',
+    info: theme === 'dark' ? '#ffe066' : '#1976d2',
+  };
   const styleDark = {
     background: '#23272b',
-    color: '#fff',
-    fontWeight: 500,
+    color: borderColors[type] || '#fff',
+    fontWeight: 600,
     fontSize: '1.08rem',
+    border: `2px solid ${borderColors[type]}`,
     boxShadow: '0 4px 24px 0 rgba(0,0,0,0.22)',
     borderRadius: '14px',
+    letterSpacing: '0.01em',
   };
   const styleLight = {
     background: '#fff',
-    color: '#23272b',
-    fontWeight: 500,
+    color: borderColors[type] || '#23272b',
+    fontWeight: 600,
     fontSize: '1.08rem',
+    border: `2px solid ${borderColors[type]}`,
+    boxShadow: '0 4px 24px 0 rgba(44,62,80,0.10)',
+    borderRadius: '14px',
+    letterSpacing: '0.01em',
   };
   // ...existing code...
 

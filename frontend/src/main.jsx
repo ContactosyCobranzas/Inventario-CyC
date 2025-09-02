@@ -1,6 +1,7 @@
 import React, { useEffect, useState, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
+import GlobalToastContainer from './common/GlobalToastContainer';
 
 function GlobalFontSizeWrapper({ children }) {
   const [fontSize, setFontSize] = useState(() => localStorage.getItem('uiFontSize') || '100%');
@@ -11,7 +12,10 @@ function GlobalFontSizeWrapper({ children }) {
   useEffect(() => {
     window.setGlobalFontSize = setFontSize;
   }, []);
-  return children;
+  return <>
+    {children}
+    <GlobalToastContainer />
+  </>;
 }
 
 createRoot(document.getElementById('root')).render(

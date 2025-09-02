@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaBell, FaCog, FaMoon, FaSun, FaSignOutAlt, FaSearch } from "react-icons/fa";
+
 import ModalNotifications from "./ModalNotifications";
 import ModalConfirm from "./ModalConfirm";
 import ModalConfig from "./ModalConfig";
-import "./Navbar.css";  
+import { showToast } from "./toastNotify";
+import "./Navbar.css";
 
 const Navbar = ({ onLogout }) => {
   const [showConfig, setShowConfig] = useState(false);
@@ -23,13 +25,28 @@ const Navbar = ({ onLogout }) => {
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
   const handleTheme = () => {
-    setDark(!dark);
+    setDark((prev) => {
+      const newTheme = !prev;
+      setTimeout(() => {
+        showToast({
+          message: `Tema cambiado a ${!prev ? 'oscuro' : 'claro'}`,
+          type: 'success',
+          theme: !prev ? 'dark' : 'light',
+        });
+      }, 100);
+      return newTheme;
+    });
   };
   const handleLogoutClick = () => {
     setShowModal(true);
   };
   const handleConfirmLogout = () => {
     setShowModal(false);
+    showToast({
+      message: 'Sesión cerrada correctamente',
+      type: 'success',
+      theme: dark ? 'dark' : 'light',
+    });
     onLogout && onLogout();
   };
   // Notificaciones para el modal

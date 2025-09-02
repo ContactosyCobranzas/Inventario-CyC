@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditProfileForm from "../users/EditProfileForm";
+import { showToast } from "./toastNotify";
 import { MdMonitor } from "react-icons/md";
 import "./ModalConfig.css";
 
@@ -9,6 +10,16 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
   const [section, setSection] = useState("pantalla");
   const [editandoPerfil, setEditandoPerfil] = useState(false);
   if (!open) return null;
+
+  // Toast para cambio de pantalla
+  const handleFontSizeChange = (e) => {
+    setFontSize(e.target.value);
+    showToast({
+      message: `Tamaño de interfaz cambiado a ${e.target.value}`,
+      type: 'info',
+      theme: dark ? 'dark' : 'light',
+    });
+  };
   return (
     <div className="modal-config-backdrop">
       <div className="modal-config">
@@ -97,7 +108,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
                 <select
                   id="font-size-select"
                   value={fontSize}
-                  onChange={e => setFontSize(e.target.value)}
+                  onChange={handleFontSizeChange}
                 >
                   <option value="80%">80%</option>
                   <option value="85%">85%</option>
@@ -122,7 +133,14 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
               </header>
               <div className="modal-config-section">
                 <p>¿Seguro que deseas cerrar sesión?</p>
-                <button className="modal-btn apply" style={{marginTop: '1rem', alignSelf: 'flex-start', background: '#c00', color: '#fff'}} onClick={onLogout}>
+                <button className="modal-btn apply" style={{marginTop: '1rem', alignSelf: 'flex-start', background: '#c00', color: '#fff'}} onClick={() => {
+                  showToast({
+                    message: 'Sesión cerrada correctamente',
+                    type: 'success',
+                    theme: dark ? 'dark' : 'light',
+                  });
+                  onLogout();
+                }}>
                   <FaSignOutAlt style={{marginRight: '0.5rem'}} /> Cerrar sesión
                 </button>
               </div>

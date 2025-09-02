@@ -1,0 +1,79 @@
+.editpcitem-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.editpcitem-modal-content {
+  background: var(--hardware-bg, #fff);
+  color: var(--hardware-header-color, #23272e);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(44,62,80,0.18);
+  padding: 2.5rem 2.5rem 1.7rem 2.5rem;
+  min-width: 370px;
+  max-width: 98vw;
+  position: relative;
+  animation: modalFadeIn 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.editpcitem-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2.1rem;
+  color: var(--hardware-header-color, #c62828);
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.18s;
+}
+.editpcitem-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.2rem;
+}
+.editpcitem-form label {
+  font-size: 1.07rem;
+  font-weight: 600;
+  color: var(--hardware-header-color, #c62828);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+}
+.editpcitem-form input {
+  padding: 0.45rem 0.7rem;
+  border-radius: 7px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 1.04rem;
+  background: #fafbfc;
+  color: #23272e;
+  transition: border 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 4px #0001;
+}
+body.dark-theme .editpcitem-modal-content {
+  background: #23272e;
+  color: #ffe066;
+}
+body.dark-theme .editpcitem-form input {
+  background: #23272e;
+  color: #ffe066;
+  border: 1.5px solid #444;
+}
+.editpcitem-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
