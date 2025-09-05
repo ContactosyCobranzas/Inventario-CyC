@@ -277,10 +277,9 @@ body.dark-theme .hardware-btn.delete:hover {
   color: #ffe066;
   margin: 0;
 }
-/* --- Equipos: tabla full width --- */
 .equipos-full-width {
   width: 100%;
-  max-width: calc(100vw - 220px); /* Deja espacio para el menú lateral */
+  max-width: calc(100vw - 220px);
   margin-left: 0;
   margin-right: 0;
   padding-left: 0;

@@ -2,6 +2,7 @@ import React from "react";
 import { FaDesktop, FaLaptop, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./Hardware.css";
+import BackButton from "../common/BackButton";
 
 const summaryData = [
   {
@@ -26,6 +27,7 @@ const Hardware = () => {
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+  <BackButton />
         <button
           onClick={() => navigate(-1)}
           style={{ background: 'none', border: 'none', cursor: 'pointer', marginRight: '1rem' }}

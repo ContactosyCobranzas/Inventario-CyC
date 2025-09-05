@@ -1,6 +1,7 @@
 import React, { useEffect, useState, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
 import GlobalToastContainer from './common/GlobalToastContainer';
 
 function GlobalFontSizeWrapper({ children }) {
@@ -20,8 +21,10 @@ function GlobalFontSizeWrapper({ children }) {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <GlobalFontSizeWrapper>
-      <App />
-    </GlobalFontSizeWrapper>
+    <BrowserRouter>
+      <GlobalFontSizeWrapper>
+        <App />
+      </GlobalFontSizeWrapper>
+    </BrowserRouter>
   </StrictMode>,
 )

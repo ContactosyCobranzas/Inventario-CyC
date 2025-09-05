@@ -70,10 +70,10 @@ const Equipos = () => {
   };
 
   return (
-    <div className="equipos-section-container equipos-full-width">
-      <div className="equipos-section-header">
-        <FaLaptop className="hardware-section-icon" />
-        <h2>Equipos</h2>
+    <div className="equipos-section-container equipos-full-width" style={{background: 'rgba(40,40,40,0.85)', boxShadow: '0 2px 12px 0 rgba(44,62,80,0.10)', borderRadius: '18px'}}>
+      <div className="equipos-section-header" style={{background: 'rgba(255,224,102,0.08)', boxShadow: 'none', padding: '0.5rem 0 1.2rem 0', borderRadius: '12px'}}>
+        <FaLaptop className="hardware-section-icon" style={{color: '#ffd600', fontSize: '2.2rem', marginRight: '0.7rem', background: 'none', boxShadow: 'none'}} />
+        <h2 style={{color: '#ffd600', fontWeight: 'bold', fontSize: '2.1rem', margin: 0, textShadow: '0 1px 8px #23272e55'}}>Equipos</h2>
       </div>
       <div className="equipos-table-wrapper">
       <table className="equipos-table-full">
@@ -142,10 +142,10 @@ const Equipos = () => {
               <td>{item.date_creation}</td>
               <td>{item.is_recursive ? 'Sí' : 'No'}</td>
               <td>
-                <button className="hardware-btn edit" onClick={() => handleEdit(item.id)} title="Editar">
+                <button className="pcitems-action-btn edit" onClick={() => handleEdit(item.id)} title="Editar">
                   <FaEdit style={{marginRight: '6px', fontSize: '1.15em'}} /> Editar
                 </button>
-                <button className="hardware-btn delete" onClick={() => handleDelete(item.id)} title="Borrar">
+                <button className="pcitems-action-btn delete" onClick={() => handleDelete(item.id)} title="Borrar">
                   <FaTrash style={{marginRight: '6px', fontSize: '1.15em'}} /> Borrar
                 </button>
               </td>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "../common/BackButton";
 import Navbar from "../common/Navbar";
 import Sidebar from "../common/Sidebar";
 import EquiposView from "../hardware/EquiposView";
@@ -27,6 +28,7 @@ const Dashboard = ({ onLogout }) => {
 
   return (
     <div className="dashboard-root">
+    <BackButton />
       <Navbar onLogout={onLogout} />
       <div className="dashboard-flex">
         <Sidebar onNavigate={handleSidebarClick} />
