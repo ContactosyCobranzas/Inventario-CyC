@@ -94,7 +94,7 @@ body.dark-theme .user-form button[type="submit"] {
   color: #23272b;
 }
 body.dark-theme .user-form button[type="submit"]:hover {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 .user-form .cancel-btn {
@@ -151,7 +151,7 @@ body.dark-theme .user-list th, body.dark-theme .user-list td {
   font-size: 1.1rem;
 }
 body.dark-theme .user-list th {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 
@@ -170,7 +170,7 @@ body.dark-theme .user-list th {
   font-weight: 500;
 }
 body.dark-theme .user-list button {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 

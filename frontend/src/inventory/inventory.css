@@ -25,13 +25,13 @@ body.dark-theme .inventory-list th, body.dark-theme .inventory-list td {
 }
 
 .inventory-list th {
-  background: #ffd600;
+  background: #FFD600;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
 }
 body.dark-theme .inventory-list th {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 
@@ -50,16 +50,16 @@ body.dark-theme .inventory-list th {
   font-weight: 500;
 }
 body.dark-theme .inventory-list button {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 
 .inventory-list button:hover {
-  background: #ffd600;
+  background: #FFD600;
 }
 body.dark-theme .inventory-list button:hover {
   background: #fff;
-  color: #ffd600;
+  color: #FFD600;
 }
 
 @media (max-width: 700px) {

@@ -14,17 +14,17 @@
 }
 .dark-theme .novedades-icon {
   background: #181a1b;
-  color: #ffe066;
+  color: #FFD600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.22);
   border: 1.5px solid #23272b;
 }
 .dark-theme .novedad-timeline-dot {
-  background: #ffe066;
+  background: #FFD600;
   border: 3px solid #101113;
   box-shadow: 0 2px 8px #101624;
 }
 .dark-theme .novedades-timeline-line {
-  background: linear-gradient(to bottom, #ffe066 0%, #181a1b 100%);
+  background: linear-gradient(to bottom, #FFD600 0%, #181a1b 100%);
 }
 .dark-theme .novedades-container {
   background: #181a1b;
@@ -40,7 +40,7 @@
 }
 .dark-theme .novedades-icon {
   background: #23272b;
-  color: #ffe066;
+  color: #FFD600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.22);
   border: 1.5px solid #181a1b;
 }
@@ -54,18 +54,18 @@
   text-shadow: 0 1px 4px #101624;
 }
 .dark-theme .novedad-fecha {
-  color: #ffe066;
+  color: #FFD600;
 }
 .dark-theme .novedad-desc {
   color: #f5f5f5;
 }
 .dark-theme .novedad-timeline-dot {
-  background: #ffe066;
+  background: #FFD600;
   border: 3px solid #181a1b;
   box-shadow: 0 2px 8px #101624;
 }
 .dark-theme .novedades-timeline-line {
-  background: linear-gradient(to bottom, #ffe066 0%, #23272b 100%);
+  background: linear-gradient(to bottom, #FFD600 0%, #23272b 100%);
 }
 .novedades-container {
   max-width: 700px;

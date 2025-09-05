@@ -36,7 +36,7 @@ body.dark-theme .login-container.card-layout {
   background: linear-gradient(90deg, #ffca28 0%, #ffc107 100%);
   color: #222;
   border-radius: 1.2rem;
-  box-shadow: 0 6px 24px #ffe06688;
+  box-shadow: 0 6px 24px #FFD60088;
   min-width: 650px;
   max-width: 850px;
   width: 100%;
@@ -187,7 +187,7 @@ button[type="submit"]:hover {
   --color-bg-oscuro: #23272b;
   --color-texto: #222;
   --color-texto-oscuro: #fff;
-  --color-acento: #ffe066;
+  --color-acento: #FFD600;
   --color-acento-oscuro: #ffca28;
   --color-hover: #ffca28;
   --color-danger: #c62828;
@@ -217,11 +217,11 @@ button[type="submit"]:hover {
   border-radius: 1.2rem;
     background: linear-gradient(90deg, #ffc107 0%, #ffca28 100%);
     color: #222;
-    box-shadow: 0 2px 12px #ffe06644;
+    box-shadow: 0 2px 12px #FFD60044;
   min-width: 650px;
   max-width: 850px;
     background: linear-gradient(90deg, #ffca28 0%, #ffc107 100%);
-    box-shadow: 0 6px 24px #ffe06688;
+    box-shadow: 0 6px 24px #FFD60088;
   border: 1.5px solid #eee;
 }
 body.dark-theme .login-card {
@@ -403,12 +403,12 @@ body.dark-theme .input-group input {
   cursor: pointer;
   opacity: 1;
   letter-spacing: 1px;
-  box-shadow: 0 2px 12px #ffe06644;
+  box-shadow: 0 2px 12px #FFD60044;
   transition: background 0.2s, box-shadow 0.2s;
 }
 .login-btn:hover, .login-btn:focus {
   background: linear-gradient(90deg, #ffca28 0%, #ffc107 100%);
-  box-shadow: 0 6px 24px #ffe06688;
+  box-shadow: 0 6px 24px #FFD60088;
 }
 body.dark-theme .login-btn {
   background: var(--color-bg-oscuro, #23272b);

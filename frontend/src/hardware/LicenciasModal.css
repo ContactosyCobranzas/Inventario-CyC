@@ -26,7 +26,7 @@
 .licencias-modal-content h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1976d2;
+  color: #FFD600;
   margin-bottom: 1.5rem;
 }
 
@@ -41,8 +41,8 @@
   box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
 .licencias-modal-table th {
-  background: #1976d2;
-  color: #fff;
+  background: #FFD600;
+  color: #333;
   font-weight: 600;
   padding: 0.75rem 1.2rem;
   border: none;
@@ -77,8 +77,8 @@ body.dark-theme .licencias-modal-content {
   border: 1px solid #333;
 }
 body.dark-theme .licencias-modal-table th {
-  background: #333;
-  color: #fff;
+  background: #FFD600;
+  color: #333;
 }
 body.dark-theme .licencias-modal-table td {
   background: #23272f;

@@ -1,53 +1,53 @@
 .pcitems-action-btn.edit {
-  background: #ffe066 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
   border: 1.5px solid #23272e !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 .pcitems-action-btn.edit:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 .pcitems-action-btn.delete {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
   margin-left: 0.5em;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 .pcitems-action-btn.delete:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.edit {
 body.dark-theme .pcitems-action-btn.edit {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.edit:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.delete {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
   margin-left: 0.5em;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.delete:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.delete {
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
   margin-left: 0.5em;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
@@ -56,56 +56,56 @@ body.dark-theme .pcitems-action-btn.delete:hover {
   border: 1.5px solid #ff9800 !important;
 }
 body.dark-theme .pcitems-action-btn.edit {
-  background: #ffe066 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.edit:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffe066 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.delete {
   background: #ff9800 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.delete:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
   border: 1.5px solid #ff9800 !important;
 }
-  background: #ffe066 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.edit:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffe066 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.delete {
   background: #ff9800 !important;
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .pcitems-action-btn.delete:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
   border: 1.5px solid #ff9800 !important;
 }
 body.dark-theme .pcitems-action-btn {
   background: #181818 !important;
-  color: #ffd600 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10);
 }
 body.dark-theme .pcitems-action-btn:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 .pcitems-table-full {
   width: 100%;
@@ -149,18 +149,18 @@ body.dark-theme .pcitems-action-btn:hover {
 }
 body.dark-theme .hardware-btn {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10);
 }
 body.dark-theme .hardware-btn:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 body.dark-theme .hardware-btn.delete {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
 }
 body.dark-theme .hardware-btn.delete:hover {
@@ -248,7 +248,7 @@ body.dark-theme .hardware-btn.delete:hover {
 }
 .equipos-table-full th {
   background: var(--equipos-th-bg, #181a1f);
-  color: #ffe066;
+  color: #FFD600;
   font-weight: 700;
   position: sticky;
   top: 0;
@@ -274,7 +274,7 @@ body.dark-theme .hardware-btn.delete:hover {
 }
 .equipos-section-header h2 {
   font-size: 2.2rem;
-  color: #ffe066;
+  color: #FFD600;
   margin: 0;
 }
 .equipos-full-width {
@@ -315,7 +315,7 @@ body.dark-theme .hardware-btn.delete:hover {
 }
 .hardware-table td .pcitems-action-btn.delete,
 .hardware-table td .pcitems-action-btn.delete:visited {
-  background: linear-gradient(90deg, var(--delete-btn-bg1, #ffd600) 80%, var(--delete-btn-bg2, #ffe082) 100%) !important;
+  background: linear-gradient(90deg, var(--delete-btn-bg1, #FFD600) 80%, var(--delete-btn-bg2, #ffe082) 100%) !important;
   color: var(--delete-btn-color, #fff) !important;
   border: none !important;
   margin-left: 0.5em;
@@ -338,10 +338,10 @@ body.dark-theme .hardware-btn.delete:hover {
   --delete-btn-color: #fff;
 }
 body.dark-theme {
-  --edit-btn-bg1: #ffe066;
-  --edit-btn-bg2: #ffe066;
-  --edit-btn-bg1-hover: #ffe066;
-  --edit-btn-bg2-hover: #ffe066;
+  --edit-btn-bg1: #FFD600;
+  --edit-btn-bg2: #FFD600;
+  --edit-btn-bg1-hover: #FFD600;
+  --edit-btn-bg2-hover: #FFD600;
   --edit-btn-color: #23272e;
   --delete-btn-bg1: #ff9800;
   --delete-btn-bg2: #ffb74d;
@@ -375,24 +375,24 @@ body.dark-theme {
 /* Botones de acción: color según tema */
 body.dark-theme .pcitems-action-btn.edit {
   color: #23272e !important;
-  border: 1.5px solid #ffd600 !important;
+  border: 1.5px solid #FFD600 !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.edit:hover {
-  background: #ffd600 !important;
+  background: #FFD600 !important;
   color: #23272e !important;
 }
 body.dark-theme .pcitems-action-btn.delete {
   background: #181818 !important;
-  color: #ffd600 !important;
+  color: #FFD600 !important;
   border: 1.5px solid #23272e !important;
   margin-left: 0.5em;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10) !important;
 }
 body.dark-theme .pcitems-action-btn.delete:hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 /* Variables para temas */
 :root {
@@ -408,10 +408,10 @@ body.dark-theme .pcitems-action-btn.delete:hover {
 body.dark-theme {
   --hardware-bg: #23272e;
   --hardware-header-bg: #3a2323;
-  --hardware-header-color: #ffe066;
+  --hardware-header-color: #FFD600;
   --hardware-table-bg: #23272e;
   --hardware-table-th-bg: #2d2d2d;
-  --hardware-table-th-color: #ffe066;
+  --hardware-table-th-color: #FFD600;
   --hardware-table-tr-hover: #3a2323;
   --hardware-shadow: 0 4px 24px 0 rgba(255,224,102,0.10);
 }
@@ -434,7 +434,7 @@ body.dark-theme {
 }
 .hardware-section-header .hardware-icon {
   font-size: 2.7rem;
-  color: #ffe066;
+  color: #FFD600;
   background: radial-gradient(circle at 60% 40%, #3a2323 60%, #23272e 100%);
   border-radius: 50%;
   padding: 0.7rem;
@@ -506,7 +506,7 @@ body.dark-theme {
 }
 body.dark-theme .hardware-summary-card .hardware-icon,
 body.dark-theme .hardware-icon-unified {
-  color: #ffe066;
+  color: #FFD600;
 }
 .hardware-summary-title {
   font-size: 1.05rem;
@@ -542,7 +542,7 @@ body.dark-theme .hardware-summary-card {
   box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18);
 }
 body.dark-theme .hardware-summary-title {
-  color: #ffe066;
+  color: #FFD600;
 }
 body.dark-theme .hardware-summary-value {
   color: #fff;
@@ -551,7 +551,7 @@ body.dark-theme .hardware-summary-desc {
   color: #bbb;
 }
 body.dark-theme .hardware-summary-link {
-  color: #ffe066;
+  color: #FFD600;
 }
 body.dark-theme .hardware-summary-link:hover {
   color: #c62828;

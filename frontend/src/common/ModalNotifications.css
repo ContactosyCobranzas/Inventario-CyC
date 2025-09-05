@@ -34,7 +34,7 @@
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
 }
 .modal-notifications.dark .modal-notifications-header {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 .modal-notifications.dark .modal-notifications-title {
@@ -53,12 +53,12 @@
   color: #fff;
 }
 .modal-notifications.dark .modal-notifications-item:hover {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 .modal-notifications.dark .modal-notifications-icon {
   background: rgba(255,224,102,0.18);
-  color: #ffe066;
+  color: #FFD600;
 }
 @keyframes dropdownSlide {
   from {

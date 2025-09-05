@@ -3,7 +3,7 @@ import { FaDesktop, FaLaptop, FaKey, FaCodeBranch } from "react-icons/fa";
 import PCItems from "./PCItems";
 import Equipos from "./Equipos";
 import LicenciasView from "./LicenciasView";
-import VersionesModal from "./VersionesModal";
+import VersionesView from "./VersionesView";
 import PCTypes from "./PCTypes";
 import "./Hardware.css";
 
@@ -48,7 +48,7 @@ const summaryData = [
 const Computers = () => {
   const [view, setView] = useState("summary");
   // const [openLicencias, setOpenLicencias] = useState(false);
-  const [openVersiones, setOpenVersiones] = useState(false);
+  // const [openVersiones, setOpenVersiones] = useState(false);
 
   // Índices de las cards
   const idxPCItems = summaryData.findIndex(item => item.title === "PC Items");
@@ -66,6 +66,9 @@ const Computers = () => {
   }
   if (view === "licencias") {
     return <LicenciasView onBack={() => setView("summary")} />;
+  }
+  if (view === "versiones") {
+    return <VersionesView onBack={() => setView("summary")} />;
   }
 
   return (
@@ -124,7 +127,7 @@ const Computers = () => {
           // Card de Versiones
           if (idx === idxVersiones) {
             return (
-              <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setOpenVersiones(true)}>
+              <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("versiones") }>
                 {item.icon}
                 <div className="hardware-summary-title">{item.title}</div>
                 <div className="hardware-summary-value">{item.value}</div>
@@ -146,7 +149,7 @@ const Computers = () => {
         })}
       </div>
   {/* <LicenciasModal open={openLicencias} onClose={() => setOpenLicencias(false)} /> */}
-      <VersionesModal open={openVersiones} onClose={() => setOpenVersiones(false)} />
+  {/* <VersionesModal open={openVersiones} onClose={() => setOpenVersiones(false)} /> */}
     </div>
   );
 };

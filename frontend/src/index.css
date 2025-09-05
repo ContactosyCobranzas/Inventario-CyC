@@ -1,13 +1,13 @@
 body.dark-theme button:not(.login-btn):not(.register-btn) {
   background: #181818 !important;
-  color: #ffd600 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
   box-shadow: 0 1px 4px rgba(255,224,102,0.10);
 }
 body.dark-theme button:not(.login-btn):not(.register-btn):hover {
   background: #23272e !important;
-  color: #ffe066 !important;
-  border: 1.5px solid #ffd600 !important;
+  color: #FFD600 !important;
+  border: 1.5px solid #FFD600 !important;
 }
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -48,12 +48,12 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1.5px solid #ffd600;
+  border: 1.5px solid #FFD600;
   padding: 0.55em 1.15em;
   font-size: 1.05em;
   font-weight: 600;
   font-family: inherit;
-  background: linear-gradient(90deg, #ffe066 0%, #ffd600 100%);
+  background: linear-gradient(90deg, #FFD600 0%, #FFD600 100%);
   color: #23272e;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(44,62,80,0.08);
@@ -61,27 +61,27 @@ button {
 }
 button:hover {
 
-  background: linear-gradient(90deg, #ffd600 0%, #ffe066 100%);
+  background: linear-gradient(90deg, #FFD600 0%, #FFD600 100%);
   color: #23272e;
-  border-color: #ffe066;
-  box-shadow: 0 4px 12px #ffd60033;
+  border-color: #FFD600;
+  box-shadow: 0 4px 12px #FFD60033;
 }
 
 .cancel-btn {
-  background: linear-gradient(90deg, #ff9800 0%, #ffd600 100%);
+  background: linear-gradient(90deg, #ff9800 0%, #FFD600 100%);
 }
 
 .cancel-btn {
-  background: linear-gradient(90deg, #ff9800 0%, #ffd600 100%);
+  background: linear-gradient(90deg, #ff9800 0%, #FFD600 100%);
   color: #23272e;
   border: 1.5px solid #ff9800;
 }
 
 .cancel-btn:hover {
-  background: linear-gradient(90deg, #ffd600 0%, #ff9800 100%);
+  background: linear-gradient(90deg, #FFD600 0%, #ff9800 100%);
   color: #23272e;
-  border-color: #ffd600;
-  box-shadow: 0 4px 12px #ffd60033;
+  border-color: #FFD600;
+  box-shadow: 0 4px 12px #FFD60033;
 }
 button:focus,
 button:focus-visible {

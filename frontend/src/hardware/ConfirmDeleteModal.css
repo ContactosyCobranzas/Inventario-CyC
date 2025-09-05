@@ -34,7 +34,7 @@
 }
 body.dark-theme .confirmdelete-modal-content {
   background: #23272e;
-  color: #ffe066;
+  color: #FFD600;
 }
 @keyframes modalFadeIn {
   from { opacity: 0; transform: scale(0.97); }

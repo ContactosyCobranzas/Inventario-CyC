@@ -47,7 +47,7 @@ body.dark-theme .perfil-nombre {
   margin-bottom: 0.2rem;
 }
 body.dark-theme .perfil-usuario {
-  color: #ffe066;
+  color: #FFD600;
 }
 .perfil-divider {
   width: 100%;
@@ -66,8 +66,8 @@ body.dark-theme .perfil-divider {
 }
 body.dark-theme .perfil-signout {
   background: #23272b;
-  color: #ffe066;
-  border: 1.5px solid #ffe066;
+  color: #FFD600;
+  border: 1.5px solid #FFD600;
   border-radius: 6px;
   font-weight: 500;
   font-size: 1rem;
@@ -81,7 +81,7 @@ body.dark-theme .perfil-signout {
   color: #fff;
 }
 body.dark-theme .perfil-signout:hover {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 .modal-config-action-btn {
@@ -92,7 +92,7 @@ body.dark-theme .perfil-signout:hover {
   border: 2.5px solid #d21919;
 }
 body.dark-theme .perfil-avatar {
-  border: 2.5px solid #ffe066;
+  border: 2.5px solid #FFD600;
   font-size: 1rem;
   padding: 0.75rem 0.5rem;
   cursor: pointer;
@@ -129,7 +129,7 @@ body.dark-theme .modal-config-action-btn:hover {
   background: #7a0202;
 }
 body.dark-theme .modal-btn.apply {
-  background: #ffe066;
+  background: #FFD600;
   color: #23272b;
 }
 body.dark-theme .modal-btn.apply:hover {
@@ -335,7 +335,7 @@ body:not(.dark-theme) .modal-config-section select {
 
 .modal-config-menu-btn.active, .modal-config-menu-btn:hover {
   background: #2d2d2d;
-  color: #ffe066;
+  color: #FFD600;
 }
 
 .modal-config-content {
@@ -355,7 +355,7 @@ body:not(.dark-theme) .modal-config-section select {
 .modal-config h2 {
   margin: 0 0 0.5rem 0;
   font-size: 1.2rem;
-  color: #ffe066;
+  color: #FFD600;
   font-weight: 600;
 }
 
@@ -373,7 +373,7 @@ body:not(.dark-theme) .modal-config-section select {
 
 .modal-config-section label {
   font-weight: 600;
-  color: #ffe066;
+  color: #FFD600;
   font-size: 1.08rem;
   margin-bottom: 0.2rem;
 }
@@ -414,5 +414,5 @@ body:not(.dark-theme) .modal-config-section select {
 
 .modal-config-close-btn:hover {
   background: #2d2d2d;
-  color: #ffe066;
+  color: #FFD600;
 }

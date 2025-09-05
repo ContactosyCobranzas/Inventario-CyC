@@ -20,7 +20,7 @@ export function showToast({
   const borderColors = {
     success: theme === 'dark' ? '#43a047' : '#388e3c',
     error: theme === 'dark' ? '#c62828' : '#d32f2f',
-    info: theme === 'dark' ? '#ffe066' : '#1976d2',
+    info: theme === 'dark' ? '#FFD600' : '#1976d2',
   };
   const styleDark = {
     background: '#23272b',

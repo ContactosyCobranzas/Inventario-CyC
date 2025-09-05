@@ -33,7 +33,7 @@ body.dark-theme .kpi-card {
   font-weight: 600;
 }
 body.dark-theme .kpi-title {
-  color: #ffe066;
+  color: #FFD600;
 }
 .kpi-value {
   font-size: 2.1rem;
@@ -56,5 +56,5 @@ body.dark-theme .kpi-subtitle {
   color: #c62828;
 }
 body.dark-theme .kpi-icon {
-  color: #ffe066;
+  color: #FFD600;
 }

@@ -1,42 +1,89 @@
+
+/* Vista moderna para VersionesView */
 .versiones-modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
+  position: static;
+  background: none;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  z-index: 1000;
+  padding: 2rem 0;
 }
+
 .versiones-modal-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  min-width: 400px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  background: var(--color-bg, #fff);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  min-width: 340px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
   position: relative;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
 }
-.versiones-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1.1rem;
-  cursor: pointer;
+
+.versiones-modal-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFD600;
+  margin-bottom: 1.5rem;
 }
+
 .versiones-modal-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 1rem;
+  background: #fafbfc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
-.versiones-modal-table th, .versiones-modal-table td {
-  border: 1px solid #ddd;
-  padding: 0.5rem 1rem;
-  text-align: left;
+.versiones-modal-table th {
+  background: #FFD600;
+  color: #333;
+  font-weight: 600;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  font-size: 1.1rem;
+}
+.versiones-modal-table td {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  background: #fff;
+}
+.versiones-modal-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .versiones-modal-content {
+    padding: 1rem;
+    min-width: unset;
+    max-width: 98vw;
+  }
+  .versiones-modal-table th, .versiones-modal-table td {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+body.dark-theme .versiones-modal-content {
+  background: #23272f;
+  color: #fff;
+  border: 1px solid #333;
+}
+body.dark-theme .versiones-modal-table th {
+  background: #FFD600;
+  color: #333;
+}
+body.dark-theme .versiones-modal-table td {
+  background: #23272f;
+  color: #fff;
+  border-bottom: 1px solid #444;
 }
 .versiones-modal-table th {
   background: #f5f5f5;
