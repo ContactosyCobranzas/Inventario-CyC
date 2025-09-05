@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaLaptop } from "react-icons/fa";
+import { FaLaptop, FaEdit, FaTrash } from "react-icons/fa";
 import "./Hardware.css";
 import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
@@ -142,8 +142,12 @@ const Equipos = () => {
               <td>{item.date_creation}</td>
               <td>{item.is_recursive ? 'Sí' : 'No'}</td>
               <td>
-                <button className="hardware-btn edit" onClick={() => handleEdit(item.id)}>Editar</button>
-                <button className="hardware-btn delete" onClick={() => handleDelete(item.id)}>Borrar</button>
+                <button className="hardware-btn edit" onClick={() => handleEdit(item.id)} title="Editar">
+                  <FaEdit style={{marginRight: '6px', fontSize: '1.15em'}} /> Editar
+                </button>
+                <button className="hardware-btn delete" onClick={() => handleDelete(item.id)} title="Borrar">
+                  <FaTrash style={{marginRight: '6px', fontSize: '1.15em'}} /> Borrar
+                </button>
               </td>
             </tr>
           ))}

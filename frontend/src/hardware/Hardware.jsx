@@ -1,5 +1,6 @@
 import React from "react";
-import { FaDesktop, FaLaptop } from "react-icons/fa";
+import { FaDesktop, FaLaptop, FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./Hardware.css";
 
 const summaryData = [
@@ -11,18 +12,29 @@ const summaryData = [
     link: "Ver PC Items"
   },
   {
-    icon: <FaLaptop className="hardware-icon hardware-icon-unified" />,
+    icon: <FaLaptop className="hardware-icon hardware-itodas perrascon-unified" />,
     title: "PC Tipos",
     value: 8,
     desc: "Tipos de PC configurados en el sistema.",
     link: "Ver PC Tipos"
   }
 ];
+// - --- -.. .- ... / .--. . .-. .-. .- ...
 
 const Hardware = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <h2 style={{marginBottom: '2rem'}}>Hardware</h2>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+        <button
+          onClick={() => navigate(-1)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', marginRight: '1rem' }}
+          title="Volver"
+        >
+          <FaArrowLeft size={24} />
+        </button>
+        <h2 style={{ margin: 0 }}>Hardware</h2>
+      </div>
       <div className="hardware-summary-grid">
         {summaryData.map((item, idx) => (
           <div className="hardware-summary-card" key={idx}>

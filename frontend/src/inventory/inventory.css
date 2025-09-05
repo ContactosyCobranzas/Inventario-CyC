@@ -25,7 +25,7 @@ body.dark-theme .inventory-list th, body.dark-theme .inventory-list td {
 }
 
 .inventory-list th {
-  background: #c62828;
+  background: #ffd600;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
@@ -55,11 +55,11 @@ body.dark-theme .inventory-list button {
 }
 
 .inventory-list button:hover {
-  background: #b71c1c;
+  background: #ffd600;
 }
 body.dark-theme .inventory-list button:hover {
   background: #fff;
-  color: #c62828;
+  color: #ffd600;
 }
 
 @media (max-width: 700px) {

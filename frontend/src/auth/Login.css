@@ -1,3 +1,15 @@
+
+  body.dark-theme button[type="submit"] {
+    background: linear-gradient(90deg, #ffc107 0%, #ffca28 100%) !important;
+    color: #23272b !important;
+    border: 2px solid #ffc107 !important;
+  }
+  body.dark-theme button[type="submit"]:hover {
+    background: linear-gradient(90deg, #ffca28 0%, #ffc107 100%) !important;
+    color: #23272b !important;
+    border: 2px solid #ffc107 !important;
+    box-shadow: 0 6px 24px #ffc10788 !important;
+  }
 :root {
   --color-login-light:
   #c62828;
@@ -87,7 +99,7 @@ body.dark-theme .login-right {
   text-shadow: 0 2px 8px #ff512f33;
 }
 body.dark-theme .login-form h2, body.dark-theme .login-left h2 {
-  color: var(--color-login-dark);
+  color: #ffc107;
 }
 
 .input-group label {
@@ -96,7 +108,7 @@ body.dark-theme .login-form h2, body.dark-theme .login-left h2 {
   font-weight: 600;
 }
 body.dark-theme .input-group label {
-  color: var(--color-login-dark);
+  color: #ffc107;
 }
 
 .input-group input {

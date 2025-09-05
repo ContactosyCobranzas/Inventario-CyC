@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaDesktop } from "react-icons/fa";
+import { FaDesktop, FaEdit, FaTrash } from "react-icons/fa";
 import "./Hardware.css";
-// 
+
 import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { toast } from 'react-toastify';
@@ -97,8 +97,12 @@ const PCItems = () => {
               <td style={{fontSize:'1.15rem'}}>{item.is_deleted ? 'Sí' : 'No'}</td>
               <td style={{fontSize:'1.15rem'}}>{item.is_dynamic ? 'Sí' : 'No'}</td>
               <td>
-                <button className="pcitems-action-btn edit" onClick={() => handleEdit(item.id)}>Editar</button>
-                <button className="pcitems-action-btn delete" onClick={() => handleDelete(item.id)}>Borrar</button>
+                <button className="pcitems-action-btn edit" onClick={() => handleEdit(item.id)} title="Editar">
+                  <FaEdit style={{marginRight: '6px', fontSize: '1.15em'}} /> Editar
+                </button>
+                <button className="pcitems-action-btn delete" onClick={() => handleDelete(item.id)} title="Borrar">
+                  <FaTrash style={{marginRight: '6px', fontSize: '1.15em'}} /> Borrar
+                </button>
               </td>
             </tr>
           ))}
