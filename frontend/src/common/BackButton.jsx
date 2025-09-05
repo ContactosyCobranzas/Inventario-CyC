@@ -2,12 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./BackButton.css";
 
-const BackButton = () => {
+const BackButton = ({ to, onBack }) => {
   const navigate = useNavigate();
+  const isDark = document.body.classList.contains('dark-theme');
+  const handleClick = () => {
+    if (onBack) {
+      onBack();
+    } else if (to) {
+      navigate(to);
+    } else {
+      navigate(-1);
+    }
+  };
   return (
-    <button className="back-btn" onClick={() => navigate(-1)} title="Volver">
+    <button className="back-btn" onClick={handleClick} title="Volver">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 18L9 12L15 6" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M15 18L9 12L15 6" stroke={isDark ? '#fff' : '#333'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </button>
   );

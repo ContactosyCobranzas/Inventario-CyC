@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaLaptop, FaEdit, FaTrash } from "react-icons/fa";
+import { FaLaptop } from "react-icons/fa";
+import BackButton from "../common/BackButton";
 import "./Hardware.css";
 import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
@@ -38,7 +39,7 @@ const initialEquipos = [
   }
 ];
 
-const Equipos = () => {
+const Equipos = ({ onBack }) => {
   const [equipos, setEquipos] = useState(initialEquipos);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
@@ -54,7 +55,7 @@ const Equipos = () => {
   const confirmDelete = () => {
     setEquipos(items => items.filter(item => item.id !== deleteItem.id));
     setDeleteModalOpen(false);
-  toast.success('Equipo eliminado correctamente');
+    toast.success('Equipo eliminado correctamente');
   };
 
   const handleEdit = (id) => {
@@ -66,93 +67,90 @@ const Equipos = () => {
   const handleSaveEdit = (updated) => {
     setEquipos(items => items.map(i => i.id === updated.id ? updated : i));
     setEditModalOpen(false);
-  toast.success('Equipo actualizado correctamente');
+    toast.success('Equipo actualizado correctamente');
   };
 
   return (
-    <div className="equipos-section-container equipos-full-width" style={{background: 'rgba(40,40,40,0.85)', boxShadow: '0 2px 12px 0 rgba(44,62,80,0.10)', borderRadius: '18px'}}>
-      <div className="equipos-section-header" style={{background: 'rgba(255,224,102,0.08)', boxShadow: 'none', padding: '0.5rem 0 1.2rem 0', borderRadius: '12px'}}>
-        <FaLaptop className="hardware-section-icon" style={{color: '#ffd600', fontSize: '2.2rem', marginRight: '0.7rem', background: 'none', boxShadow: 'none'}} />
-        <h2 style={{color: '#ffd600', fontWeight: 'bold', fontSize: '2.1rem', margin: 0, textShadow: '0 1px 8px #23272e55'}}>Equipos</h2>
+    <div className="equipos-section-container equipos-full-width">
+      <div className="equipos-section-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <BackButton onBack={onBack} />
+        <FaLaptop className="hardware-section-icon" />
+        <h2>Equipos</h2>
       </div>
       <div className="equipos-table-wrapper">
-      <table className="equipos-table-full">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>entities_id</th>
-            <th>name</th>
-            <th>serial</th>
-            <th>otherserial</th>
-            <th>contact</th>
-            <th>contact_num</th>
-            <th>users_id_tech</th>
-            <th>groups_id_tech</th>
-            <th>comment</th>
-            <th>date_mod</th>
-            <th>autoupdatesystems_id</th>
-            <th>locations_id</th>
-            <th>networks_id</th>
-            <th>computermodels_id</th>
-            <th>computertypes_id</th>
-            <th>is_template</th>
-            <th>template_name</th>
-            <th>manufacturers_id</th>
-            <th>is_deleted</th>
-            <th>is_dynamic</th>
-            <th>users_id</th>
-            <th>groups_id</th>
-            <th>states_id</th>
-            <th>ticket_tco</th>
-            <th>uuid</th>
-            <th>date_creation</th>
-            <th>is_recursive</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {equipos.map(item => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.entities_id}</td>
-              <td>{item.name}</td>
-              <td>{item.serial}</td>
-              <td>{item.otherserial}</td>
-              <td>{item.contact}</td>
-              <td>{item.contact_num}</td>
-              <td>{item.users_id_tech}</td>
-              <td>{item.groups_id_tech}</td>
-              <td>{item.comment}</td>
-              <td>{item.date_mod}</td>
-              <td>{item.autoupdatesystems_id}</td>
-              <td>{item.locations_id}</td>
-              <td>{item.networks_id}</td>
-              <td>{item.computermodels_id}</td>
-              <td>{item.computertypes_id}</td>
-              <td>{item.is_template ? 'Sí' : 'No'}</td>
-              <td>{item.template_name}</td>
-              <td>{item.manufacturers_id}</td>
-              <td>{item.is_deleted ? 'Sí' : 'No'}</td>
-              <td>{item.is_dynamic ? 'Sí' : 'No'}</td>
-              <td>{item.users_id}</td>
-              <td>{item.groups_id}</td>
-              <td>{item.states_id}</td>
-              <td>{item.ticket_tco}</td>
-              <td>{item.uuid}</td>
-              <td>{item.date_creation}</td>
-              <td>{item.is_recursive ? 'Sí' : 'No'}</td>
-              <td>
-                <button className="pcitems-action-btn edit" onClick={() => handleEdit(item.id)} title="Editar">
-                  <FaEdit style={{marginRight: '6px', fontSize: '1.15em'}} /> Editar
-                </button>
-                <button className="pcitems-action-btn delete" onClick={() => handleDelete(item.id)} title="Borrar">
-                  <FaTrash style={{marginRight: '6px', fontSize: '1.15em'}} /> Borrar
-                </button>
-              </td>
+        <table className="equipos-table-full">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>entities_id</th>
+              <th>name</th>
+              <th>serial</th>
+              <th>otherserial</th>
+              <th>contact</th>
+              <th>contact_num</th>
+              <th>users_id_tech</th>
+              <th>groups_id_tech</th>
+              <th>comment</th>
+              <th>date_mod</th>
+              <th>autoupdatesystems_id</th>
+              <th>locations_id</th>
+              <th>networks_id</th>
+              <th>computermodels_id</th>
+              <th>computertypes_id</th>
+              <th>is_template</th>
+              <th>template_name</th>
+              <th>manufacturers_id</th>
+              <th>is_deleted</th>
+              <th>is_dynamic</th>
+              <th>users_id</th>
+              <th>groups_id</th>
+              <th>states_id</th>
+              <th>ticket_tco</th>
+              <th>uuid</th>
+              <th>date_creation</th>
+              <th>is_recursive</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {equipos.map(item => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.entities_id}</td>
+                <td>{item.name}</td>
+                <td>{item.serial}</td>
+                <td>{item.otherserial}</td>
+                <td>{item.contact}</td>
+                <td>{item.contact_num}</td>
+                <td>{item.users_id_tech}</td>
+                <td>{item.groups_id_tech}</td>
+                <td>{item.comment}</td>
+                <td>{item.date_mod}</td>
+                <td>{item.autoupdatesystems_id}</td>
+                <td>{item.locations_id}</td>
+                <td>{item.networks_id}</td>
+                <td>{item.computermodels_id}</td>
+                <td>{item.computertypes_id}</td>
+                <td>{item.is_template ? 'Sí' : 'No'}</td>
+                <td>{item.template_name}</td>
+                <td>{item.manufacturers_id}</td>
+                <td>{item.is_deleted ? 'Sí' : 'No'}</td>
+                <td>{item.is_dynamic ? 'Sí' : 'No'}</td>
+                <td>{item.users_id}</td>
+                <td>{item.groups_id}</td>
+                <td>{item.states_id}</td>
+                <td>{item.ticket_tco}</td>
+                <td>{item.uuid}</td>
+                <td>{item.date_creation}</td>
+                <td>{item.is_recursive ? 'Sí' : 'No'}</td>
+                <td>
+                  <button className="hardware-btn edit" onClick={() => handleEdit(item.id)}>Editar</button>
+                  <button className="hardware-btn delete" onClick={() => handleDelete(item.id)}>Borrar</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       {/* Modales de edición y confirmación de borrado */}
       <EditPCItemModal open={editModalOpen} item={editItem} onSave={handleSaveEdit} onClose={() => setEditModalOpen(false)} />

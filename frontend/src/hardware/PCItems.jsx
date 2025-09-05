@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FaDesktop, FaEdit, FaTrash } from "react-icons/fa";
+import BackButton from "../common/BackButton";
 import "./Hardware.css";
 
 import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { toast } from 'react-toastify';
 // los datos son simulados
-const PCItems = () => {
+const PCItems = ({ onBack }) => {
   const [pcItems, setPcItems] = useState([
     {
       id: 1,
@@ -69,11 +70,12 @@ const PCItems = () => {
   };
 
   return (
-    <div className="hardware-section-container hardware-section-container-lg">
-      <div className="hardware-section-header">
-        <FaDesktop className="hardware-section-icon" />
-        <h2>PC Items</h2>
-      </div>
+      <div className="hardware-section-container hardware-section-container-lg">
+        <div className="hardware-section-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+  <BackButton onBack={onBack} />
+          <FaDesktop className="hardware-section-icon" />
+          <h2>PC Items</h2>
+        </div>
       <div className="pcitems-table-wrapper">
         <table className="hardware-table hardware-table-lg pcitems-table-full">
           <thead>

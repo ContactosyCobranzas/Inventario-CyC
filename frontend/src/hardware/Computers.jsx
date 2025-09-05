@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaDesktop, FaLaptop, FaKey, FaCodeBranch } from "react-icons/fa";
 import PCItems from "./PCItems";
 import Equipos from "./Equipos";
-import LicenciasModal from "./LicenciasModal";
+import LicenciasView from "./LicenciasView";
 import VersionesModal from "./VersionesModal";
 import PCTypes from "./PCTypes";
 import "./Hardware.css";
@@ -47,7 +47,7 @@ const summaryData = [
 
 const Computers = () => {
   const [view, setView] = useState("summary");
-  const [openLicencias, setOpenLicencias] = useState(false);
+  // const [openLicencias, setOpenLicencias] = useState(false);
   const [openVersiones, setOpenVersiones] = useState(false);
 
   // Índices de las cards
@@ -56,13 +56,16 @@ const Computers = () => {
   const idxVersiones = summaryData.findIndex(item => item.title === "Versión de Software");
 
   if (view === "pcitems") {
-    return <PCItems />;
+    return <PCItems onBack={() => setView("summary")} />;
   }
   if (view === "pctypes") {
-    return <PCTypes />;
+    return <PCTypes onBack={() => setView("summary")} />;
   }
   if (view === "equipos") {
-    return <Equipos />;
+    return <Equipos onBack={() => setView("summary")} />;
+  }
+  if (view === "licencias") {
+    return <LicenciasView onBack={() => setView("summary")} />;
   }
 
   return (
@@ -109,7 +112,7 @@ const Computers = () => {
           // Card de Licencias
           if (idx === idxLicencias) {
             return (
-              <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setOpenLicencias(true)}>
+              <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("licencias") }>
                 {item.icon}
                 <div className="hardware-summary-title">{item.title}</div>
                 <div className="hardware-summary-value">{item.value}</div>
@@ -142,7 +145,7 @@ const Computers = () => {
           );
         })}
       </div>
-      <LicenciasModal open={openLicencias} onClose={() => setOpenLicencias(false)} />
+  {/* <LicenciasModal open={openLicencias} onClose={() => setOpenLicencias(false)} /> */}
       <VersionesModal open={openVersiones} onClose={() => setOpenVersiones(false)} />
     </div>
   );

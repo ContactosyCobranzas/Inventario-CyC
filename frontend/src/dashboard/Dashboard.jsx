@@ -43,8 +43,8 @@ const Dashboard = ({ onLogout }) => {
               }} />
             </>
           )}
-          {view === "novedades" && <Novedades />}
-          {view === "reportes" && <Reportes />}
+          {view === "novedades" && <Novedades onBack={() => setView("dashboard")} />}
+          {view === "reportes" && <Reportes onBack={() => setView("dashboard")} />}
           {view === "usuarios" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>Usuarios</h2>

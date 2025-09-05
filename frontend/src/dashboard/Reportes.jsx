@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegCommentDots } from "react-icons/fa";
+import BackButton from "../common/BackButton";
 import "./Reportes.css";
 
 const reportes = [
@@ -20,10 +21,11 @@ const reportes = [
   }
 ];
 
-const Reportes = () => {
+const Reportes = ({ onBack }) => {
   return (
     <div className="reportes-container">
-      <div className="reportes-header">
+      <div className="reportes-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <BackButton onBack={onBack} />
         <FaRegCommentDots className="reportes-icon" />
         <h2 className="reportes-title">Reportes</h2>
       </div>

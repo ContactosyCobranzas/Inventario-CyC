@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegNewspaper } from "react-icons/fa";
+import BackButton from "../common/BackButton";
 import "./Novedades.css";
 
 const novedades = [
@@ -20,10 +21,11 @@ const novedades = [
   }
 ];
 
-const Novedades = () => {
+const Novedades = ({ onBack }) => {
   return (
     <div className="novedades-container">
-      <div className="novedades-header">
+      <div className="novedades-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <BackButton onBack={onBack} />
         <FaRegNewspaper className="novedades-icon" />
         <h2 className="novedades-title">Novedades</h2>
       </div>

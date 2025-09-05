@@ -6,8 +6,15 @@
   margin-bottom: 12px;
   display: flex;
   align-items: center;
+  border-radius: 6px;
   transition: background 0.2s;
 }
+
+
 .back-btn:hover {
-  background: #f0f0f0;
+  background: #e0e0e0;
+}
+
+body.dark-theme .back-btn:hover {
+  background: #333;
 }

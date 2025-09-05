@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "../common/BackButton";
 import "./Hardware.css";
 
 const initialTypes = [
@@ -8,7 +9,7 @@ const initialTypes = [
 ];
 
 
-const PCTypes = () => {
+const PCTypes = ({ onBack }) => {
   const [types, setTypes] = useState(initialTypes);
   const [editId, setEditId] = useState(null);
   const [form, setForm] = useState({ name: '', comment: '' });
@@ -53,7 +54,8 @@ const PCTypes = () => {
 
   return (
     <div className="hardware-section-container hardware-section-container-lg">
-      <div className="hardware-section-header">
+      <div className="hardware-section-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <BackButton onBack={onBack} />
         <h2>PC Tipos</h2>
         <button className="pcitems-action-btn edit" onClick={handleAdd}>Agregar Tipo</button>
       </div>
