@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { toast } from 'react-toastify';
+import { FaExclamationTriangle } from 'react-icons/fa';
 import BackButton from "../common/BackButton";
 import "./Hardware.css";
 
@@ -7,7 +9,6 @@ const initialTypes = [
   { id: 2, name: "Laptop", comment: "Portátil", date_mod: "2025-08-25", date_creation: "2025-08-02" },
   { id: 3, name: "All-in-One", comment: "Todo en uno", date_mod: "2025-08-20", date_creation: "2025-08-03" },
 ];
-
 
 const PCTypes = ({ onBack }) => {
   const [types, setTypes] = useState(initialTypes);
@@ -21,8 +22,56 @@ const PCTypes = ({ onBack }) => {
     setShowForm(true);
   };
 
+  const lastDeleted = useRef(null);
   const handleDelete = (id) => {
+    const deletedType = types.find(t => t.id === id);
     setTypes(types.filter(t => t.id !== id));
+    lastDeleted.current = deletedType;
+    const isDark = document.body.classList.contains('dark-theme');
+    toast.warn(
+      <div style={{
+        display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',minWidth:340,minHeight:110
+      }}>
+        <FaExclamationTriangle size={32} color={isDark ? '#ffd600' : '#181818'} style={{marginBottom:8}} />
+        <span style={{fontWeight:700,fontSize:'1.15rem',marginBottom:6}}>Tipo eliminado</span>
+        <span style={{fontSize:'1rem',marginBottom:12}}>¿Deseas deshacer?</span>
+        <button
+          style={{
+            background: isDark ? '#ffd600' : '#181818',
+            color: isDark ? '#181818' : '#ffd600',
+            border:'none',
+            borderRadius:8,
+            padding:'0.6rem 1.5rem',
+            fontWeight:'bold',
+            fontSize:'1.08rem',
+            cursor:'pointer',
+            boxShadow:'0 2px 8px rgba(0,0,0,0.18)'
+          }}
+          onClick={() => {
+            setTypes(prev => [...prev, lastDeleted.current]);
+            toast.dismiss();
+          }}
+        >Deshacer</button>
+      </div>,
+      {
+        autoClose: 10000,
+        closeOnClick: false,
+        position: 'top-center',
+        icon: false,
+        style: {
+          background: isDark ? '#181818' : '#ffd600',
+          color: isDark ? '#ffd600' : '#181818',
+          fontWeight: 500,
+          borderRadius: '16px',
+          minWidth: '340px',
+          minHeight: '110px',
+          boxShadow: '0 6px 32px rgba(0,0,0,0.25)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+      }
+    );
   };
 
   const handleAdd = () => {
@@ -35,6 +84,9 @@ const PCTypes = ({ onBack }) => {
     e.preventDefault();
     if (editId) {
       setTypes(types.map(t => t.id === editId ? { ...t, name: form.name, comment: form.comment, date_mod: new Date().toISOString().slice(0,10) } : t));
+      setTimeout(() => {
+        toast.success('Tipo actualizado correctamente');
+      }, 100);
     } else {
       setTypes([
         ...types,
@@ -46,6 +98,9 @@ const PCTypes = ({ onBack }) => {
           date_creation: new Date().toISOString().slice(0,10)
         }
       ]);
+      setTimeout(() => {
+        toast.success('Tipo añadido correctamente');
+      }, 100);
     }
     setShowForm(false);
     setForm({ name: '', comment: '' });
@@ -89,22 +144,26 @@ const PCTypes = ({ onBack }) => {
         </table>
       </div>
       {showForm && (
-        <div className="modal-bg" style={{position:'fixed',top:0,left:0,right:0,bottom:0,background:'rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000}}>
-          <form className="hardware-section-container" style={{maxWidth:400}} onSubmit={handleSubmit}>
-            <h3>{editId ? 'Editar Tipo' : 'Agregar Tipo'}</h3>
-            <div style={{marginBottom:12}}>
-              <label>Nombre</label>
-              <input type="text" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required style={{width:'100%'}} />
-            </div>
-            <div style={{marginBottom:12}}>
-              <label>Comentario</label>
-              <input type="text" value={form.comment} onChange={e => setForm({...form, comment: e.target.value})} style={{width:'100%'}} />
-            </div>
-            <div style={{display:'flex',gap:10,justifyContent:'flex-end'}}>
-              <button type="button" className="pcitems-action-btn delete" onClick={()=>setShowForm(false)}>Cancelar</button>
-              <button type="submit" className="pcitems-action-btn edit">Guardar</button>
-            </div>
-          </form>
+        <div className="modal-overlay">
+          <div className="modal-content modal-animate" style={{maxWidth:420}}>
+            <h2 style={{color:'#ffd600',fontWeight:700,marginBottom:'1.2rem',textAlign:'center'}}>{editId ? 'Editar Tipo' : 'Agregar Tipo'}</h2>
+            <form onSubmit={handleSubmit} className="add-equipo-form">
+              <div className="form-row">
+                <label>Nombre:
+                  <input type="text" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
+                </label>
+              </div>
+              <div className="form-row">
+                <label>Comentario:
+                  <input type="text" value={form.comment} onChange={e => setForm({...form, comment: e.target.value})} />
+                </label>
+              </div>
+              <div style={{display:'flex',gap:'1rem',justifyContent:'center',marginTop:'1.5rem'}}>
+                <button type="button" className="hardware-btn" onClick={()=>setShowForm(false)}>Cancelar</button>
+                <button type="submit" className="hardware-btn add">Guardar</button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>

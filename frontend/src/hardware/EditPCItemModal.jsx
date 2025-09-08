@@ -11,8 +11,8 @@ const EditPCItemModal = ({ open, onClose, item, onSave }) => {
   if (!open) return null;
 
   const handleChange = e => {
-    const { name, value } = e.target;
-    setForm(f => ({ ...f, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value }));
   };
 
   const handleSubmit = e => {
@@ -32,21 +32,25 @@ const EditPCItemModal = ({ open, onClose, item, onSave }) => {
         <button className="editpcitem-modal-close" onClick={onClose}>×</button>
         <form onSubmit={handleSubmit} className="editpcitem-form">
           <label>
-            Nombre:
-            <input name="nombre" value={form.nombre || ''} onChange={handleChange} required />
+            ID Item:
+            <input name="items_id" type="number" min="1" value={form.items_id || ''} onChange={handleChange} required />
+          </label>
+          <label>
+            ID Computadora:
+            <input name="computers_id" type="number" min="1" value={form.computers_id || ''} onChange={handleChange} required />
           </label>
           <label>
             Tipo:
-            <input name="tipo" value={form.tipo || ''} onChange={handleChange} required />
+            <input name="itemtype" value={form.itemtype || ''} onChange={handleChange} required placeholder="Ej: Computer, Printer, Monitor" />
           </label>
-          <label>
-            Estado:
-            <input name="estado" value={form.estado || ''} onChange={handleChange} required />
-          </label>
-          <label>
-            Usuario:
-            <input name="usuario" value={form.usuario || ''} onChange={handleChange} required />
-          </label>
+          <div style={{display:'flex',gap:'2rem',margin:'1rem 0'}}>
+            <label style={{display:'flex',alignItems:'center',gap:'0.5rem'}}>
+              <input type="checkbox" name="is_deleted" checked={!!form.is_deleted} onChange={handleChange} /> Eliminado
+            </label>
+            <label style={{display:'flex',alignItems:'center',gap:'0.5rem'}}>
+              <input type="checkbox" name="is_dynamic" checked={!!form.is_dynamic} onChange={handleChange} /> Dinámico
+            </label>
+          </div>
           <div className="editpcitem-modal-actions">
             <button type="button" onClick={onClose} className={cancelClass}>Cancelar</button>
             <button type="submit" className="pcitems-action-btn edit">Guardar</button>

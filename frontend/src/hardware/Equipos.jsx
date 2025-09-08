@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { FaLaptop } from "react-icons/fa";
 import BackButton from "../common/BackButton";
 import "./Hardware.css";
-import EditPCItemModal from "./EditPCItemModal";
+import EditEquipoModal from "./EditEquipoModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import AddEquipoModal from "./AddEquipoModal";
 import { toast } from 'react-toastify';
 
 const initialEquipos = [
@@ -45,6 +46,40 @@ const Equipos = ({ onBack }) => {
   const [editItem, setEditItem] = useState(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const handleAddEquipo = (data) => {
+    const newId = equipos.length ? Math.max(...equipos.map(e => e.id)) + 1 : 1;
+    setEquipos([
+      ...equipos,
+      {
+        id: newId,
+        entities_id: 1,
+        users_id_tech: 0,
+        groups_id_tech: 0,
+        autoupdatesystems_id: 0,
+        locations_id: 0,
+        networks_id: 0,
+        computermodels_id: 0,
+        computertypes_id: 0,
+        is_template: false,
+        template_name: "",
+        manufacturers_id: 0,
+        is_deleted: false,
+        is_dynamic: false,
+        users_id: 0,
+        groups_id: 0,
+        states_id: 0,
+        ticket_tco: "",
+        uuid: "",
+        date_creation: new Date().toISOString().slice(0,10),
+        is_recursive: false,
+        date_mod: new Date().toISOString().slice(0,10),
+        ...data
+      }
+    ]);
+    setAddModalOpen(false);
+    toast.success('Equipo añadido correctamente');
+  };
 
   const handleDelete = (id) => {
     const item = equipos.find(i => i.id === id);
@@ -67,7 +102,9 @@ const Equipos = ({ onBack }) => {
   const handleSaveEdit = (updated) => {
     setEquipos(items => items.map(i => i.id === updated.id ? updated : i));
     setEditModalOpen(false);
-    toast.success('Equipo actualizado correctamente');
+    setTimeout(() => {
+      toast.success('Equipo actualizado correctamente');
+    }, 100);
   };
 
   return (
@@ -76,6 +113,7 @@ const Equipos = ({ onBack }) => {
         <BackButton onBack={onBack} />
         <FaLaptop className="hardware-section-icon" />
         <h2>Equipos</h2>
+        <button className="hardware-btn add" style={{ marginLeft: 'auto' }} onClick={() => setAddModalOpen(true)}>Añadir</button>
       </div>
       <div className="equipos-table-wrapper">
         <table className="equipos-table-full">
@@ -152,9 +190,10 @@ const Equipos = ({ onBack }) => {
           </tbody>
         </table>
       </div>
-      {/* Modales de edición y confirmación de borrado */}
-      <EditPCItemModal open={editModalOpen} item={editItem} onSave={handleSaveEdit} onClose={() => setEditModalOpen(false)} />
-      <ConfirmDeleteModal open={deleteModalOpen} onConfirm={confirmDelete} onCancel={() => setDeleteModalOpen(false)} />
+  {/* Modales de edición, confirmación de borrado y añadir */}
+  <EditEquipoModal open={editModalOpen} item={editItem} onSave={handleSaveEdit} onClose={() => setEditModalOpen(false)} />
+  <ConfirmDeleteModal open={deleteModalOpen} onConfirm={confirmDelete} onCancel={() => setDeleteModalOpen(false)} />
+  <AddEquipoModal open={addModalOpen} onClose={() => setAddModalOpen(false)} onAdd={handleAddEquipo} />
     </div>
   );
 };

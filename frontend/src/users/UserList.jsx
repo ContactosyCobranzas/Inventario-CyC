@@ -2,6 +2,7 @@ import React from "react";
 import { FaArrowLeft, FaEdit, FaUsers } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./user.css";
+import BackButton from '../common/BackButton';
 // los datos deben venir de un estado global o de una API
 const UserList = () => {
   const navigate = useNavigate();

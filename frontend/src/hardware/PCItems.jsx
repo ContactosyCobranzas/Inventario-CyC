@@ -5,6 +5,7 @@ import "./Hardware.css";
 
 import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import AddPCItemModal from "./AddPCItemModal";
 import { toast } from 'react-toastify';
 // los datos son simulados
 const PCItems = ({ onBack }) => {
@@ -39,6 +40,21 @@ const PCItems = ({ onBack }) => {
   const [editItem, setEditItem] = useState(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const handleAddPCItem = (data) => {
+    const newId = pcItems.length ? Math.max(...pcItems.map(e => e.id)) + 1 : 1;
+    setPcItems([
+      ...pcItems,
+      {
+        id: newId,
+        ...data
+      }
+    ]);
+    setAddModalOpen(false);
+    toast.success('PC Item añadido correctamente', {
+      theme: document.body.classList.contains('dark-theme') ? 'dark' : 'light',
+    });
+  };
 
 
   const handleDelete = (id) => {
@@ -72,9 +88,10 @@ const PCItems = ({ onBack }) => {
   return (
       <div className="hardware-section-container hardware-section-container-lg">
         <div className="hardware-section-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-  <BackButton onBack={onBack} />
+          <BackButton onBack={onBack} />
           <FaDesktop className="hardware-section-icon" />
-          <h2>PC Items</h2>
+          <h2 style={{ marginRight: '0.5rem' }}>PC Items</h2>
+          <button className="hardware-btn add" style={{ marginRight: '0.5rem' }} onClick={() => setAddModalOpen(true)}>Añadir</button>
         </div>
       <div className="pcitems-table-wrapper">
         <table className="hardware-table hardware-table-lg pcitems-table-full">
@@ -122,6 +139,11 @@ const PCItems = ({ onBack }) => {
         onClose={() => setDeleteModalOpen(false)}
         onConfirm={confirmDelete}
         item={deleteItem}
+      />
+      <AddPCItemModal
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        onAdd={handleAddPCItem}
       />
     </div>
   );
