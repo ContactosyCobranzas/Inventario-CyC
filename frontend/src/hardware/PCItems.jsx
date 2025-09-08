@@ -38,8 +38,7 @@ const PCItems = ({ onBack }) => {
 
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [deleteItem, setDeleteItem] = useState(null);
+  // Eliminar confirmación modal
   const [addModalOpen, setAddModalOpen] = useState(false);
   const handleAddPCItem = (data) => {
     const newId = pcItems.length ? Math.max(...pcItems.map(e => e.id)) + 1 : 1;
@@ -59,16 +58,59 @@ const PCItems = ({ onBack }) => {
 
   const handleDelete = (id) => {
     const item = pcItems.find(i => i.id === id);
-    setDeleteItem(item);
-    setDeleteModalOpen(true);
+    // Ejecutar borrado directamente con toast
+    confirmDelete(item);
   };
 
-  const confirmDelete = () => {
-    setPcItems(items => items.filter(item => item.id !== deleteItem.id));
-    setDeleteModalOpen(false);
-    toast.success('PC Item eliminado correctamente', {
-      theme: document.body.classList.contains('dark-theme') ? 'dark' : 'light',
-    });
+  const lastDeleted = React.useRef(null);
+  const confirmDelete = (item) => {
+    lastDeleted.current = item;
+    setPcItems(items => items.filter(i => i.id !== item.id));
+    const isDark = document.body.classList.contains('dark-theme');
+    toast.warn(
+      <div style={{
+        display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',minWidth:340,minHeight:110
+      }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{marginBottom:8}}><path d="M12 8v4m0 4h.01M21 18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7l5 5v9Z" stroke={isDark ? '#ffd600' : '#181818'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8v4m0 4h.01" stroke={isDark ? '#ffd600' : '#181818'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <span style={{fontWeight:700,fontSize:'1.15rem',marginBottom:6}}>PC Item eliminado</span>
+        <span style={{fontSize:'1rem',marginBottom:12}}>¿Deseas deshacer?</span>
+        <button
+          style={{
+            background: isDark ? '#ffd600' : '#181818',
+            color: isDark ? '#181818' : '#ffd600',
+            border:'none',
+            borderRadius:8,
+            padding:'0.6rem 1.5rem',
+            fontWeight:'bold',
+            fontSize:'1.08rem',
+            cursor:'pointer',
+            boxShadow:'0 2px 8px rgba(0,0,0,0.18)'
+          }}
+          onClick={() => {
+            setPcItems(prev => [...prev, lastDeleted.current]);
+            toast.dismiss();
+          }}
+        >Deshacer</button>
+      </div>,
+      {
+        autoClose: 10000,
+        closeOnClick: false,
+        position: 'top-center',
+        icon: false,
+        style: {
+          background: isDark ? '#181818' : '#ffd600',
+          color: isDark ? '#ffd600' : '#181818',
+          fontWeight: 500,
+          borderRadius: '16px',
+          minWidth: '340px',
+          minHeight: '110px',
+          boxShadow: '0 6px 32px rgba(0,0,0,0.25)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+      }
+    );
   };
 
   const handleEdit = (id) => {
@@ -134,12 +176,7 @@ const PCItems = ({ onBack }) => {
         item={editItem}
         onSave={handleSaveEdit}
       />
-      <ConfirmDeleteModal
-        open={deleteModalOpen}
-        onClose={() => setDeleteModalOpen(false)}
-        onConfirm={confirmDelete}
-        item={deleteItem}
-      />
+  {/* Eliminado el modal de confirmación de borrado */}
       <AddPCItemModal
         open={addModalOpen}
         onClose={() => setAddModalOpen(false)}

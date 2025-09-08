@@ -8,61 +8,24 @@
   background: transparent;
   min-width: 0;
 }
-.perfil-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
-  box-sizing: border-box;
-  overflow: hidden;
-  border: 2.5px solid #d21919;
-  margin-bottom: 0.7rem;
-  background: var(--perfil-avatar-bg, #fff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.perfil-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
-}
-.perfil-info {
-  text-align: center;
-  margin-bottom: 0.2rem;
-}
-.perfil-nombre {
-  font-size: 1.13rem;
-  font-weight: 600;
+
+.modal-btn.apply, .modal-btn.edit, .modal-btn.confirm {
+  background: linear-gradient(90deg, #FFD600 70%, #fffde7 100%);
   color: #23272b;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
 }
-body.dark-theme .perfil-nombre {
-  color: #fff;
-}
-.perfil-usuario {
-  font-size: 0.98rem;
-  color: #d21919;
-  margin-bottom: 0.2rem;
-}
-body.dark-theme .perfil-usuario {
-  color: #FFD600;
-}
-.perfil-divider {
-  width: 100%;
-  height: 1px;
-  background: #e0e0e0;
-}
-body.dark-theme .perfil-divider {
-  background: #333;
-  margin: 1.1rem 0 0.7rem 0;
-}
-.perfil-signout {
-  width: 100%;
-  background: #fff;
-  color: #d21919;
-  border: 1.5px solid #d21919;
+.modal-btn.apply:hover, .modal-btn.edit:hover, .modal-btn.confirm:hover {
+  background: #FFD600;
+  color: #23272b;
+  box-shadow: 0 4px 16px 0 rgba(198,40,40,0.18);
 }
 body.dark-theme .perfil-signout {
   background: #23272b;
@@ -147,15 +110,16 @@ body.dark-theme .modal-btn.apply:hover {
 
 .modal-config {
   background: #23272b;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.22);
-  padding: 0;
-  width: 1100px;
-  min-width: 1100px;
+  color: #FFD600;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.85);
+  border: 1.5px solid #222;
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  width: 900px;
+  min-width: 340px;
   max-width: 99vw;
-  min-height: 600px;
+  min-height: 500px;
   max-height: 98vh;
-  height: 700px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -354,9 +318,10 @@ body:not(.dark-theme) .modal-config-section select {
 
 .modal-config h2 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
+  font-size: 2rem;
   color: #FFD600;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .modal-config-section {
@@ -415,4 +380,28 @@ body:not(.dark-theme) .modal-config-section select {
 .modal-config-close-btn:hover {
   background: #2d2d2d;
   color: #FFD600;
+}
+.perfil-info {
+  text-align: left;
+  margin-bottom: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.perfil-nombre {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFD600;
+}
+body:not(.dark-theme) .perfil-nombre {
+  color: #23272b;
+}
+.perfil-usuario {
+  font-size: 1.05rem;
+  color: #FFD600;
+  margin-bottom: 0.2rem;
+  opacity: 0.8;
+}
+body:not(.dark-theme) .perfil-usuario {
+  color: #d21919;
 }

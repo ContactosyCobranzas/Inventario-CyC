@@ -3,6 +3,7 @@ import BackButton from "../common/BackButton";
 import Navbar from "../common/Navbar";
 import Sidebar from "../common/Sidebar";
 import EquiposView from "../hardware/EquiposView";
+import IPsView from "../hardware/IPsView";
 import InventoryList from "../inventory/InventoryList";
 import UserList from "../users/UserList";
 import KpiGrid from "./KpiGrid";
@@ -40,6 +41,7 @@ const Dashboard = ({ onLogout }) => {
                 if(card === "equipos") setView("equipos");
                 if(card === "novedades") setView("novedades");
                 if(card === "reportes") setView("reportes");
+                if(card === "ips") setView("ips");
               }} />
             </>
           )}
@@ -61,8 +63,7 @@ const Dashboard = ({ onLogout }) => {
           {view === "equipos" && <EquiposView />}
           {view === "ips" && (
             <section style={{ margin: "2rem 0" }}>
-              <h2>IPs</h2>
-              <p>No hay IPs registradas aún.</p>
+              <IPsView />
             </section>
           )}
         </main>

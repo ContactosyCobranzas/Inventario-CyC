@@ -71,13 +71,12 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
                 </header>
                 <div className="modal-config-section perfil-card">
                   <div className="perfil-avatar">
-                    <img src={null} alt="Avatar" />
+                    <img src="https://ui-avatars.com/api/?name=Estariex&background=FFD600&color=23272b" alt="Avatar" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} />
                   </div>
-                  <div className="perfil-info">
-                    <div className="perfil-nombre">Estariex</div>
-                    <div className="perfil-usuario">@maicol1606</div>
+                  <div className="perfil-info" style={{display:'flex',flexDirection:'column',justifyContent:'center',gap:'0.3rem'}}>
+                    <div className="perfil-nombre" style={{fontSize:'1.25rem',fontWeight:700}}>Estariex</div>
+                    <div className="perfil-usuario" style={{fontSize:'1.05rem',opacity:0.8}}>@maicol1606</div>
                   </div>
-                  <div className="perfil-divider" />
                 </div>
                 <div className="modal-config-actions">
                   <button className="modal-btn edit" onClick={() => setEditandoPerfil(true)}>Editar</button>
