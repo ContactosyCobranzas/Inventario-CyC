@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { showToast } from "../common/toastNotify";
 import ModalConfirm from "../common/ModalConfirm";
 import { FaListOl } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
@@ -27,32 +28,39 @@ function exportToCSV(data) {
   document.body.removeChild(link);
 }
 
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 50;
 
 const MovimientosRecientes = () => {
-  const [historial, setHistorial] = useState([]);
   const [movimientos, setMovimientos] = useState(movimientosMock);
   const [page, setPage] = useState(1);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [movimientosAnteriores, setMovimientosAnteriores] = useState([]);
+
+  // Alerta si hay más de 400 movimientos
+  React.useEffect(() => {
+    if (movimientos.length > 400) {
+      showToast({
+        message: `¡Demasiados movimientos recientes! Considera exportar o vaciar la lista.`,
+        type: 'error',
+        theme: 'dark',
+      });
+    }
+  }, [movimientos]);
+function exportToExcel(data) {
+  // Exportación simple a Excel usando formato xlsx
+  // Solo crea un archivo CSV con extensión xlsx para compatibilidad básica
+  const header = ["Fecha", "Tipo", "Descripción", "Usuario"];
+  const rows = data.map(mov => [mov.fecha, mov.tipo, mov.descripcion, mov.usuario]);
+  let csvContent = "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8," + header.join(",") + "\n" + rows.map(e => e.join(",")).join("\n");
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "movimientos_recientes.xlsx");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
   React.useEffect(() => {
-    if (movimientos.length >= 300) {
-      const fechaInicio = movimientos[0]?.fecha || "";
-      const fechaFin = movimientos[movimientos.length - 1]?.fecha || "";
-      setHistorial(prev => [
-        ...prev,
-        {
-          id: Date.now(),
-          fechaInicio,
-          fechaFin,
-          cantidad: movimientos.length,
-          movimientos: [...movimientos]
-        }
-      ]);
-      setMovimientosAnteriores(movimientos);
-      setMovimientos([]);
-    }
+  // Solo alerta si hay más de 400 movimientos
   }, [movimientos]);
 
   // Paginación
@@ -60,21 +68,61 @@ const MovimientosRecientes = () => {
   const paginated = movimientos.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   // Handlers para historial
-  const handleDescargarHistorial = (item) => {
-    exportToCSV(item.movimientos);
-  };
-  const handleEliminarHistorial = (id) => {
-    setHistorial(historial.filter(h => h.id !== id));
-  };
+  // ...eliminar lógica de historial...
 
   // Acción para ver detalle
   const handleVerDetalle = (mov) => {
     alert(`Detalle del movimiento:\n${mov.descripcion}`);
   };
 
+   // Vaciar solo la página actual
+   const handleVaciarPagina = () => {
+     if (window.confirm('¿Seguro que deseas eliminar los movimientos de esta página?')) {
+       const start = (page - 1) * PAGE_SIZE;
+       const end = start + PAGE_SIZE;
+       const nuevos = [...movimientos.slice(0, start), ...movimientos.slice(end)];
+       setMovimientos(nuevos);
+       showToast({
+         message: 'Movimientos de la página actual eliminados.',
+         type: 'success',
+         theme: 'dark',
+       });
+       // Si la página actual queda vacía, retroceder a la anterior si existe
+       if (nuevos.length > 0 && start >= nuevos.length) {
+         setPage(Math.max(1, Math.ceil(nuevos.length / PAGE_SIZE)));
+       }
+     }
+   };
+
+  // Vaciar todos los movimientos
+  const handleVaciarTodo = () => {
+    if (window.confirm('¿Seguro que deseas eliminar todos los movimientos recientes? Esta acción no se puede deshacer.')) {
+      setMovimientos([]);
+      showToast({
+        message: 'Todos los movimientos recientes han sido eliminados.',
+        type: 'success',
+        theme: 'dark',
+      });
+    }
+  };
+
   return (
     <div>
       <h2 style={{marginBottom: '1.5rem', color: '#FFD600', fontWeight: 700}}>Movimientos Recientes</h2>
+      <div style={{display:'flex',gap:'1rem',marginBottom:'1.2rem'}}>
+        <button onClick={() => exportToCSV(movimientos)} style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+          Exportar CSV
+        </button>
+        <button onClick={() => exportToExcel(movimientos)} style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+          Exportar Excel
+        </button>
+        <button onClick={handleVaciarTodo} style={{background:'#FFD600',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+          Vaciar todo
+        </button>
+        <button onClick={handleVaciarPagina} style={{background:'#FFD600',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+          Vaciar página
+        </button>
+      </div>
       <div>
         <table className="movimientos-table">
           <thead>
@@ -101,9 +149,26 @@ const MovimientosRecientes = () => {
           </tbody>
         </table>
         {movimientos.length > 0 && (
-          <div className="movimientos-paginacion">
+          <div className="movimientos-paginacion" style={{display:'flex',alignItems:'center',gap:'0.5rem',margin:'1.2rem 0'}}>
             <button disabled={page === 1} onClick={() => setPage(page - 1)}>&lt; Anterior</button>
-            <span>Página {page} de {totalPages}</span>
+            {Array.from({length: totalPages}, (_, i) => (
+              <button
+                key={i+1}
+                onClick={() => setPage(i+1)}
+                style={{
+                  background: page === (i+1) ? '#FFD600' : '#23272b',
+                  color: page === (i+1) ? '#23272b' : '#FFD600',
+                  border: '1.5px solid #FFD600',
+                  borderRadius: 6,
+                  fontWeight: 700,
+                  padding: '0.3rem 0.8rem',
+                  cursor: 'pointer',
+                  minWidth: 36
+                }}
+              >
+                {i+1}
+              </button>
+            ))}
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Siguiente &gt;</button>
           </div>
         )}
@@ -112,48 +177,7 @@ const MovimientosRecientes = () => {
         )}
       </div>
 
-      {/* Modal de historial de exportaciones */}
-      {modalOpen && (
-        <div className="modal-confirm-backdrop">
-          <div className="modal-confirm">
-            <h3 style={{marginBottom: '1.5rem'}}>Historial de exportaciones</h3>
-            {historial.length > 0 ? (
-              <div className="historial-exportaciones">
-                <table className="historial-table">
-                  <thead>
-                    <tr>
-                      <th>Fecha inicio</th>
-                      <th>Fecha fin</th>
-                      <th>N° movimientos</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {historial.map(item => (
-                      <tr key={item.id}>
-                        <td>{item.fechaInicio}</td>
-                        <td>{item.fechaFin}</td>
-                        <td>{item.cantidad}</td>
-                        <td style={{display: 'flex', gap: '0.5rem'}}>
-                          <button title="Descargar" onClick={() => handleDescargarHistorial(item)} style={{background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem'}}>⬇️</button>
-                          <button title="Eliminar" onClick={() => handleEliminarHistorial(item.id)} style={{background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem'}}>🗑️</button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <div style={{color: '#ffd600', fontWeight: 'bold', textAlign: 'center', margin: '2rem 0'}}>No hay exportaciones registradas.</div>
-            )}
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '2rem'}}>
-              <button className="modal-btn cancel" onClick={() => setModalOpen(false)} style={{minWidth: '180px', fontWeight: 'bold', fontSize: '1.1rem'}}>
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+  {/* ...eliminado historial y modal... */}
     </div>
   );
 }
