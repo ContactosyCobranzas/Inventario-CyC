@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaTachometerAlt, FaBoxes, FaUsers, FaUserCheck, FaNetworkWired, FaLaptop } from "react-icons/fa";
+import { FaMobileAlt, FaHistory } from "react-icons/fa";
 import "./Sidebar.css";
 
 const Sidebar = ({ onNavigate }) => {
@@ -19,7 +20,9 @@ const Sidebar = ({ onNavigate }) => {
           <ul className="sidebar-submenu">
             <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("equipos")}> <FaUserCheck /> Equipos</li>
             <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("tipos_pc")}> <FaLaptop /> Tipos de PC</li>
+            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("telefonos")}> <FaMobileAlt /> Teléfonos</li>
             <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("IPs")}> <FaNetworkWired /> IPs</li>
+            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("movimientos_recientes")}> <FaHistory /> Movimientos Recientes</li>
           </ul>
         )}
         <li className="sidebar-item" onClick={() => onNavigate && onNavigate("Usuarios")}> <FaUsers /> Usuarios</li>

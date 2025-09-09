@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaBell, FaCog, FaMoon, FaSun, FaSignOutAlt, FaSearch } from "react-icons/fa";
+import { FaBell, FaCog, FaSignOutAlt, FaSearch } from "react-icons/fa";
 import GlobalSearchModal from "./GlobalSearchModal";
 
 import ModalNotifications from "./ModalNotifications";
@@ -16,27 +16,19 @@ const Navbar = ({ onLogout }) => {
     setFontSizeState(val);
     if (window.setGlobalFontSize) window.setGlobalFontSize(val);
   };
-  const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem("theme");
-    return saved ? saved === "dark" : true;
-  });
+  // Tema oscuro global fijo
+  const dark = true;
   const [showModal, setShowModal] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   useEffect(() => {
-    document.body.classList.toggle("dark-theme", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
+    document.body.classList.add("dark-theme");
+    localStorage.setItem("theme", "dark");
+  }, []);
   const handleTheme = () => {
-    setDark((prev) => {
-      const newTheme = !prev;
-      setTimeout(() => {
-        showToast({
-          message: `Tema cambiado a ${!prev ? 'oscuro' : 'claro'}`,
-          type: 'success',
-          theme: !prev ? 'dark' : 'light',
-        });
-      }, 100);
-      return newTheme;
+    showToast({
+      message: 'Solo está disponible el tema oscuro',
+      type: 'info',
+      theme: 'dark',
     });
   };
   const handleLogoutClick = () => {
@@ -47,7 +39,7 @@ const Navbar = ({ onLogout }) => {
     showToast({
       message: 'Sesión cerrada correctamente',
       type: 'success',
-      theme: dark ? 'dark' : 'light',
+      theme: 'dark',
     });
     onLogout && onLogout();
   };
@@ -99,8 +91,6 @@ const Navbar = ({ onLogout }) => {
         onClose={() => setShowConfig(false)}
         fontSize={fontSize}
         setFontSize={setFontSize}
-        dark={dark}
-        handleTheme={handleTheme}
         onLogout={handleLogoutClick}
       />
       {/* Modal de búsqueda global */}
@@ -124,7 +114,7 @@ const Navbar = ({ onLogout }) => {
             { id: 1, ip: "192.168.1.10", equipo: "PC Juan" },
             { id: 2, ip: "192.168.1.11", equipo: "PC Ana" }
           ],
-          dark: dark
+          dark: true
         }}
       />
     </nav>

@@ -5,9 +5,9 @@ import { showToast } from "./toastNotify";
 import { MdMonitor } from "react-icons/md";
 import "./ModalConfig.css";
 
-import { FaRegUserCircle, FaRegSun, FaRegMoon, FaSignOutAlt } from "react-icons/fa";
+import { FaRegUserCircle, FaSignOutAlt } from "react-icons/fa";
 
-const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, onLogout }) => {
+const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
   const [section, setSection] = useState("pantalla");
   const [editandoPerfil, setEditandoPerfil] = useState(false);
   if (!open) return null;
@@ -18,7 +18,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
     showToast({
       message: `Tamaño de interfaz cambiado a ${e.target.value}`,
       type: 'info',
-      theme: dark ? 'dark' : 'light',
+      theme: 'dark',
     });
   };
   return (
@@ -32,13 +32,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
             <span className="modal-config-menu-icon"><FaRegUserCircle size={20} /></span>
             <span>Perfil</span>
           </button>
-          <button
-            className={`modal-config-menu-btn${section === "tema" ? " active" : ""}`}
-            onClick={() => setSection("tema")}
-          >
-            <span className="modal-config-menu-icon">{dark ? <FaRegSun size={20} /> : <FaRegMoon size={20} />}</span>
-            <span>Tema</span>
-          </button>
+          {/* Eliminar botón de cambio de tema, solo tema oscuro */}
           <button
             className={`modal-config-menu-btn${section === "pantalla" ? " active" : ""}`}
             onClick={() => setSection("pantalla")}
@@ -86,17 +80,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
             )
           )}
           {section === "tema" && (
-            <>
-              <header className="modal-config-header">
-                <h2>Tema</h2>
-              </header>
-              <div className="modal-config-section">
-                <button className="modal-btn apply" onClick={handleTheme}>
-                  {dark ? <FaRegSun style={{marginRight: '0.5rem'}} /> : <FaRegMoon style={{marginRight: '0.5rem'}} />}
-                  Cambiar a tema {dark ? "claro" : "oscuro"}
-                </button>
-              </div>
-            </>
+            {/* Se elimina sección de cambio de tema, solo tema oscuro */}
           )}
           {section === "pantalla" && (
             <>
@@ -137,7 +121,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, dark, handleTheme, 
                   showToast({
                     message: 'Sesión cerrada correctamente',
                     type: 'success',
-                    theme: dark ? 'dark' : 'light',
+                    theme: 'dark',
                   });
                   onLogout();
                 }}>
