@@ -116,10 +116,10 @@ function exportToExcel(data) {
         <button onClick={() => exportToExcel(movimientos)} style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
           Exportar Excel
         </button>
-        <button onClick={handleVaciarTodo} style={{background:'#FFD600',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+        <button onClick={handleVaciarTodo} style={{background:'#c62828',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
           Vaciar todo
         </button>
-        <button onClick={handleVaciarPagina} style={{background:'#FFD600',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
+        <button onClick={handleVaciarPagina} style={{background:'#c62828',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
           Vaciar página
         </button>
       </div>
