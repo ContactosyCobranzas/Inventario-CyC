@@ -5,9 +5,9 @@
   min-height: 60vh;
 }
 .user-form {
-  background: #fff;
+  background: #f4f6f8;
   border-radius: 1.2rem;
-  box-shadow: 0 4px 24px #c6282822;
+  box-shadow: 0 4px 24px #c6282812;
   padding: 2.5rem 2rem;
   min-width: 320px;
   max-width: 400px;
@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  border: 1.5px solid #eee;
+  border: 1.5px solid #e0e0e0;
 }
 body.dark-theme .user-form {
   background: #23272b;
@@ -24,7 +24,7 @@ body.dark-theme .user-form {
 }
 .user-form h2 {
   text-align: center;
-  color: #c62828;
+  color: #b71c1c;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
@@ -39,7 +39,7 @@ body.dark-theme .user-form h2 {
 }
 .user-form label {
   font-size: 1rem;
-  color: #c62828;
+  color: #b71c1c;
   font-weight: 600;
 }
 body.dark-theme .user-form label {
@@ -47,10 +47,10 @@ body.dark-theme .user-form label {
 }
 .user-form input {
   padding: 0.6rem 1rem;
-  border: 1.5px solid #c62828;
+  border: 1.5px solid #b71c1c;
   border-radius: 0.5rem;
   font-size: 1rem;
-  background: #f6f5f2;
+  background: #f9f9f9;
   color: #222;
   outline: none;
   transition: border 0.2s, box-shadow 0.2s;
@@ -61,8 +61,8 @@ body.dark-theme .user-form input {
   color: #ffc107;
 }
 .user-form input:focus {
-  border-color: #b31217;
-  box-shadow: 0 0 0 2px #c6282822;
+  border-color: #c62828;
+  box-shadow: 0 0 0 2px #c6282812;
 }
 body.dark-theme .user-form input:focus {
   border-color: #ffc107;
@@ -75,8 +75,8 @@ body.dark-theme .user-form input:focus {
   margin-top: 0.5rem;
 }
 .user-form button[type="submit"] {
-  background: #c62828;
-  color: #fff;
+  background: linear-gradient(90deg, #ffcdd2 0%, #ffe082 100%);
+  color: #b71c1c;
   border: none;
   border-radius: 0.7rem;
   padding: 0.7rem 1.5rem;
@@ -84,10 +84,11 @@ body.dark-theme .user-form input:focus {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px #c6282822;
+  box-shadow: 0 2px 12px #c6282812;
 }
 .user-form button[type="submit"]:hover {
   background: #b71c1c;
+  color: #fff;
 }
 body.dark-theme .user-form button[type="submit"] {
   background: #ffc107;
@@ -98,8 +99,8 @@ body.dark-theme .user-form button[type="submit"]:hover {
   color: #23272b;
 }
 .user-form .cancel-btn {
-  background: #eee;
-  color: #c62828;
+  background: #f4f6f8;
+  color: #b71c1c;
   border: none;
   border-radius: 0.7rem;
   padding: 0.7rem 1.5rem;
@@ -109,7 +110,7 @@ body.dark-theme .user-form button[type="submit"]:hover {
   transition: background 0.2s;
 }
 .user-form .cancel-btn:hover {
-  background: #e0e0e0;
+  background: #ececec;
 }
 body.dark-theme .user-form .cancel-btn {
   background: #333;
@@ -126,8 +127,8 @@ body.dark-theme .user-form .cancel-btn:hover {
 .user-list table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.04);
+  background: #f4f6f8;
+  box-shadow: 0 1px 6px 0 rgba(198,40,40,0.04);
 }
 body.dark-theme .user-list table {
   background: #23272b;
@@ -145,7 +146,7 @@ body.dark-theme .user-list th, body.dark-theme .user-list td {
 }
 
 .user-list th {
-  background: #c62828;
+  background: #b71c1c;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
@@ -160,8 +161,8 @@ body.dark-theme .user-list th {
 }
 
 .user-list button {
-  background: #c62828;
-  color: #fff;
+  background: linear-gradient(90deg, #ffcdd2 0%, #ffe082 100%);
+  color: #b71c1c;
   border: none;
   border-radius: 4px;
   padding: 0.5rem 1.2rem;
@@ -176,6 +177,7 @@ body.dark-theme .user-list button {
 
 .user-list button:hover {
   background: #b71c1c;
+  color: #fff;
 }
 body.dark-theme .user-list button:hover {
   background: #fff;

@@ -16,9 +16,9 @@ const KpiGrid = ({ onCardClick }) => (
     <KpiCard title="Reportes" value="2" subtitle="Problemas reportados" onClick={() => onCardClick && onCardClick("reportes") }>
       <FaRegCommentDots />
     </KpiCard>
-    <KpiCard title="Movimientos recientes" value="24" subtitle="Entradas/Salidas">
-      <FaExchangeAlt />
-    </KpiCard>
+      <KpiCard title="Movimientos recientes" value="24" subtitle="Entradas/Salidas" onClick={() => onCardClick && onCardClick("movimientos") }>
+        <FaExchangeAlt />
+      </KpiCard>
   </div>
 );
 

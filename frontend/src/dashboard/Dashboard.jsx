@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackButton from "../common/BackButton";
 import Navbar from "../common/Navbar";
+import MovimientosRecientes from "../hardware/MovimientosRecientes";
 import Sidebar from "../common/Sidebar";
 import EquiposView from "../hardware/EquiposView";
 import IPsView from "../hardware/IPsView";
@@ -42,6 +43,7 @@ const Dashboard = ({ onLogout }) => {
                 if(card === "novedades") setView("novedades");
                 if(card === "reportes") setView("reportes");
                 if(card === "ips") setView("ips");
+                if(card === "movimientos") setView("movimientos");
               }} />
             </>
           )}
@@ -64,6 +66,11 @@ const Dashboard = ({ onLogout }) => {
           {view === "ips" && (
             <section style={{ margin: "2rem 0" }}>
               <IPsView />
+            </section>
+          )}
+          {view === "movimientos" && (
+            <section style={{ margin: "2rem 0" }}>
+              <MovimientosRecientes />
             </section>
           )}
         </main>

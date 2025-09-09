@@ -1,3 +1,42 @@
+/* Tabla de teléfonos */
+.hardware-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #181818;
+  color: #ffd600;
+  margin-bottom: 2rem;
+}
+.hardware-table th, .hardware-table td {
+  border: 1px solid #333;
+  padding: 0.7rem 1rem;
+  text-align: left;
+}
+.hardware-table th {
+  background: #23272e;
+  color: #ffd600;
+  font-weight: bold;
+}
+.hardware-table tr:nth-child(even) {
+  background: #222;
+}
+.hardware-tag {
+  display: inline-block;
+  padding: 0.25em 0.7em;
+  border-radius: 12px;
+  font-size: 0.98em;
+  font-weight: 600;
+  background: #ffd60022;
+  color: #ffd600;
+  margin-right: 0.3em;
+}
+.tag-activa {
+  background: #c6ff00;
+  color: #23272e;
+}
+.tag-bloqueada {
+  background: #ff5252;
+  color: #fff;
+}
 .modal-animate {
   animation: modalFadeIn 0.3s ease;
 }

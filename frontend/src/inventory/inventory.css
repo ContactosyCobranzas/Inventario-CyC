@@ -6,7 +6,7 @@
 .inventory-list table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
+  background: #f4f6f8;
   box-shadow: 0 1px 6px 0 rgba(0,0,0,0.04);
 }
 body.dark-theme .inventory-list table {
@@ -17,7 +17,7 @@ body.dark-theme .inventory-list table {
 
 .inventory-list th, .inventory-list td {
   padding: 1rem 1.2rem;
-  border-bottom: 1.5px solid #e0e0e0;
+  border-bottom: 1.5px solid #ececec;
   text-align: left;
 }
 body.dark-theme .inventory-list th, body.dark-theme .inventory-list td {
@@ -25,7 +25,7 @@ body.dark-theme .inventory-list th, body.dark-theme .inventory-list td {
 }
 
 .inventory-list th {
-  background: #FFD600;
+  background: #1976d2;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;

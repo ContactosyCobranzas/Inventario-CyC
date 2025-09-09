@@ -8,7 +8,7 @@
   justify-content: center;
 }
 .modal-notifications {
-  background: #23272b;
+  background: #f4f6f8;
   border-radius: 22px;
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22);
   width: 100%;
@@ -90,7 +90,7 @@
 }
 .modal-notifications-divider {
   height: 1.5px;
-  background: #23272b;
+  background: #e0e0e0;
   width: 100%;
 }
 .modal-notifications-list {
@@ -101,7 +101,7 @@
 .modal-notifications-item {
   display: flex;
   align-items: center;
-  background: #393e46;
+  background: #fff;
   border-radius: 14px;
   margin: 0.7rem 1rem;
   padding: 0.95rem 1.2rem;
@@ -109,22 +109,22 @@
   gap: 0.7rem;
   font-size: 1.04rem;
   font-weight: 500;
-  color: #fff;
+  color: #b71c1c;
   animation: fadeInNotif 0.4s;
 }
 .modal-notifications-item:hover {
-  background: #c62828;
-  color: #fff;
+  background: #ffcdd2;
+  color: #b71c1c;
 }
 .modal-notifications-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(198,40,40,0.10);
+  background: #ffe082;
   border-radius: 50%;
   width: 34px;
   height: 34px;
-  color: #c62828;
+  color: #b71c1c;
   font-size: 1.25rem;
   margin-right: 0.2rem;
   box-shadow: 0 1px 4px 0 rgba(198,40,40,0.10);
@@ -132,7 +132,7 @@
 .modal-notifications-text {
   flex: 1;
   font-size: 1.04rem;
-  color: #fff;
+  color: #b71c1c;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -168,7 +168,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #c62828;
+  background: #b71c1c;
   color: #fff;
   padding: 0.8rem 1.2rem 0.8rem 1.2rem;
   border-top-left-radius: 18px;

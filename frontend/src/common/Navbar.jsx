@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaBell, FaCog, FaMoon, FaSun, FaSignOutAlt, FaSearch } from "react-icons/fa";
+import GlobalSearchModal from "./GlobalSearchModal";
 
 import ModalNotifications from "./ModalNotifications";
 import ModalConfirm from "./ModalConfirm";
@@ -9,6 +10,7 @@ import "./Navbar.css";
 
 const Navbar = ({ onLogout }) => {
   const [showConfig, setShowConfig] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
   const [fontSize, setFontSizeState] = useState(() => localStorage.getItem("uiFontSize") || "100%");
   const setFontSize = (val) => {
     setFontSizeState(val);
@@ -59,7 +61,7 @@ const Navbar = ({ onLogout }) => {
     <nav className="navbar">
       <span className="navbar-title">Inventario CyC</span>
       <div className="navbar-actions" style={{ position: 'relative', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.5rem' }}>
-        <button className="navbar-icon-btn" title="Buscar">
+        <button className="navbar-icon-btn" title="Buscar" onClick={() => setShowSearchModal(true)}>
           <FaSearch size={22} />
         </button>
         <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -100,6 +102,30 @@ const Navbar = ({ onLogout }) => {
         dark={dark}
         handleTheme={handleTheme}
         onLogout={handleLogoutClick}
+      />
+      {/* Modal de búsqueda global */}
+      <GlobalSearchModal
+        isOpen={showSearchModal}
+        onClose={() => setShowSearchModal(false)}
+        dataSources={{
+          equipos: [
+            { id: 1, nombre: "PC Juan", usuario: "Juan", serie: "1234", ip: "192.168.1.10" },
+            { id: 2, nombre: "PC Ana", usuario: "Ana", serie: "5678", ip: "192.168.1.11" }
+          ],
+          usuarios: [
+            { nombre: "Juan", email: "juan@correo.com", rol: "admin" },
+            { nombre: "Ana", email: "ana@correo.com", rol: "user" }
+          ],
+          licencias: [
+            { producto: "Office", clave: "OFF-1234", usuario: "Juan" },
+            { producto: "Windows", clave: "WIN-5678", usuario: "Ana" }
+          ],
+          ips: [
+            { id: 1, ip: "192.168.1.10", equipo: "PC Juan" },
+            { id: 2, ip: "192.168.1.11", equipo: "PC Ana" }
+          ],
+          dark: dark
+        }}
       />
     </nav>
   );

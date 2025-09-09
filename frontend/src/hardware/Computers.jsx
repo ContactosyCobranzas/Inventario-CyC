@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { FaDesktop, FaLaptop, FaKey, FaCodeBranch } from "react-icons/fa";
+import { FaDesktop, FaLaptop, FaKey, FaCodeBranch, FaPhone } from "react-icons/fa";
 import PCItems from "./PCItems";
 import Equipos from "./Equipos";
 import LicenciasView from "./LicenciasView";
 import VersionesView from "./VersionesView";
 import PCTypes from "./PCTypes";
+import Telefonos from "./Telefonos";
 import "./Hardware.css";
 
 const summaryData = [
+  {
+    icon: <FaPhone className="hardware-icon hardware-icon-unified" />,
+    title: "Teléfonos",
+    value: 0,
+    desc: "Total de teléfonos registrados.",
+    link: "Ver Teléfonos"
+  },
   {
     icon: <FaDesktop className="hardware-icon hardware-icon-unified" />,
     title: "PC Items",
@@ -54,6 +62,10 @@ const Computers = () => {
   const idxPCItems = summaryData.findIndex(item => item.title === "PC Items");
   const idxLicencias = summaryData.findIndex(item => item.title === "Software Licencias");
   const idxVersiones = summaryData.findIndex(item => item.title === "Versión de Software");
+  const idxTelefonos = summaryData.findIndex(item => item.title === "Teléfonos");
+  if (view === "telefonos") {
+    return <Telefonos onBack={() => setView("summary")} />;
+  }
 
   if (view === "pcitems") {
     return <PCItems onBack={() => setView("summary")} />;
@@ -75,7 +87,19 @@ const Computers = () => {
     <div>
       <h2 style={{marginBottom: '2rem'}}>Computers</h2>
       <div className="hardware-summary-grid">
-        {summaryData.map((item, idx) => {
+  {summaryData.map((item, idx) => {
+          // Card de Teléfonos
+          if (idx === idxTelefonos) {
+            return (
+              <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("telefonos") }>
+                {item.icon}
+                <div className="hardware-summary-title">{item.title}</div>
+                <div className="hardware-summary-value">{item.value}</div>
+                <div className="hardware-summary-desc">{item.desc}</div>
+                <div className="hardware-summary-link" style={{color:'#1976d2',textDecoration:'underline'}}>Entrar</div>
+              </div>
+            );
+          }
           // Card de PC Items
           if (idx === idxPCItems) {
             return (

@@ -10,17 +10,12 @@ export function showToast({
   position = 'bottom-right',
   theme = 'dark',
 }) {
-  let toastIcon = icon;
-  if (!icon) {
-    if (type === 'success') toastIcon = getSuccessIcon(theme);
-    else if (type === 'error') toastIcon = getErrorIcon(theme);
-    else toastIcon = getInfoIcon(theme);
-  }
+  let toastIcon = null;
   // Estilos personalizados por tipo y tema
   const borderColors = {
     success: theme === 'dark' ? '#43a047' : '#388e3c',
     error: theme === 'dark' ? '#c62828' : '#d32f2f',
-    info: theme === 'dark' ? '#FFD600' : '#1976d2',
+    info: theme === 'dark' ? '#FFD600' : '#d2cf19ff',
   };
   const styleDark = {
     background: '#23272b',
@@ -42,7 +37,6 @@ export function showToast({
     borderRadius: '14px',
     letterSpacing: '0.01em',
   };
-  // ...existing code...
 
 function getSuccessIcon(theme) {
   return FaCheckCircle ? React.createElement(FaCheckCircle, { style: { color: theme === 'dark' ? '#43a047' : '#388e3c' } }) : null;
@@ -51,7 +45,7 @@ function getErrorIcon(theme) {
   return FaExclamationCircle ? React.createElement(FaExclamationCircle, { style: { color: theme === 'dark' ? '#c62828' : '#d32f2f' } }) : null;
 }
 function getInfoIcon(theme) {
-  return FaBell ? React.createElement(FaBell, { style: { color: theme === 'dark' ? '#c62828' : '#1976d2' } }) : null;
+  return FaBell ? React.createElement(FaBell, { style: { color: theme === 'dark' ? '#c62828' : '#d2b619ff' } }) : null;
 }
   toast[type](message, {
     position,
@@ -61,7 +55,7 @@ function getInfoIcon(theme) {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    icon: toastIcon,
+    icon: null,
     style: theme === 'dark' ? styleDark : styleLight,
   });
 }
