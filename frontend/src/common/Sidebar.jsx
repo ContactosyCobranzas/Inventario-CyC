@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import { FaTachometerAlt, FaBoxes, FaUsers, FaUserCheck, FaNetworkWired, FaLaptop } from "react-icons/fa";
+import { FaTachometerAlt, FaBoxes, FaUsers, FaUserCheck, FaNetworkWired, FaLaptop, FaCog, FaBell } from "react-icons/fa";
 import { FaMobileAlt, FaHistory } from "react-icons/fa";
 import "./Sidebar.css";
 
 const Sidebar = ({ onNavigate }) => {
-  const [showInventoryMenu, setShowInventoryMenu] = useState(false);
-
-  const handleInventoryClick = () => {
-    setShowInventoryMenu((prev) => !prev);
-    if (onNavigate) onNavigate("Inventario");
-  };
+  // Eliminado submenú de Inventario, todas las opciones estarán visibles
 
   return (
     <aside className="sidebar">
       <ul>
+        {/* Dashboard */}
         <li className="sidebar-item" onClick={() => onNavigate && onNavigate("Dashboard")}> <FaTachometerAlt /> Dashboard</li>
-        <li className="sidebar-item" onClick={handleInventoryClick}> <FaBoxes /> Inventario</li>
-        {showInventoryMenu && (
-          <ul className="sidebar-submenu">
-            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("equipos")}> <FaUserCheck /> Equipos</li>
-            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("tipos_pc")}> <FaLaptop /> Tipos de PC</li>
-            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("telefonos")}> <FaMobileAlt /> Teléfonos</li>
-            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("IPs")}> <FaNetworkWired /> IPs</li>
-            <li className="sidebar-item" style={{ paddingLeft: 24 }} onClick={() => onNavigate && onNavigate("movimientos_recientes")}> <FaHistory /> Movimientos Recientes</li>
-          </ul>
-        )}
+        {/* Equipos */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("equipos")}> <FaUserCheck /> Equipos</li>
+        {/* Tipos de PC */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("tipos_pc")}> <FaLaptop /> Tipos de PC</li>
+        {/* Teléfonos */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("telefonos")}> <FaMobileAlt /> Teléfonos</li>
+        {/* IPs */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("IPs")}> <FaNetworkWired /> IPs</li>
+        {/* Movimientos Recientes */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("movimientos_recientes")}> <FaHistory /> Movimientos Recientes</li>
+        {/* Usuarios */}
         <li className="sidebar-item" onClick={() => onNavigate && onNavigate("Usuarios")}> <FaUsers /> Usuarios</li>
+        {/* Reportes */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("Reportes")}> <FaHistory /> Reportes</li>
+        {/* Novedades */}
+        <li className="sidebar-item" onClick={() => onNavigate && onNavigate("Novedades")}> <FaBell /> Novedades</li>
       </ul>
     </aside>
   );

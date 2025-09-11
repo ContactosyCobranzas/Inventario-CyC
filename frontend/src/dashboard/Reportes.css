@@ -142,7 +142,7 @@
 }
 .dark-theme .reporte-card:hover {
   box-shadow: 0 4px 16px rgba(198,40,40,0.18);
-  border-left: 8px solid #c62828;
+  border-left: 8px solid #ffffff;
 }
 .dark-theme .reporte-header h3 {
   color: #FFD600;

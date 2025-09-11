@@ -10,6 +10,8 @@ import UserList from "../users/UserList";
 import KpiGrid from "./KpiGrid";
 import Novedades from "./Novedades";
 import Reportes from "./Reportes";
+import PCTypes from "../hardware/PCTypes";
+import Telefonos from "../hardware/Telefonos";
 import "./Dashboard.css";
 
 const Dashboard = ({ onLogout }) => {
@@ -71,6 +73,24 @@ const Dashboard = ({ onLogout }) => {
           {view === "movimientos" && (
             <section style={{ margin: "2rem 0" }}>
               <MovimientosRecientes />
+            </section>
+          )}
+          {view === "movimientos_recientes" && (
+            <section style={{ margin: "2rem 0" }}>
+              <h2>Movimientos Recientes</h2>
+              <MovimientosRecientes />
+            </section>
+          )}
+          {view === "tipos_pc" && (
+            <section style={{ margin: "2rem 0" }}>
+              <h2>Tipos de PC</h2>
+              <PCTypes onBack={() => setView("dashboard")} />
+            </section>
+          )}
+          {view === "telefonos" && (
+            <section style={{ margin: "2rem 0" }}>
+              <h2>Teléfonos</h2>
+              <Telefonos />
             </section>
           )}
         </main>
