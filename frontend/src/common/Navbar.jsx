@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaBell, FaCog, FaSignOutAlt } from "react-icons/fa";
-// import GlobalSearchModal from "./GlobalSearchModal";
 
 import ModalNotifications from "./ModalNotifications";
 import ModalConfirm from "./ModalConfirm";
@@ -15,7 +14,6 @@ const Navbar = ({ onLogout }) => {
     setFontSizeState(val);
     if (window.setGlobalFontSize) window.setGlobalFontSize(val);
   };
-  // Tema oscuro global fijo
   const dark = true;
   const [showModal, setShowModal] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -42,7 +40,6 @@ const Navbar = ({ onLogout }) => {
     });
     onLogout && onLogout();
   };
-  // Notificaciones para el modal
   const notifications = [
     { id: 1, text: "Nuevo usuario registrado" },
     { id: 2, text: "Equipo asignado" },
@@ -52,7 +49,6 @@ const Navbar = ({ onLogout }) => {
     <nav className="navbar">
       <span className="navbar-title">Inventario CyC</span>
       <div className="navbar-actions" style={{ position: 'relative', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.5rem' }}>
-        {/* Botón de búsqueda eliminado */}
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <button
             className="navbar-icon-btn"
@@ -63,7 +59,6 @@ const Navbar = ({ onLogout }) => {
           >
             <FaBell size={22} />
           </button>
-          {/* Modal de notificaciones alineado justo debajo del icono */}
           <ModalNotifications
             open={showNotifications}
             notifications={notifications}
@@ -90,7 +85,6 @@ const Navbar = ({ onLogout }) => {
         setFontSize={setFontSize}
         onLogout={handleLogoutClick}
       />
-  {/* Modal de búsqueda global eliminado */}
     </nav>
   );
 };

@@ -34,7 +34,6 @@ const Telefonos = () => {
   setSelectedLinea('linea1');
   setModalOpen(true);
   };
-  // lastDeleted ya está declarado, no volver a declararlo
   const lastDeleted = React.useRef(null);
   const handleDelete = (id) => {
     setConfirmDeleteId(id);
@@ -97,8 +96,6 @@ const Telefonos = () => {
       icon: null
     });
   };
-
-  // Filtrado por búsqueda y estado
   const telefonosFiltrados = telefonos.filter(t => {
     const matchSearch =
       t.equipo.toLowerCase().includes(search.toLowerCase()) ||
@@ -112,7 +109,6 @@ const Telefonos = () => {
     return matchSearch && matchEstado;
   });
 
-  // Añadir teléfono
   const handleAddTelefono = () => {
     if (!newTel.equipo.trim() || !newTel.linea1.numero.trim()) {
       showToast({ message: 'Equipo y línea 1 son obligatorios', type: 'error' });
@@ -225,7 +221,6 @@ const Telefonos = () => {
               <td>
                 <button className="hardware-btn" onClick={() => handleEdit(t.id)}>Editar</button>
                 <button className="hardware-btn" onClick={() => handleDelete(t.id)} style={{marginLeft:8}}>Borrar</button>
-      {/* Modal de confirmación de borrado */}
       {confirmDeleteId !== null && (
         <div className="modal-overlay" style={{zIndex:10000}}>
           <div className="modal-content" style={{minWidth:340, maxWidth:400, padding:'2rem 2.5rem'}}>
@@ -244,7 +239,6 @@ const Telefonos = () => {
         </tbody>
       </table>
 
-      {/* Modal de añadir */}
       {addModalOpen && (
         <div className="modal-overlay" style={{zIndex:10000,background:'rgba(0,0,0,0.7)'}}>
           <div className="modal-content" style={{minWidth:360, maxWidth:420, padding:'2.5rem 2.5rem', background:'#222', border:'2.5px solid #ffd600', borderRadius:18, boxShadow:'0 8px 32px rgba(0,0,0,0.35)'}}>
@@ -293,7 +287,6 @@ const Telefonos = () => {
         </div>
       )}
 
-      {/* Modal de edición */}
       {modalOpen && editId !== null && (
         <div className="modal-overlay" style={{zIndex:10000}}>
           <div className="modal-content" style={{minWidth:340, maxWidth:400, padding:'2rem 2.5rem'}}>

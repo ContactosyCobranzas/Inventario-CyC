@@ -11,7 +11,6 @@ export function showToast({
   theme = 'dark',
 }) {
   let toastIcon = null;
-  // Estilos personalizados por tipo y tema
   const borderColors = {
     success: theme === 'dark' ? '#43a047' : '#388e3c',
     error: theme === 'dark' ? '#c62828' : '#d32f2f',

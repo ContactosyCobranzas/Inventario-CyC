@@ -216,7 +216,6 @@ body.dark-theme .modalips-table tr:hover td {
 @keyframes modalips-spin {
   100% { transform: rotate(360deg); }
 }
-/* --- Estilos modernos y consistentes para la vista de IPs --- */
 .modalips-content {
   background: #fff;
   border-radius: 24px;
@@ -279,7 +278,6 @@ body.dark-theme .modalips-header h2 {
   color: #fff;
   box-shadow: 0 4px 16px 0 rgba(198,40,40,0.18);
 }
-/* Inputs y selects compactos para edición */
 input[type="text"], input[type="number"], .modalips-table input, .modalips-table select {
   font-size: 1.08rem;
   padding: 0.7em 1em;

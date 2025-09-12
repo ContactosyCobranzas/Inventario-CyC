@@ -44,7 +44,6 @@ const Equipos = ({ onBack }) => {
   const [equipos, setEquipos] = useState(initialEquipos);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
-  // Eliminar confirmación modal
   const [addModalOpen, setAddModalOpen] = useState(false);
   const handleAddEquipo = (data) => {
     const newId = equipos.length ? Math.max(...equipos.map(e => e.id)) + 1 : 1;
@@ -82,7 +81,6 @@ const Equipos = ({ onBack }) => {
 
   const handleDelete = (id) => {
     const item = equipos.find(i => i.id === id);
-    // Ejecutar borrado directamente con toast
     confirmDelete(item);
   };
 
@@ -234,9 +232,7 @@ const Equipos = ({ onBack }) => {
           </tbody>
         </table>
       </div>
-  {/* Modales de edición, confirmación de borrado y añadir */}
   <EditEquipoModal open={editModalOpen} item={editItem} onSave={handleSaveEdit} onClose={() => setEditModalOpen(false)} />
-  {/* Eliminado el modal de confirmación de borrado */}
   <AddEquipoModal open={addModalOpen} onClose={() => setAddModalOpen(false)} onAdd={handleAddEquipo} />
     </div>
   );

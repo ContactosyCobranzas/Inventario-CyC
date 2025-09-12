@@ -104,7 +104,6 @@
   margin-bottom: 0.2rem;
   text-shadow: 0 2px 8px #FFD60022;
 }
-/* Layout flex para la cabecera */
 .movimientos-flex-row {
   display: flex;
   flex-direction: row;
@@ -147,7 +146,6 @@
   background: #23272b;
   color: #FFD600;
 }
-/* Card informativa de movimientos */
 .movimientos-card-info {
   margin-bottom: 1.5rem;
   display: flex;
@@ -177,7 +175,6 @@
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
-/* Botones de Movimientos Recientes */
 .movimientos-botones {
   display: flex;
   gap: 1rem;

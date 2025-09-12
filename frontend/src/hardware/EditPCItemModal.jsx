@@ -20,9 +20,7 @@ const EditPCItemModal = ({ open, onClose, item, onSave }) => {
     onSave(form);
   };
 
-  // Detectar tema oscuro
   const isDark = document.body.classList.contains('dark-theme');
-  // Cancelar: gris en oscuro, rojo en claro
   const cancelClass = isDark ? "pcitems-action-btn" : "pcitems-action-btn delete";
 
   return (

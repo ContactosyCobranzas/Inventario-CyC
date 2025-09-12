@@ -237,7 +237,6 @@ body.dark-theme .modal-btn.apply:hover {
   }
 }
 
-/* Tema claro */
 body:not(.dark-theme) .modal-config {
   background: #fafdff;
   color: #23272e;

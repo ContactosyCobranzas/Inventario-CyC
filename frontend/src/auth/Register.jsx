@@ -22,7 +22,6 @@ const Register = ({ onBack }) => {
       type: 'success',
       theme
     });
-    // Aquí iría la lógica real de registro
   };
 
   return (

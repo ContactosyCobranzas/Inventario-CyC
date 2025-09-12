@@ -55,10 +55,6 @@ const summaryData = [
 
 const Computers = () => {
   const [view, setView] = useState("summary");
-  // const [openLicencias, setOpenLicencias] = useState(false);
-  // const [openVersiones, setOpenVersiones] = useState(false);
-
-  // Índices de las cards
   const idxPCItems = summaryData.findIndex(item => item.title === "PC Items");
   const idxLicencias = summaryData.findIndex(item => item.title === "Software Licencias");
   const idxVersiones = summaryData.findIndex(item => item.title === "Versión de Software");
@@ -88,7 +84,6 @@ const Computers = () => {
       <h2 style={{marginBottom: '2rem'}}>Computers</h2>
       <div className="hardware-summary-grid">
   {summaryData.map((item, idx) => {
-          // Card de Teléfonos
           if (idx === idxTelefonos) {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("telefonos") }>
@@ -100,7 +95,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Card de PC Items
           if (idx === idxPCItems) {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("pcitems") }>
@@ -112,7 +106,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Card de PC Tipos
           if (item.title === "PC Tipos") {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("pctypes") }>
@@ -124,7 +117,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Card de Equipos
           if (item.title === "Equipos") {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("equipos") }>
@@ -136,7 +128,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Card de Licencias
           if (idx === idxLicencias) {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("licencias") }>
@@ -148,7 +139,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Card de Versiones
           if (idx === idxVersiones) {
             return (
               <div className="hardware-summary-card" key={idx} style={{cursor:'pointer'}} onClick={() => setView("versiones") }>
@@ -160,7 +150,6 @@ const Computers = () => {
               </div>
             );
           }
-          // Otras cards
           return (
             <div className="hardware-summary-card" key={idx}>
               {item.icon}
@@ -172,8 +161,6 @@ const Computers = () => {
           );
         })}
       </div>
-  {/* <LicenciasModal open={openLicencias} onClose={() => setOpenLicencias(false)} /> */}
-  {/* <VersionesModal open={openVersiones} onClose={() => setOpenVersiones(false)} /> */}
     </div>
   );
 };

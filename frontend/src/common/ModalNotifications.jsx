@@ -4,7 +4,6 @@ import { IoMdClose } from "react-icons/io";
 import "./ModalNotifications.css";
 
 const ModalNotifications = ({ open, notifications, onClose, dark, fontSize }) => {
-  // Animación tipo dropdown desde la campana
   if (!open) return null;
   return (
     <div className="modal-notifications-dropdown" style={{

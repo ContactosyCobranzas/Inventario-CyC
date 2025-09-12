@@ -3,7 +3,7 @@ import { FaRegNewspaper } from "react-icons/fa";
 import BackButton from "../common/BackButton";
 import { showToast } from "../common/toastNotify";
 import "./Novedades.css";
-//
+
 const novedadesMock = [
   {
     id: 1,

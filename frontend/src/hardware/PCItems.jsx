@@ -7,7 +7,6 @@ import EditPCItemModal from "./EditPCItemModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import AddPCItemModal from "./AddPCItemModal";
 import { toast } from 'react-toastify';
-// los datos son simulados
 const PCItems = ({ onBack }) => {
   const [pcItems, setPcItems] = useState([
     {
@@ -38,7 +37,6 @@ const PCItems = ({ onBack }) => {
 
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
-  // Eliminar confirmación modal
   const [addModalOpen, setAddModalOpen] = useState(false);
   const handleAddPCItem = (data) => {
     const newId = pcItems.length ? Math.max(...pcItems.map(e => e.id)) + 1 : 1;
@@ -58,7 +56,6 @@ const PCItems = ({ onBack }) => {
 
   const handleDelete = (id) => {
     const item = pcItems.find(i => i.id === id);
-    // Ejecutar borrado directamente con toast
     confirmDelete(item);
   };
 
@@ -176,7 +173,6 @@ const PCItems = ({ onBack }) => {
         item={editItem}
         onSave={handleSaveEdit}
       />
-  {/* Eliminado el modal de confirmación de borrado */}
       <AddPCItemModal
         open={addModalOpen}
         onClose={() => setAddModalOpen(false)}

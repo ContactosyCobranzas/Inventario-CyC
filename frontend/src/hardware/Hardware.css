@@ -1,4 +1,3 @@
-/* Tabla de teléfonos */
 .hardware-table {
   border-collapse: collapse;
   width: 100%;
@@ -45,7 +44,6 @@
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-/* Modal para añadir equipo */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -258,7 +256,6 @@ body.dark-theme .pcitems-action-btn:hover {
   text-align: center;
   vertical-align: middle;
 }
-/* Tabla PC Items responsiva */
 .pcitems-table-wrapper {
   width: 100%;
   max-width: 100vw;
@@ -299,7 +296,6 @@ body.dark-theme .hardware-btn.delete:hover {
   background: #a91d1d;
   color: #fff;
 }
-/* Botones de acciones en Equipos */
 .hardware-btn {
   padding: 0.45rem 1.1rem;
   margin: 0 0.25rem;
@@ -331,7 +327,6 @@ body.dark-theme .hardware-btn.delete:hover {
   justify-content: center;
   align-items: center;
 }
-/* Contenedor especial para Equipos: ocupa casi todo el ancho disponible */
 .equipos-section-container {
   width: 100%;
   max-width: 98vw;
@@ -504,7 +499,6 @@ body.dark-theme {
   justify-content: center;
   align-items: center;
 }
-/* Botones de acción: color según tema */
 body.dark-theme .pcitems-action-btn.edit {
   color: #23272e !important;
   border: 1.5px solid #FFD600 !important;
@@ -526,7 +520,6 @@ body.dark-theme .pcitems-action-btn.delete:hover {
   color: #FFD600 !important;
   border: 1.5px solid #FFD600 !important;
 }
-/* Variables para temas */
 :root {
   --hardware-bg: #fff;
   --hardware-header-bg: #fbe9e7;

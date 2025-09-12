@@ -1,5 +1,3 @@
-// Este archivo gestiona los movimientos recientes de forma global
-
 let movimientosGlobal = [];
 
 export function getMovimientosGlobal() {

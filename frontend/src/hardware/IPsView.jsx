@@ -44,7 +44,6 @@ const IPsView = () => {
     setShowModal(false);
   };
 
-  // Filtrado por búsqueda y estado
   const ipsFiltradas = ips.filter(ipObj => {
     const matchSearch =
       ipObj.ip.toLowerCase().includes(search.toLowerCase()) ||

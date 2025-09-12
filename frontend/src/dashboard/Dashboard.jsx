@@ -57,7 +57,6 @@ const Dashboard = ({ onLogout }) => {
               <UserList />
             </section>
           )}
-          {/* {view === "hardware" && <Computers />} */}
           {view === "equipos-asignados" && (
             <section style={{ margin: "2rem 0" }}>
               <h2>Equipos</h2>

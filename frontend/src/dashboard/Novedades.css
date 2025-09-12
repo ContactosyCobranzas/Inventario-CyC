@@ -9,7 +9,6 @@
 }
 .dark-theme .novedades-timeline-content {
   background: #181a1b;
-  /* Nuevo diseño amarillo/negro tipo tabla y paginación */
   .novedades-wrapper {
     background: #fff;
     border-radius: 12px;
@@ -138,4 +137,3 @@
   z-index: 1;
   animation: fadeInUp 0.7s;
 }
-/* Eliminar estilos viejos de timeline, solo tabla y paginación amarillo/negro */

@@ -12,16 +12,13 @@ const GlobalSearchModal = ({ isOpen, onClose, dataSources }) => {
       setResults([]);
       return;
     }
-    // Buscar en todas las fuentes de datos (solo arrays)
     const allResults = [];
     Object.entries(dataSources).forEach(([key, items]) => {
       if (Array.isArray(items)) {
         items.forEach(item => {
-          // Buscar en todos los campos string del objeto
           let ipMatch = null;
           Object.entries(item).forEach(([field, value]) => {
             if (typeof value === 'string' && value.toLowerCase().includes(query.toLowerCase())) {
-              // Detectar si el valor parece una IP
               if (/^(\d{1,3}\.){3}\d{1,3}$/.test(value)) {
                 ipMatch = value;
               }
@@ -36,12 +33,10 @@ const GlobalSearchModal = ({ isOpen, onClose, dataSources }) => {
         });
       }
     });
-    // Opciones de navegación directa
     const directRoutes = [
       { type: 'dashboard', name: 'Dashboard', route: '/dashboard' },
       { type: 'hardware', name: 'Hardware', route: '/hardware' },
       { type: 'reportes', name: 'Reportes', route: '/reportes' },
-      // Agrega más accesos directos si lo necesitas
     ];
     directRoutes.forEach(opt => {
       if (opt.name.toLowerCase().includes(query.toLowerCase()) || opt.type.toLowerCase().includes(query.toLowerCase())) {
@@ -53,9 +48,7 @@ const GlobalSearchModal = ({ isOpen, onClose, dataSources }) => {
 
   if (!isOpen) return null;
 
-  // Recibe la prop 'dark' para el tema
   const isDark = !!dataSources.dark;
-  // El Navbar debe pasar 'dark' como prop adicional en dataSources
   return (
     <div className="global-search-modal-overlay">
       <div className={`global-search-modal${isDark ? ' dark' : ''}`}>
@@ -71,7 +64,6 @@ const GlobalSearchModal = ({ isOpen, onClose, dataSources }) => {
         <div className="results-list">
           {results.length === 0 && query && <div className="no-results">Sin resultados</div>}
           {results.map((result, idx) => {
-            // Definir ruta según el tipo y dato
             let route = null;
             if (result.route) {
               route = result.route;
@@ -111,5 +103,3 @@ const GlobalSearchModal = ({ isOpen, onClose, dataSources }) => {
 };
 
 export default GlobalSearchModal;
-// Para soportar el tema, el Navbar debe pasar 'dark' en dataSources, ejemplo:
-// <GlobalSearchModal isOpen={...} onClose={...} dataSources={{ equipos: [...], usuarios: [...], licencias: [...], dark }} />

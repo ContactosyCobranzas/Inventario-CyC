@@ -60,7 +60,6 @@ const EditProfileForm = ({ user, onSave, onCancel }) => {
                 style={{ objectFit: 'cover', borderRadius: '50%', border: '2px solid #c62828', background: '#eee' }}
               />
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                {/* Botón para borrar foto */}
                 <button
                   type="button"
                   title="Borrar foto"
@@ -79,10 +78,8 @@ const EditProfileForm = ({ user, onSave, onCancel }) => {
                     padding: 0,
                   }}
                 >
-                  {/* Icono SVG de papelera */}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c62828" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
                 </button>
-                {/* Botón para subir foto del perfil */}
                 <label
                   htmlFor="profilePic"
                   title="Subir foto"
@@ -102,7 +99,6 @@ const EditProfileForm = ({ user, onSave, onCancel }) => {
                     padding: 0,
                   }}
                 >
-                  {/* Icono SVG de cámara */}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.17a2 2 0 0 0 1.41-.59l1.83-1.83A2 2 0 0 1 10.83 2h2.34a2 2 0 0 1 1.42.59l1.83 1.83A2 2 0 0 0 17.83 5H21a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                   <input
                     type="file"

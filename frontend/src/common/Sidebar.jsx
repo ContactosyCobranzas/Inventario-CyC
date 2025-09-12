@@ -4,7 +4,6 @@ import { FaMobileAlt, FaHistory } from "react-icons/fa";
 import "./Sidebar.css";
 
 const Sidebar = ({ onNavigate }) => {
-  // Eliminado submenú de Inventario, todas las opciones estarán visibles
 
   return (
     <aside className="sidebar">

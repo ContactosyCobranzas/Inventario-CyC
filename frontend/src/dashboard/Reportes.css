@@ -1,5 +1,3 @@
-/* Nuevo diseño alineado a MovimientosRecientes */
-
 .reportes-wrapper {
   background: #fff;
   border-radius: 12px;
@@ -30,7 +28,7 @@ body.dark-theme .reportes-wrapper {
   margin:0;
   font-size:1.9rem;
   font-weight:700;
-  color:#FFD600; /* Título siempre amarillo */
+  color:#FFD600;
 }
 
 .reportes-actions {
@@ -134,8 +132,6 @@ body.dark-theme .reportes-empty { color:#ccc; }
   .reportes-actions { width:100%; justify-content:flex-start; flex-wrap:wrap; }
   .reportes-search { flex:1; min-width:140px; }
 }
-
-/* Tema oscuro ajustes específicos */
 body.dark-theme .reportes-actions button { background:#FFD600; color:#23272b; }
 body.dark-theme .reportes-actions button.danger { background:#23272b; color:#FFD600; border:1.5px solid #FFD600; }
 

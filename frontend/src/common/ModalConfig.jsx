@@ -11,7 +11,6 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
   const [editandoPerfil, setEditandoPerfil] = useState(false);
   if (!open) return null;
 
-  // Toast para cambio de pantalla
   const handleFontSizeChange = (e) => {
     setFontSize(e.target.value);
     showToast({
@@ -31,7 +30,6 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
             <span className="modal-config-menu-icon"><FaRegUserCircle size={20} /></span>
             <span>Perfil</span>
           </button>
-          {/* Eliminar botón de cambio de tema, solo tema oscuro */}
           <button
             className={`modal-config-menu-btn${section === "pantalla" ? " active" : ""}`}
             onClick={() => setSection("pantalla")}
@@ -58,7 +56,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
                 </div>
               </div>
             ) : (
-              <>
+              <div>
                 <header className="modal-config-header">
                   <h2>Perfil</h2>
                 </header>
@@ -75,14 +73,11 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
                   <button className="modal-btn edit" onClick={() => setEditandoPerfil(true)}>Editar</button>
                   <button className="modal-btn confirm" onClick={onClose}>Cerrar</button>
                 </div>
-              </>
+              </div>
             )
           )}
-          {section === "tema" && (
-            {/* Se elimina sección de cambio de tema, solo tema oscuro */}
-          )}
           {section === "pantalla" && (
-            <>
+            <div>
               <header className="modal-config-header">
                 <h2>Configuración de pantalla</h2>
               </header>
@@ -107,10 +102,10 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
                   <option value="150%">150%</option>
                 </select>
               </div>
-            </>
+            </div>
           )}
           {section === "logout" && (
-            <>
+            <div>
               <header className="modal-config-header">
                 <h2>Cerrar sesión</h2>
               </header>
@@ -127,15 +122,11 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
                   <FaSignOutAlt style={{marginRight: '0.5rem'}} /> Cerrar sesión
                 </button>
               </div>
-            </>
+            </div>
           )}
-          <div className="modal-config-actions">
-            <button className="modal-btn confirm" onClick={onClose}>Cerrar</button>
-          </div>
         </section>
       </div>
     </div>
   );
 };
-//
 export default ModalConfig;

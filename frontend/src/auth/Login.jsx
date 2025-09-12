@@ -22,7 +22,6 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Detectar tema actual
     const theme = localStorage.getItem('theme') || getSystemTheme();
     showToast({
       message: '¡Bienvenido! Has iniciado sesión correctamente.',
@@ -100,5 +99,4 @@ const Login = ({ onLogin }) => {
     </div>
   );
 };
-// 
 export default Login;

@@ -31,7 +31,6 @@ const InventoryList = () => {
           </tr>
         </thead>
         <tbody>
-          {/* Ejemplo de fila */}
           <tr>
             <td>1</td>
             <td>pc</td>

@@ -40,7 +40,6 @@ function exportToCSV(data) {
 }
 
 function exportToExcel(data) {
-  // Similar a movimientos: export simple cambiando MIME / extensión
   const header = ["Fecha", "Título", "Descripción"];
   const rows = data.map(r => [r.fecha, r.titulo, r.descripcion]);
   const csvContent = "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8," + header.join(",") + "\n" + rows.map(r => r.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(",")).join("\n");

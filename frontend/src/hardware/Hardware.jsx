@@ -20,7 +20,6 @@ const summaryData = [
     link: "Ver PC Tipos"
   }
 ];
-// - --- -.. .- ... / .--. . .-. .-. .- ...
 
 const Hardware = () => {
   const navigate = useNavigate();
