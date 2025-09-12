@@ -8,7 +8,7 @@ body.dark-theme button:not(.login-btn):not(.register-btn):hover {
   background: #23272e !important;
   color: #FFD600 !important;
   border: 1.5px solid #FFD600 !important;
-}
+} 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

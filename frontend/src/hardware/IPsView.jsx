@@ -14,9 +14,12 @@ const mockIPs = [
 ];
 
 const IPsView = () => {
+
   const [ips, setIps] = useState(mockIPs);
   const [showModal, setShowModal] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const [search, setSearch] = useState("");
+  const [estadoFiltro, setEstadoFiltro] = useState("todos");
 
   const handleAddIP = () => {
     setEditIndex(null);
@@ -41,15 +44,34 @@ const IPsView = () => {
     setShowModal(false);
   };
 
+  // Filtrado por búsqueda y estado
+  const ipsFiltradas = ips.filter(ipObj => {
+    const matchSearch =
+      ipObj.ip.toLowerCase().includes(search.toLowerCase()) ||
+      (ipObj.equipoId && ipObj.equipoId.toLowerCase().includes(search.toLowerCase()));
+    let matchEstado = true;
+    if (estadoFiltro !== "todos") {
+      matchEstado = ipObj.status === estadoFiltro;
+    }
+    return matchSearch && matchEstado;
+  });
+
   return (
-    <div className="hardware-page-root" style={{ background: '#181818', minHeight: '100vh', padding: '2rem 0' }}>
+    <div className="hardware-page-root" style={{ minHeight: '100vh', padding: '2rem 0' }}>
       <GlobalToastContainer />
-      <section style={{ maxWidth: '950px', margin: '0 auto', background: '#23272b', borderRadius: '18px', boxShadow: '0 6px 32px rgba(0,0,0,0.85)', padding: '2.5rem 2.5rem 2rem 2.5rem', border: '1.5px solid #222' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
-          <h2 style={{ color: '#FFD600', fontWeight: 700, fontSize: '2.1rem', margin: 0, letterSpacing: '0.01em' }}>Listado de IPs</h2>
-          <button className="hardware-btn add" onClick={handleAddIP} title="Agregar IP">
+  <section style={{ maxWidth: '950px', margin: '0 auto', background: '#23272b', borderRadius: '14px', boxShadow: '0 2px 12px rgba(0,0,0,0.45)', padding: '1.5rem 1.5rem 1.2rem 1.5rem', border: '1px solid #222' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.7rem', justifyContent: 'flex-start' }}>
+          <button className="hardware-btn add" style={{ background: '#ffd600', color: '#222', fontWeight: 700, boxShadow: 'none', border: 'none', borderRadius: 8, padding: '0.5em 1.5em' }} onClick={handleAddIP} title="Agregar IP">
             <FaPlus /> Agregar
           </button>
+          <input type="text" placeholder="Buscar por IP o ID de equipo" value={search} onChange={e => setSearch(e.target.value)}
+            style={{ padding: '0.7em 1em', borderRadius: 8, fontSize: '1.08em', border: '2px solid #ffd600', width: 220, background: '#111', color: '#ffd600', fontWeight: 600, marginLeft: '0.5rem' }} />
+          <select value={estadoFiltro} onChange={e => setEstadoFiltro(e.target.value)}
+            style={{ padding: '0.7em 1em', borderRadius: 8, fontSize: '1.08em', border: '2px solid #ffd600', background: '#111', color: '#ffd600', fontWeight: 600, marginLeft: '0.5rem' }}>
+            <option value="todos">Todos los estados</option>
+            <option value="libre">Libres</option>
+            <option value="en uso">En uso</option>
+          </select>
         </div>
         <div style={{ width: '100%', overflowX: 'auto' }}>
           <table className="modalips-table" style={{ background: 'transparent', borderRadius: '12px', overflow: 'hidden', width: '100%' }}>
@@ -62,7 +84,7 @@ const IPsView = () => {
               </tr>
             </thead>
             <tbody>
-              {ips.map(({ ip, status, equipoId }, idx) => (
+              {ipsFiltradas.map(({ ip, status, equipoId }, idx) => (
                 <tr key={ip} className={status === "libre" ? "ip-libre" : "ip-en-uso"}>
                   <td>{ip}</td>
                   <td>

@@ -281,17 +281,22 @@ body.dark-theme .modalips-header h2 {
 }
 /* Inputs y selects compactos para edición */
 input[type="text"], input[type="number"], .modalips-table input, .modalips-table select {
-  font-size: 0.95rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  font-size: 1.08rem;
+  padding: 0.7em 1em;
+  border-radius: 8px;
+  border: 2px solid #ffd600;
   outline: none;
   margin: 0;
-  width: 100%;
+  width: 220px;
   box-sizing: border-box;
+  background: #111;
+  color: #ffd600;
+  font-weight: 600;
 }
 input:focus, select:focus {
   border-color: #FFD600;
+  background: #181818;
+  color: #FFD600;
 }
 body.dark-theme .modalips-btn {
   background: #FFD600;

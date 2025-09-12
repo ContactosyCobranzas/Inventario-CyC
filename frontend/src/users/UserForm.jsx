@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { showToast } from "../common/toastNotify";
 
 const UserForm = ({ initialData = {}, onSubmit }) => {
   const [profilePic, setProfilePic] = useState(initialData.profilePic || null);
   const [email, setEmail] = useState(initialData.email || "");
   const [password, setPassword] = useState("");
   const [preview, setPreview] = useState(initialData.profilePic || null);
-// 
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -22,6 +23,7 @@ const UserForm = ({ initialData = {}, onSubmit }) => {
       formData.append("password", password);
       if (profilePic) formData.append("profilePic", profilePic);
       onSubmit(formData);
+      showToast({ message: "Usuario agregado exitosamente", type: "success" });
     }
   };
 

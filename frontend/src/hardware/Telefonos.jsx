@@ -164,7 +164,7 @@ const Telefonos = () => {
 
   return (
     <div className="hardware-container">
-      <h2>Teléfonos</h2>
+      
       <div style={{display:'flex',gap:'1.5rem',marginBottom:'1.5rem',alignItems:'center'}}>
         <button className="hardware-btn" style={{background:'#ffd600',color:'#222',fontWeight:700}} onClick={()=>setAddModalOpen(true)}>Añadir</button>
         <input type="text" placeholder="Buscar por equipo o número" value={search} onChange={e=>setSearch(e.target.value)} 

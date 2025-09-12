@@ -14,7 +14,6 @@ const movimientosMock = Array.from({ length: 320 }, (_, i) => ({
   fecha: `2025-09-${String(8 + (i % 3)).padStart(2, '0')} ${String(8 + (i % 12)).padStart(2, '0')}:23`
 }));
 
-
 function exportToCSV(data) {
   const header = ["Fecha", "Tipo", "Descripción", "Usuario"];
   const rows = data.map(mov => [mov.fecha, mov.tipo, mov.descripcion, mov.usuario]);
@@ -33,17 +32,25 @@ const PAGE_SIZE = 50;
 const MovimientosRecientes = () => {
   const [movimientos, setMovimientos] = useState(movimientosMock);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [tipoFiltro, setTipoFiltro] = useState("");
 
-  // Alerta si hay más de 400 movimientos
+  // Toast siempre que se entra a la vista
   React.useEffect(() => {
-    if (movimientos.length > 400) {
+    if (movimientos.length >= 400) {
       showToast({
-        message: `¡Demasiados movimientos recientes! Considera exportar o vaciar la lista.`,
+        message: `¡Has superado el límite de 400 movimientos! Debes vaciar la lista para evitar problemas.`,
         type: 'error',
         theme: 'dark',
       });
+    } else if (movimientos.length >= 300 && movimientos.length < 400) {
+      showToast({
+        message: `¡Advertencia! Estás cerca del límite (400) de movimientos. Considera vaciar la lista pronto.`,
+        type: 'warning',
+        theme: 'dark',
+      });
     }
-  }, [movimientos]);
+  }, []);
 function exportToExcel(data) {
   // Exportación simple a Excel usando formato xlsx
   // Solo crea un archivo CSV con extensión xlsx para compatibilidad básica
@@ -63,9 +70,16 @@ function exportToExcel(data) {
   // Solo alerta si hay más de 400 movimientos
   }, [movimientos]);
 
+  // Filtrado por búsqueda y tipo
+  const movimientosFiltrados = movimientos.filter(mov => {
+    const texto = `${mov.fecha} ${mov.tipo} ${mov.descripcion} ${mov.usuario}`.toLowerCase();
+    const coincideBusqueda = texto.includes(search.toLowerCase());
+    const coincideTipo = tipoFiltro ? mov.tipo === tipoFiltro : true;
+    return coincideBusqueda && coincideTipo;
+  });
   // Paginación
-  const totalPages = Math.ceil(movimientos.length / PAGE_SIZE);
-  const paginated = movimientos.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const totalPages = Math.ceil(movimientosFiltrados.length / PAGE_SIZE);
+  const paginated = movimientosFiltrados.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   // Handlers para historial
   // ...eliminar lógica de historial...
@@ -108,20 +122,52 @@ function exportToExcel(data) {
 
   return (
     <div>
-      <h2 style={{marginBottom: '1.5rem', color: '#FFD600', fontWeight: 700}}>Movimientos Recientes</h2>
-      <div style={{display:'flex',gap:'1rem',marginBottom:'1.2rem'}}>
-        <button onClick={() => exportToCSV(movimientos)} style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
-          Exportar CSV
-        </button>
-        <button onClick={() => exportToExcel(movimientos)} style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
-          Exportar Excel
-        </button>
-        <button onClick={handleVaciarTodo} style={{background:'#c62828',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
-          Vaciar todo
-        </button>
-        <button onClick={handleVaciarPagina} style={{background:'#c62828',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',fontWeight:700,cursor:'pointer'}}>
-          Vaciar página
-        </button>
+      <h2 className="movimientos-titulo">Movimientos Recientes</h2>
+      <div className="movimientos-flex-row">
+        <div className="movimientos-flex-left">
+          <div className="movimientos-botones">
+            <button className="mov-btn" onClick={() => exportToCSV(movimientosFiltrados)}>
+              Exportar CSV
+            </button>
+            <button className="mov-btn" onClick={() => exportToExcel(movimientosFiltrados)}>
+              Exportar Excel
+            </button>
+            <button className="mov-btn" onClick={handleVaciarTodo}>
+              Vaciar todo
+            </button>
+            <button className="mov-btn" onClick={handleVaciarPagina}>
+              Vaciar página
+            </button>
+          </div>
+          <div className="movimientos-filtros">
+            <input
+              type="text"
+              placeholder="Buscar..."
+              value={search}
+              onChange={e => { setSearch(e.target.value); setPage(1); }}
+              className="mov-input"
+            />
+            <select
+              value={tipoFiltro}
+              onChange={e => { setTipoFiltro(e.target.value); setPage(1); }}
+              className="mov-select"
+            >
+              <option value="">Todos los tipos</option>
+              <option value="Alta">Alta</option>
+              <option value="Cambio">Cambio</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </div>
+        </div>
+        <div className="movimientos-flex-right">
+          <div className="mov-card-box mov-card-visible">
+            <div className="mov-card-icon">
+              <FaListOl size={44} style={{color:'#FFD600',marginBottom:'0.5rem'}} />
+            </div>
+            <div className="mov-card-count">{movimientos.length}</div>
+            <div className="mov-card-label">Movimientos registrados</div>
+          </div>
+        </div>
       </div>
       <div>
         <table className="movimientos-table">
@@ -142,7 +188,7 @@ function exportToExcel(data) {
                 <td>{mov.descripcion}</td>
                 <td>{mov.usuario}</td>
                 <td>
-                  <button onClick={() => handleVerDetalle(mov)} style={{background: '#1976d2', color: '#fff', border: 'none', borderRadius: 4, padding: '0.3rem 0.8rem', cursor: 'pointer'}}>Ver detalle</button>
+                  <button className="mov-btn" onClick={() => handleVerDetalle(mov)}>Ver detalle</button>
                 </td>
               </tr>
             ))}

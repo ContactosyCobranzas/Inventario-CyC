@@ -13,7 +13,7 @@
   position: absolute;
   z-index: 1001;
   color: var(--notif-text, #222);
-  border: 1.5px solid rgba(200,200,200,0.18);
+  border: 1.5px solid rgba(200,200,200,0.18); 
   opacity: 1;
   overflow: hidden;
   display: flex;
