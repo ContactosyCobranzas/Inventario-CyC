@@ -1,3 +1,76 @@
+.mov-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInModal 0.2s;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mov-modal-detalle {
+  background: #23272b;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(255,214,0,0.18), 0 2px 12px rgba(0,0,0,0.18);
+  min-width: 340px;
+  max-width: 420px;
+  padding: 2rem 2.2rem 1.2rem 2.2rem;
+  color: #FFD600;
+  position: relative;
+  animation: slideDownModal 0.25s;
+}
+
+@keyframes slideDownModal {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.mov-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+.mov-modal-close {
+  background: none;
+  border: none;
+  color: #FFD600;
+  font-size: 2rem;
+  cursor: pointer;
+  font-weight: 700;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.mov-modal-close:hover {
+  color: #fff;
+}
+.mov-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.mov-modal-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.08rem;
+  color: #FFD600;
+  background: #181a1b;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+}
+.mov-modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
 .mov-card-visible {
   box-shadow: 0 8px 32px rgba(255,214,0,0.18), 0 2px 12px rgba(0,0,0,0.18);
   border: 3px solid #FFD600;

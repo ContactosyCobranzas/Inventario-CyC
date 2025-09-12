@@ -1,17 +1,21 @@
 import React, { useState } from "react";
+import { FaUser, FaCalendarAlt, FaInfoCircle, FaIdBadge, FaDesktop, FaNetworkWired } from "react-icons/fa";
 import { showToast } from "../common/toastNotify";
 import ModalConfirm from "../common/ModalConfirm";
 import { FaListOl } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
 import "./MovimientosRecientes.css";
 
-// Mock de movimientos recientes (más de 300 para probar paginación)
 const movimientosMock = Array.from({ length: 320 }, (_, i) => ({
   id: i + 1,
   tipo: ["Alta", "Cambio", "Baja"][i % 3],
   descripcion: `Movimiento ${i + 1} realizado en el sistema.`,
   usuario: ["Juan Pérez", "Ana Gómez", "Carlos Ruiz"][i % 3],
-  fecha: `2025-09-${String(8 + (i % 3)).padStart(2, '0')} ${String(8 + (i % 12)).padStart(2, '0')}:23`
+  fecha: `2025-09-${String(8 + (i % 3)).padStart(2, '0')} ${String(8 + (i % 12)).padStart(2, '0')}:23`,
+  ip: `192.168.1.${(i % 50) + 1}`,
+  dispositivo: ["PC", "Laptop", "Servidor"][i % 3],
+  cambios: i % 3 === 1 ? "Actualización de software" : (i % 3 === 2 ? "Eliminación de usuario" : "Registro inicial"),
+  detallesExtra: `Detalle extendido del movimiento ${i + 1}.`,
 }));
 
 function exportToCSV(data) {
@@ -35,7 +39,6 @@ const MovimientosRecientes = () => {
   const [search, setSearch] = useState("");
   const [tipoFiltro, setTipoFiltro] = useState("");
 
-  // Toast siempre que se entra a la vista
   React.useEffect(() => {
     if (movimientos.length >= 400) {
       showToast({
@@ -52,8 +55,6 @@ const MovimientosRecientes = () => {
     }
   }, []);
 function exportToExcel(data) {
-  // Exportación simple a Excel usando formato xlsx
-  // Solo crea un archivo CSV con extensión xlsx para compatibilidad básica
   const header = ["Fecha", "Tipo", "Descripción", "Usuario"];
   const rows = data.map(mov => [mov.fecha, mov.tipo, mov.descripcion, mov.usuario]);
   let csvContent = "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8," + header.join(",") + "\n" + rows.map(e => e.join(",")).join("\n");
@@ -67,29 +68,30 @@ function exportToExcel(data) {
 }
 
   React.useEffect(() => {
-  // Solo alerta si hay más de 400 movimientos
   }, [movimientos]);
 
-  // Filtrado por búsqueda y tipo
   const movimientosFiltrados = movimientos.filter(mov => {
     const texto = `${mov.fecha} ${mov.tipo} ${mov.descripcion} ${mov.usuario}`.toLowerCase();
     const coincideBusqueda = texto.includes(search.toLowerCase());
     const coincideTipo = tipoFiltro ? mov.tipo === tipoFiltro : true;
     return coincideBusqueda && coincideTipo;
   });
-  // Paginación
   const totalPages = Math.ceil(movimientosFiltrados.length / PAGE_SIZE);
   const paginated = movimientosFiltrados.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  // Handlers para historial
-  // ...eliminar lógica de historial...
+  const [detalleVisible, setDetalleVisible] = useState(false);
+  const [movDetalle, setMovDetalle] = useState(null);
 
-  // Acción para ver detalle
   const handleVerDetalle = (mov) => {
-    alert(`Detalle del movimiento:\n${mov.descripcion}`);
+    setMovDetalle(mov);
+    setDetalleVisible(true);
   };
 
-   // Vaciar solo la página actual
+  const handleCerrarDetalle = () => {
+    setDetalleVisible(false);
+    setMovDetalle(null);
+  };
+
    const handleVaciarPagina = () => {
      if (window.confirm('¿Seguro que deseas eliminar los movimientos de esta página?')) {
        const start = (page - 1) * PAGE_SIZE;
@@ -101,14 +103,12 @@ function exportToExcel(data) {
          type: 'success',
          theme: 'dark',
        });
-       // Si la página actual queda vacía, retroceder a la anterior si existe
        if (nuevos.length > 0 && start >= nuevos.length) {
          setPage(Math.max(1, Math.ceil(nuevos.length / PAGE_SIZE)));
        }
      }
    };
 
-  // Vaciar todos los movimientos
   const handleVaciarTodo = () => {
     if (window.confirm('¿Seguro que deseas eliminar todos los movimientos recientes? Esta acción no se puede deshacer.')) {
       setMovimientos([]);
@@ -194,6 +194,50 @@ function exportToExcel(data) {
             ))}
           </tbody>
         </table>
+
+        {detalleVisible && movDetalle && (
+          <div className="mov-modal-overlay">
+            <div className="mov-modal-detalle">
+              <div className="mov-modal-header">
+                <FaInfoCircle size={28} style={{marginRight:8,color:'#FFD600'}} />
+                <span style={{fontWeight:700,fontSize:'1.2rem'}}>Detalle del Movimiento</span>
+                <button className="mov-modal-close" onClick={handleCerrarDetalle}>&times;</button>
+              </div>
+              <div className="mov-modal-body">
+                <div className="mov-modal-row">
+                  <FaIdBadge style={{marginRight:6}} /> <b>ID:</b> {movDetalle.id}
+                </div>
+                <div className="mov-modal-row">
+                  <FaCalendarAlt style={{marginRight:6}} /> <b>Fecha:</b> {movDetalle.fecha}
+                </div>
+                <div className="mov-modal-row">
+                  <FaUser style={{marginRight:6}} /> <b>Usuario:</b> {movDetalle.usuario}
+                </div>
+                <div className="mov-modal-row">
+                  <b>Tipo:</b> {movDetalle.tipo}
+                </div>
+                <div className="mov-modal-row">
+                  <b>Descripción:</b> {movDetalle.descripcion}
+                </div>
+                <div className="mov-modal-row">
+                  <FaNetworkWired style={{marginRight:6}} /> <b>IP:</b> {movDetalle.ip}
+                </div>
+                <div className="mov-modal-row">
+                  <FaDesktop style={{marginRight:6}} /> <b>Dispositivo:</b> {movDetalle.dispositivo}
+                </div>
+                <div className="mov-modal-row">
+                  <b>Cambios realizados:</b> {movDetalle.cambios}
+                </div>
+                <div className="mov-modal-row">
+                  <b>Detalle extendido:</b> {movDetalle.detallesExtra}
+                </div>
+              </div>
+              <div className="mov-modal-footer">
+                <button className="mov-btn" onClick={handleCerrarDetalle}>Cerrar</button>
+              </div>
+            </div>
+          </div>
+        )}
         {movimientos.length > 0 && (
           <div className="movimientos-paginacion" style={{display:'flex',alignItems:'center',gap:'0.5rem',margin:'1.2rem 0'}}>
             <button disabled={page === 1} onClick={() => setPage(page - 1)}>&lt; Anterior</button>
@@ -222,8 +266,6 @@ function exportToExcel(data) {
           <div className="movimientos-vacio">No hay movimientos recientes registrados.</div>
         )}
       </div>
-
-  {/* ...eliminado historial y modal... */}
     </div>
   );
 }
