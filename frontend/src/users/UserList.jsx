@@ -9,7 +9,7 @@ const UserList = () => {
   const [users, setUsers] = useState([
     { id: 1, nombre: "Maicol", correo: "Aux.ti@contactosycobranzas.com", rol: "Admin" },
     { id: 2, nombre: "Aka", correo: "aka@contactosycobranzas.com", rol: "Usuario" }
-  ]);// 
+  ]);
   const [modalOpen, setModalOpen] = useState(false);
   const [editUser, setEditUser] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState({ open: false, user: null });

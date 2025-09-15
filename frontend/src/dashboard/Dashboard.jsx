@@ -8,7 +8,7 @@ import IPsView from "../hardware/IPsView";
 import InventoryList from "../inventory/InventoryList";
 import UserList from "../users/UserList";
 import KpiGrid from "./KpiGrid";
-import Novedades from "./Novedades";
+import LicenciasOffice from "./LicenciasOffice";
 import Reportes from "./Reportes";
 import PCTypes from "../hardware/PCTypes";
 import Telefonos from "../hardware/Telefonos";
@@ -42,14 +42,14 @@ const Dashboard = ({ onLogout }) => {
               <h1 style={{ marginBottom: "2rem" }}>Dashboard de Inventario</h1>
               <KpiGrid onCardClick={(card) => {
                 if(card === "equipos") setView("equipos");
-                if(card === "novedades") setView("novedades");
+                if(card === "licencias") setView("licencias");
                 if(card === "reportes") setView("reportes");
                 if(card === "ips") setView("ips");
                 if(card === "movimientos") setView("movimientos");
               }} />
             </>
           )}
-          {view === "novedades" && <Novedades onBack={() => setView("dashboard")} />}
+          {view === "licencias" && <LicenciasOffice onBack={() => setView("dashboard")} />}
           {view === "reportes" && <Reportes onBack={() => setView("dashboard")} />}
           {view === "usuarios" && (
             <section style={{ margin: "2rem 0" }}>

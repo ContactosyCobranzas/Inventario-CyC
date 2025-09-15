@@ -10,7 +10,7 @@ const KpiGrid = ({ onCardClick }) => (
     <KpiCard title="IPs" value="45" subtitle="IPs en uso" onClick={() => onCardClick && onCardClick("ips")}>
       <FaNetworkWired />
     </KpiCard>
-    <KpiCard title="Novedades" value="3" subtitle="Actualizaciones" onClick={() => onCardClick && onCardClick("novedades") }>
+    <KpiCard title="Licencias de Office" value="3" subtitle="Licencias activas" onClick={() => onCardClick && onCardClick("licencias") }>
       <FaRegNewspaper />
     </KpiCard>
     <KpiCard title="Reportes" value="2" subtitle="Problemas reportados" onClick={() => onCardClick && onCardClick("reportes") }>

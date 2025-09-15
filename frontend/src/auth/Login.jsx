@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { showToast } from '../common/toastNotify';
 import "./Login.css";
-import Register from "./Register";  
+import Register from "./Register";
 
 const getSystemTheme = () => {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -10,7 +10,7 @@ const getSystemTheme = () => {
   return 'light';
 };
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin }) => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [keepLogged, setKeepLogged] = useState(false);
