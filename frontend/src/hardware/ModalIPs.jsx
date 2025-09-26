@@ -40,18 +40,18 @@ const ModalIPs = ({ ipData, onSave, onClose }) => {
         <form onSubmit={handleSubmit} className="modalips-form">
           <div className="modalips-form-group">
             <label>IP</label>
-            <input value={ip} onChange={e => setIP(e.target.value)} required placeholder="Ej: 192.168.1.10" />
+            <input value={ip} onChange={e => setIP(e.target.value)} required placeholder="Ej: 192.168.1.10" style={{width:'100%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:7,padding:'0.55rem 0.7rem',fontSize:'1.08rem',marginTop:'0.15rem',marginBottom:'0.1rem'}} />
           </div>
           <div className="modalips-form-group">
             <label>Estado</label>
-            <select value={status} onChange={e => setStatus(e.target.value)}>
+            <select value={status} onChange={e => setStatus(e.target.value)} style={{width:'100%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:7,padding:'0.55rem 0.7rem',fontSize:'1.08rem',marginTop:'0.15rem',marginBottom:'0.1rem'}}>
               <option value="libre">Libre</option>
               <option value="en uso">En uso</option>
             </select>
           </div>
           <div className="modalips-form-group">
             <label>ID Equipo</label>
-            <input value={equipoId} onChange={e => setEquipoId(e.target.value)} placeholder="ID Equipo" />
+            <input value={equipoId} onChange={e => setEquipoId(e.target.value)} placeholder="ID Equipo" style={{width:'100%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:7,padding:'0.55rem 0.7rem',fontSize:'1.08rem',marginTop:'0.15rem',marginBottom:'0.1rem'}} />
           </div>
           <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
             <button type="submit" className="hardware-btn add">{ipData ? "Guardar" : "Agregar"}</button>

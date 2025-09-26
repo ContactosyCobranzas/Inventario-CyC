@@ -56,61 +56,80 @@ const IPsView = () => {
   });
 
   return (
-    <div className="hardware-page-root" style={{ minHeight: '100vh', padding: '2rem 0' }}>
-      <GlobalToastContainer />
-  <section style={{ maxWidth: '950px', margin: '0 auto', background: '#23272b', borderRadius: '14px', boxShadow: '0 2px 12px rgba(0,0,0,0.45)', padding: '1.5rem 1.5rem 1.2rem 1.5rem', border: '1px solid #222' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.7rem', justifyContent: 'flex-start' }}>
-          <button className="hardware-btn add" style={{ background: '#ffd600', color: '#222', fontWeight: 700, boxShadow: 'none', border: 'none', borderRadius: 8, padding: '0.5em 1.5em' }} onClick={handleAddIP} title="Agregar IP">
-            <FaPlus /> Agregar
-          </button>
-          <input type="text" placeholder="Buscar por IP o ID de equipo" value={search} onChange={e => setSearch(e.target.value)}
-            style={{ padding: '0.7em 1em', borderRadius: 8, fontSize: '1.08em', border: '2px solid #ffd600', width: 220, background: '#111', color: '#ffd600', fontWeight: 600, marginLeft: '0.5rem' }} />
-          <select value={estadoFiltro} onChange={e => setEstadoFiltro(e.target.value)}
-            style={{ padding: '0.7em 1em', borderRadius: 8, fontSize: '1.08em', border: '2px solid #ffd600', background: '#111', color: '#ffd600', fontWeight: 600, marginLeft: '0.5rem' }}>
-            <option value="todos">Todos los estados</option>
-            <option value="libre">Libres</option>
-            <option value="en uso">En uso</option>
-          </select>
-        </div>
-        <div style={{ width: '100%', overflowX: 'auto' }}>
-          <table className="modalips-table" style={{ background: 'transparent', borderRadius: '12px', overflow: 'hidden', width: '100%' }}>
-            <thead>
-              <tr>
-                <th>IP</th>
-                <th>Estado</th>
-                <th>ID Equipo</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ipsFiltradas.map(({ ip, status, equipoId }, idx) => (
-                <tr key={ip} className={status === "libre" ? "ip-libre" : "ip-en-uso"}>
-                  <td>{ip}</td>
-                  <td>
-                    {status === "libre" ? (
-                      <span className="modalips-status modalips-status-libre">Libre</span>
-                    ) : (
-                      <span className="modalips-status modalips-status-uso">En uso</span>
-                    )}
-                  </td>
-                  <td>{equipoId || ""}</td>
-                  <td>
-                    <button className="hardware-btn add" style={{ minWidth: 90 }} onClick={() => handleEditClick(idx)} title="Editar">Editar</button>
-                  </td>
+  <div style={{width:'100%',margin:'0 auto',paddingTop:0,display:'block', position:'relative', top:0, minHeight:'100vh'}}>
+        <GlobalToastContainer />
+        <div className="licencias-wrapper" style={{maxWidth: '1100px', width: '100%', margin: '0 auto', background: 'var(--card-bg, #23272b)', borderRadius: '18px', boxShadow: '0 6px 32px rgba(0,0,0,0.18)', padding: '2.2rem 2.2rem 2.5rem 2.2rem', position: 'relative'}}>
+          <div className="licencias-header-line" style={{marginBottom:'1.5rem'}}>
+            <div style={{display:'flex',alignItems:'center',gap:'1.1rem'}}>
+              <span style={{ fontSize: '2.2rem',fontWeight:700,color:'#FFD600',margin:0}}>IPs</span>
+              <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={handleAddIP} title="Agregar IP"><FaPlus style={{marginRight:4}} />Agregar</button>
+            </div>
+            <div style={{display:'flex',gap:'.7rem',alignItems:'center'}}>
+              <input
+                style={{background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem',minWidth:160}}
+                type="text"
+                placeholder="Buscar por IP o ID de equipo"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+              <select
+                value={estadoFiltro}
+                onChange={e => setEstadoFiltro(e.target.value)}
+                style={{background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}}
+              >
+                <option value="todos">Todos los estados</option>
+                <option value="libre">Libres</option>
+                <option value="en uso">En uso</option>
+              </select>
+            </div>
+          </div>
+          <div className="licencias-table-wrapper" style={{width:'100%',overflow:'auto'}}>
+            <table className="licencias-table" style={{width:'100%',borderCollapse:'collapse',fontSize:'.98rem'}}>
+              <thead>
+                <tr style={{background:'#181a1b'}}>
+                  <th style={{minWidth:110,color:'#FFD600',background:'#181a1b',fontWeight:700,padding:'.8rem 1rem'}}>IP</th>
+                  <th style={{minWidth:90,color:'#FFD600',background:'#181a1b',fontWeight:700,padding:'.8rem 1rem'}}>Estado</th>
+                  <th style={{minWidth:120,color:'#FFD600',background:'#181a1b',fontWeight:700,padding:'.8rem 1rem'}}>ID Equipo</th>
+                  <th style={{color:'#FFD600',background:'#181a1b',fontWeight:700,padding:'.8rem 1rem'}}>Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {ipsFiltradas.map(({ ip, status, equipoId }, idx) => (
+                  <tr key={ip} style={{borderBottom:'1px solid #333'}}>
+                    <td style={{padding:'.7rem 1rem',color:'#fff'}}>{ip}</td>
+                    <td style={{padding:'.7rem 1rem',color:'#fff'}}>
+                      {status === "libre" ? (
+                        <span style={{background:'#FFD600',color:'#23272b',borderRadius:'8px',padding:'0.3em 1em',fontWeight:700}}>Libre</span>
+                      ) : (
+                        <span style={{background:'#686262',color:'#fff',borderRadius:'8px',padding:'0.3em 1em',fontWeight:700}}>En uso</span>
+                      )}
+                    </td>
+                    <td style={{padding:'.7rem 1rem',color:'#fff'}}>{equipoId || ""}</td>
+                    <td style={{padding:'.7rem 1rem'}}>
+                      <div style={{display:'flex',gap:'.5rem'}}>
+                        <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.38rem .75rem',fontWeight:700,cursor:'pointer'}} onClick={() => handleEditClick(idx)} title="Editar">Ver</button>
+                        <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.38rem .75rem',fontWeight:700,cursor:'pointer',marginLeft:'0.5em'}} title="Eliminar">Eliminar</button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div style={{display:'flex',justifyContent:'flex-end',marginTop:'1.5em',gap:'0.5em'}}>
+            <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.35rem .75rem',fontWeight:700,cursor:'pointer',minWidth:90}}>Anterior</button>
+            <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.35rem .75rem',fontWeight:700,cursor:'pointer',minWidth:40}}>1</button>
+            <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.35rem .75rem',fontWeight:700,cursor:'pointer',minWidth:90}}>Siguiente</button>
+          </div>
+          {showModal && (
+            <ModalIPs
+              ipData={editIndex !== null ? ips[editIndex] : null}
+              onSave={handleSave}
+              onClose={() => setShowModal(false)}
+            />
+          )}
         </div>
-        {showModal && (
-          <ModalIPs
-            ipData={editIndex !== null ? ips[editIndex] : null}
-            onSave={handleSave}
-            onClose={() => setShowModal(false)}
-          />
-        )}
-      </section>
-    </div>
+      </div>
   );
 };
 

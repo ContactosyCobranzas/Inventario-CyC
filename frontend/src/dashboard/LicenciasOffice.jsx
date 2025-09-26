@@ -37,16 +37,21 @@ const LicenciasOffice = ({ onBack }) => {
   const [licencias, setLicencias] = useState(licenciasMock);
   const [page, setPage] = useState(1);
   const [filtro, setFiltro] = useState("");
+  const [estadoFiltro, setEstadoFiltro] = useState("Todas");
 
   const filtrados = useMemo(() => {
-    if (!filtro.trim()) return licencias;
+    let arr = licencias;
+    if (estadoFiltro !== "Todas") {
+      arr = arr.filter(r => r.estado === estadoFiltro);
+    }
+    if (!filtro.trim()) return arr;
     const f = filtro.toLowerCase();
-    return licencias.filter(r =>
+    return arr.filter(r =>
       r.producto.toLowerCase().includes(f) ||
       r.equipo.toLowerCase().includes(f) ||
       r.estado.toLowerCase().includes(f)
     );
-  }, [filtro, licencias]);
+  }, [filtro, licencias, estadoFiltro]);
 
   const totalPages = Math.ceil(filtrados.length / PAGE_SIZE) || 1;
   const pageSafe = Math.min(page, totalPages);
@@ -100,7 +105,7 @@ const LicenciasOffice = ({ onBack }) => {
     setEliminarVisible(false);
     setIdEliminar(null);
   };
-
+ 
   const [editarVisible, setEditarVisible] = useState(false);
   const [licEdit, setLicEdit] = useState(null);
 
@@ -122,7 +127,7 @@ const LicenciasOffice = ({ onBack }) => {
   };
 
   return (
-    <div style={{display:'flex',justifyContent:'center',alignItems:'flex-start',minHeight:'calc(100vh - 40px)',paddingTop:'3.5rem'}}>
+  <div style={{width:'100%',margin:'0 auto',paddingTop:0,display:'block', position:'relative', top:0}}>
       <div className="licencias-wrapper" style={{maxWidth: '1100px', width: '100%', margin: '0 auto', background: 'var(--card-bg, #23272b)', borderRadius: '18px', boxShadow: '0 6px 32px rgba(0,0,0,0.18)', padding: '2.2rem 2.2rem 2.5rem 2.2rem', position: 'relative'}}>
         <div className="licencias-header-line" style={{marginBottom:'1.5rem'}}>
           <div style={{display:'flex',alignItems:'center',gap:'1.1rem'}}>
@@ -138,6 +143,15 @@ const LicenciasOffice = ({ onBack }) => {
               value={filtro}
               onChange={e => { setFiltro(e.target.value); setPage(1); }}
             />
+            <select
+              value={estadoFiltro}
+              onChange={e => { setEstadoFiltro(e.target.value); setPage(1); }}
+              style={{background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}}
+            >
+              <option value="Todas">Todas</option>
+              <option value="En uso">En uso</option>
+              <option value="Libre">Libre</option>
+            </select>
             <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={handleAbrirAdd}>Añadir licencia</button>
           </div>
         {addVisible && (
@@ -149,14 +163,18 @@ const LicenciasOffice = ({ onBack }) => {
                 <button className="licencias-modal-close" onClick={handleCerrarAdd}>&times;</button>
               </div>
               <div className="licencias-modal-body">
-                <div className="licencias-modal-row"><b>Producto:</b> <input value={newLic.producto} onChange={e => setNewLic({ ...newLic, producto: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Equipo:</b> <input value={newLic.equipo} onChange={e => setNewLic({ ...newLic, equipo: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Fecha expiración:</b> <input type="date" value={newLic.fechaExpiracion} onChange={e => setNewLic({ ...newLic, fechaExpiracion: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Estado:</b> <select value={newLic.estado} onChange={e => setNewLic({ ...newLic, estado: e.target.value })} style={{width:'70%'}}><option value="Libre">Libre</option><option value="En uso">En uso</option></select></div>
-                <div className="licencias-modal-row"><b>Detalles:</b> <input value={newLic.detalles} onChange={e => setNewLic({ ...newLic, detalles: e.target.value })} style={{width:'70%'}} /></div>
+                <div className="licencias-modal-row"><b>Producto:</b> <input value={newLic.producto} onChange={e => setNewLic({ ...newLic, producto: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Equipo:</b> <input value={newLic.equipo} onChange={e => setNewLic({ ...newLic, equipo: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Fecha expiración:</b> <input type="date" value={newLic.fechaExpiracion} onChange={e => setNewLic({ ...newLic, fechaExpiracion: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Estado:</b> <select value={newLic.estado} onChange={e => setNewLic({ ...newLic, estado: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}}><option value="Libre">Libre</option><option value="En uso">En uso</option></select></div>
+                <div className="licencias-modal-row"><b>Detalles:</b> <input value={newLic.detalles} onChange={e => setNewLic({ ...newLic, detalles: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
               </div>
               <div className="licencias-modal-footer">
-                <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={handleGuardarAdd}>Guardar</button>
+                <button
+                  style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer', opacity: (newLic.producto && newLic.equipo && newLic.fechaExpiracion && newLic.estado && newLic.detalles) ? 1 : 0.6}}
+                  onClick={handleGuardarAdd}
+                  disabled={!(newLic.producto && newLic.equipo && newLic.fechaExpiracion && newLic.estado && newLic.detalles)}
+                >Guardar</button>
                 <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={handleCerrarAdd}>Cancelar</button>
               </div>
             </div>
@@ -207,11 +225,11 @@ const LicenciasOffice = ({ onBack }) => {
               </div>
               <div className="licencias-modal-body">
                 <div className="licencias-modal-row"><b>ID:</b> {licEdit.id}</div>
-                <div className="licencias-modal-row"><b>Producto:</b> <input value={licEdit.producto} onChange={e => setLicEdit({ ...licEdit, producto: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Equipo:</b> <input value={licEdit.equipo} onChange={e => setLicEdit({ ...licEdit, equipo: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Fecha expiración:</b> <input type="date" value={licEdit.fechaExpiracion} onChange={e => setLicEdit({ ...licEdit, fechaExpiracion: e.target.value })} style={{width:'70%'}} /></div>
-                <div className="licencias-modal-row"><b>Estado:</b> <select value={licEdit.estado} onChange={e => setLicEdit({ ...licEdit, estado: e.target.value })} style={{width:'70%'}}><option value="Libre">Libre</option><option value="En uso">En uso</option></select></div>
-                <div className="licencias-modal-row"><b>Detalles:</b> <input value={licEdit.detalles} onChange={e => setLicEdit({ ...licEdit, detalles: e.target.value })} style={{width:'70%'}} /></div>
+                <div className="licencias-modal-row"><b>Producto:</b> <input value={licEdit.producto} onChange={e => setLicEdit({ ...licEdit, producto: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Equipo:</b> <input value={licEdit.equipo} onChange={e => setLicEdit({ ...licEdit, equipo: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Fecha expiración:</b> <input type="date" value={licEdit.fechaExpiracion} onChange={e => setLicEdit({ ...licEdit, fechaExpiracion: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
+                <div className="licencias-modal-row"><b>Estado:</b> <select value={licEdit.estado} onChange={e => setLicEdit({ ...licEdit, estado: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}}><option value="Libre">Libre</option><option value="En uso">En uso</option></select></div>
+                <div className="licencias-modal-row"><b>Detalles:</b> <input value={licEdit.detalles} onChange={e => setLicEdit({ ...licEdit, detalles: e.target.value })} style={{width:'70%',background:'#181a1b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.5rem .9rem',fontSize:'.95rem'}} /></div>
               </div>
               <div className="licencias-modal-footer">
                 <button style={{background:'#FFD600',color:'#23272b',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={handleGuardarEdicion}>Guardar</button>

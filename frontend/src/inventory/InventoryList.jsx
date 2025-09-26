@@ -1,11 +1,10 @@
-
 import React from "react";
 import { FaArrowLeft, FaEdit, FaBox } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./inventory.css";
 import BackButton from "../common/BackButton";
 
-const InventoryList = () => {
+const InventoryList = () => { 
   const navigate = useNavigate();
   return (
     <div className="inventory-list">

@@ -2,87 +2,77 @@
   background: #f4f6f8;
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
-  padding: 2rem 2.5rem;
-  min-width: 350px;
-  max-width: 800px;
-  margin: 2rem auto;
-  position: relative;
-  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
-  color: #222;
-  overflow-x: auto;
-}
-body.dark-theme .modalips-content {
-  background: #23272b;
-  color: #f5f5f5;
-  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.32);
-}
-.modalips-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-.modalips-header h2 {
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: #b71c1c;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
-body.dark-theme .modalips-header h2 {
-  color: #FFD600;
-}
-.modalips-actions {
-  display: flex;
-  gap: 0.8rem;
-}
-.modalips-btn {
-  background: #ffe082;
-  color: #b71c1c;
-  border: none;
-  border-radius: 12px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1.08rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-weight: 700;
-  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.08);
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  outline: none;
-}
-.modalips-btn:disabled {
-  background: #e0e0e0;
-  color: #888;
-  cursor: not-allowed;
-}
-.modalips-btn:hover:not(:disabled) {
-  background: #b71c1c;
-  color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(198,40,40,0.12);
-}
-body.dark-theme .modalips-btn {
-  background: #FFD600;
-  color: #23272b;
-}
-body.dark-theme .modalips-btn:hover:not(:disabled) {
-  background: #c62828;
-  color: #FFD600;
-}
-
-.modalips-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-top: 1.2rem;
-}
-.modalips-form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.modalips-form-group label {
+  .modalips-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .modalips-table th, .modalips-table td {
+    padding: 0.8em 0.5em;
+    text-align: left;
+  }
+  .modalips-table th {
+    background: #181a1b;
+    color: #FFD600;
+    font-weight: 700;
+    font-size: 1.08em;
+    border-bottom: 2px solid #23272b;
+  }
+  .modalips-table tr {
+    background: #23272b;
+    color: #f5f5f5;
+  }
+  .modalips-table tr:nth-child(even) {
+    background: #181a1b;
+  }
+  .modalips-status-libre {
+    background: #ffd600;
+    color: #23272b;
+    border-radius: 8px;
+    padding: 0.3em 1em;
+    font-weight: 700;
+  }
+  .modalips-status-uso {
+    background: #b71c1c;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.3em 1em;
+    font-weight: 700;
+  }
+  .modalips-btn {
+    background: #FFD600;
+    color: #23272b;
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.08rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px 0 rgba(44,62,80,0.08);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .modalips-btn:disabled {
+    background: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+  }
+  .modalips-btn:hover:not(:disabled) {
+    background: #FFD600;
+    color: #23272b;
+    box-shadow: 0 2px 8px 0 rgba(44,62,80,0.18);
+  }
+  .modalips-pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
+    margin-top: 1.5em;
+  }
   font-weight: 600;
   color: #FFD600;
   letter-spacing: 0.02em;

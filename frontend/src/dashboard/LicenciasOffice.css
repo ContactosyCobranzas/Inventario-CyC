@@ -4,7 +4,6 @@
   background: rgba(0,0,0,0.55);
   z-index: 9999;
   display: flex;
-  align-items: center;
   justify-content: center;
   animation: fadeInModal 0.2s;
 }
@@ -75,10 +74,25 @@
   background: #23272b !important;
   color: #f5f5f5;
 }
+.licencias-container {
+  background: #23262b;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  align-self: flex-start;
+  position: relative;
+  top: 0;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
 .dark-theme .licencias-container {
   background: #101113;
   box-shadow: 0 6px 32px rgba(0,0,0,0.65);
-  border: 1.5px solid #181a1b;
 }
 .dark-theme .licencias-timeline-content {
   background: #181a1b;

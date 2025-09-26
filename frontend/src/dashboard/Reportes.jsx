@@ -73,18 +73,36 @@ const Reportes = ({ onBack }) => {
     }
   };
 
+  const [eliminarVisible, setEliminarVisible] = useState(false);
+  const [idEliminar, setIdEliminar] = useState(null);
+
   const handleEliminarUno = (id) => {
-    if (window.confirm("¿Eliminar este reporte?")) {
-      setReportes(prev => prev.filter(r => r.id !== id));
-    }
+    setIdEliminar(id);
+    setEliminarVisible(true);
   };
 
+  const confirmarEliminar = () => {
+    setReportes(prev => prev.filter(r => r.id !== idEliminar));
+    setEliminarVisible(false);
+    setIdEliminar(null);
+    showToast({ message: "Reporte eliminado", type: "success", theme: "dark" });
+  };
+
+  const cancelarEliminar = () => {
+    setEliminarVisible(false);
+    setIdEliminar(null);
+  };
+
+  const [detalleVisible, setDetalleVisible] = useState(false);
+  const [reporteDetalle, setReporteDetalle] = useState(null);
+
   const handleVerDetalle = (rep) => {
-    showToast({
-      message: `Título: ${rep.titulo}\nFecha: ${rep.fecha}\n${rep.descripcion}`,
-      type: 'info',
-      theme: 'dark',
-    });
+    setReporteDetalle(rep);
+    setDetalleVisible(true);
+  };
+  const cerrarDetalle = () => {
+    setDetalleVisible(false);
+    setReporteDetalle(null);
   };
 
   return (
@@ -137,6 +155,45 @@ const Reportes = ({ onBack }) => {
           </table>
         ) : (
           <div className="reportes-empty">No hay reportes registrados.</div>
+        )}
+        {detalleVisible && reporteDetalle && (
+          <div className="licencias-modal-overlay">
+            <div className="licencias-modal-detalle">
+              <div className="licencias-modal-header">
+                <span style={{fontWeight:700,fontSize:'1.2rem',color:'#FFD600'}}>Detalle del reporte</span>
+                <button className="licencias-modal-close" onClick={cerrarDetalle}>&times;</button>
+              </div>
+              <div className="licencias-modal-body">
+                <div className="licencias-modal-row" style={{color:'#fff'}}>
+                  <div><b>Fecha:</b> {reporteDetalle.fecha}</div>
+                  <div><b>Título:</b> {reporteDetalle.titulo}</div>
+                  <div><b>Descripción:</b> {reporteDetalle.descripcion}</div>
+                </div>
+              </div>
+              <div className="licencias-modal-footer">
+                <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={cerrarDetalle}>Cerrar</button>
+              </div>
+            </div>
+          </div>
+        )}
+        {eliminarVisible && (
+          <div className="licencias-modal-overlay">
+            <div className="licencias-modal-detalle">
+              <div className="licencias-modal-header">
+                <span style={{fontWeight:700,fontSize:'1.2rem',color:'#FFD600'}}>¿Eliminar reporte?</span>
+                <button className="licencias-modal-close" onClick={cancelarEliminar}>&times;</button>
+              </div>
+              <div className="licencias-modal-body">
+                <div className="licencias-modal-row" style={{color:'#fff'}}>
+                  ¿Seguro que deseas eliminar este reporte? Esta acción no se puede deshacer.
+                </div>
+              </div>
+              <div className="licencias-modal-footer">
+                <button style={{background:'rgba(2, 2, 2, 1)',color:'#FFD600',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={confirmarEliminar}>Eliminar</button>
+                <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={cancelarEliminar}>Cancelar</button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
 

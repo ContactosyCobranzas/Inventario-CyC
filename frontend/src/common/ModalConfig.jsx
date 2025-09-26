@@ -7,7 +7,7 @@ import "./ModalConfig.css";
 import { FaRegUserCircle, FaSignOutAlt } from "react-icons/fa";
 
 const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
-  const [section, setSection] = useState("pantalla");
+  const [section, setSection] = useState("perfil");
   const [editandoPerfil, setEditandoPerfil] = useState(false);
   if (!open) return null;
 
@@ -29,13 +29,6 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
           >
             <span className="modal-config-menu-icon"><FaRegUserCircle size={20} /></span>
             <span>Perfil</span>
-          </button>
-          <button
-            className={`modal-config-menu-btn${section === "pantalla" ? " active" : ""}`}
-            onClick={() => setSection("pantalla")}
-          >
-            <span className="modal-config-menu-icon"><MdMonitor size={20} /></span>
-            <span>Pantalla</span>
           </button>
           <button
             className={`modal-config-menu-btn${section === "logout" ? " active" : ""}`}
@@ -75,34 +68,6 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
                 </div>
               </div>
             )
-          )}
-          {section === "pantalla" && (
-            <div>
-              <header className="modal-config-header">
-                <h2>Configuración de pantalla</h2>
-              </header>
-              <div className="modal-config-section">
-                <label htmlFor="font-size-select">Tamaño de la interfaz:</label>
-                <select
-                  id="font-size-select"
-                  value={fontSize}
-                  onChange={handleFontSizeChange}
-                >
-                  <option value="80%">80%</option>
-                  <option value="85%">85%</option>
-                  <option value="90%">90%</option>
-                  <option value="95%">95%</option>
-                  <option value="100%">100% (Normal)</option>
-                  <option value="105%">105%</option>
-                  <option value="110%">110%</option>
-                  <option value="115%">115%</option>
-                  <option value="120%">120%</option>
-                  <option value="130%">130%</option>
-                  <option value="140%">140%</option>
-                  <option value="150%">150%</option>
-                </select>
-              </div>
-            </div>
           )}
           {section === "logout" && (
             <div>

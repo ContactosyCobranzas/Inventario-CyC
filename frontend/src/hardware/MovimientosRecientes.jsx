@@ -92,32 +92,49 @@ function exportToExcel(data) {
     setMovDetalle(null);
   };
 
-   const handleVaciarPagina = () => {
-     if (window.confirm('¿Seguro que deseas eliminar los movimientos de esta página?')) {
-       const start = (page - 1) * PAGE_SIZE;
-       const end = start + PAGE_SIZE;
-       const nuevos = [...movimientos.slice(0, start), ...movimientos.slice(end)];
-       setMovimientos(nuevos);
-       showToast({
-         message: 'Movimientos de la página actual eliminados.',
-         type: 'success',
-         theme: 'dark',
-       });
-       if (nuevos.length > 0 && start >= nuevos.length) {
-         setPage(Math.max(1, Math.ceil(nuevos.length / PAGE_SIZE)));
-       }
-     }
-   };
+  const [vaciarVisible, setVaciarVisible] = useState(false);
+  const [vaciarTipo, setVaciarTipo] = useState(null);
+
+  const handleVaciarPagina = () => {
+    setVaciarTipo('pagina');
+    setVaciarVisible(true);
+  };
+
 
   const handleVaciarTodo = () => {
-    if (window.confirm('¿Seguro que deseas eliminar todos los movimientos recientes? Esta acción no se puede deshacer.')) {
+    setVaciarTipo('todo');
+    setVaciarVisible(true);
+  };
+
+  const confirmarVaciar = () => {
+    if (vaciarTipo === 'todo') {
       setMovimientos([]);
       showToast({
         message: 'Todos los movimientos recientes han sido eliminados.',
         type: 'success',
         theme: 'dark',
       });
+    } else if (vaciarTipo === 'pagina') {
+      const start = (page - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const nuevos = [...movimientos.slice(0, start), ...movimientos.slice(end)];
+      setMovimientos(nuevos);
+      showToast({
+        message: 'Movimientos de la página actual eliminados.',
+        type: 'success',
+        theme: 'dark',
+      });
+      if (nuevos.length > 0 && start >= nuevos.length) {
+        setPage(Math.max(1, Math.ceil(nuevos.length / PAGE_SIZE)));
+      }
     }
+    setVaciarVisible(false);
+    setVaciarTipo(null);
+  };
+
+  const cancelarVaciar = () => {
+    setVaciarVisible(false);
+    setVaciarTipo(null);
   };
 
   return (
@@ -138,6 +155,29 @@ function exportToExcel(data) {
             <button className="mov-btn" onClick={handleVaciarPagina}>
               Vaciar página
             </button>
+            {vaciarVisible && (
+              <div className="licencias-modal-overlay">
+                <div className="licencias-modal-detalle">
+                  <div className="licencias-modal-header">
+                    <span style={{fontWeight:700,fontSize:'1.2rem',color:'#FFD600'}}>
+                      {vaciarTipo === 'todo' ? '¿Vaciar todos los movimientos?' : '¿Vaciar movimientos de la página?'}
+                    </span>
+                    <button className="licencias-modal-close" onClick={cancelarVaciar}>&times;</button>
+                  </div>
+                  <div className="licencias-modal-body">
+                    <div className="licencias-modal-row" style={{color:'#fff'}}>
+                      {vaciarTipo === 'todo'
+                        ? '¿Seguro que deseas eliminar todos los movimientos recientes? Esta acción no se puede deshacer.'
+                        : '¿Seguro que deseas eliminar los movimientos de esta página?'}
+                    </div>
+                  </div>
+                  <div className="licencias-modal-footer">
+                    <button style={{background:'rgba(2, 2, 2, 1)',color:'#FFD600',border:'none',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={confirmarVaciar}>Eliminar</button>
+                    <button style={{background:'#23272b',color:'#FFD600',border:'1.5px solid #FFD600',borderRadius:6,padding:'.45rem .9rem',fontWeight:700,cursor:'pointer'}} onClick={cancelarVaciar}>Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="movimientos-filtros">
             <input

@@ -9,7 +9,7 @@ const initialForm = {
   is_deleted: false,
   is_dynamic: false
 };
-
+    
 const AddPCItemModal = ({ open, onClose, onAdd }) => {
   const [form, setForm] = useState(initialForm);
 

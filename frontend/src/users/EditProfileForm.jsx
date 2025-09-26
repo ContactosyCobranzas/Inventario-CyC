@@ -43,12 +43,11 @@ const EditProfileForm = ({ user, onSave, onCancel }) => {
       });
     }
   };
-
+  
   return (
     <div className="user-form-container">
       <form className="user-form" onSubmit={handleSubmit}>
         <h2>Editar Perfil</h2>
-        {/* Solo los campos, sin imagen */}
         <div className="input-group">
           <label htmlFor="nombre">Nombre</label>
           <input

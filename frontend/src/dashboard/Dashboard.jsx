@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BackButton from "../common/BackButton";
 import Navbar from "../common/Navbar";
-import MovimientosRecientes from "../hardware/MovimientosRecientes";
+import MovimientosRecientes from "../hardware/MovimientosRecientes";  
 import Sidebar from "../common/Sidebar";
 import EquiposView from "../hardware/EquiposView";
 import IPsView from "../hardware/IPsView";
@@ -13,7 +13,7 @@ import Reportes from "./Reportes";
 import PCTypes from "../hardware/PCTypes";
 import Telefonos from "../hardware/Telefonos";
 import "./Dashboard.css";
-
+// los datos de las kips  
 const Dashboard = ({ onLogout }) => {
   const [view, setView] = useState("dashboard");
 

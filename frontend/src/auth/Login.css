@@ -149,7 +149,6 @@ button[type="submit"]:hover {
   background: linear-gradient(90deg, #ff512f 0%, #e52d27 60%, #b31217 100%);
   box-shadow: 0 6px 24px #b3121744;
 }
-
 @media (max-width: 900px) {
   .login-card {
     min-width: 340px;
