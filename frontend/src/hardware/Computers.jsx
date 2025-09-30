@@ -6,6 +6,7 @@
       import VersionesView from "./VersionesView";
       import PCTypes from "./PCTypes";
       import Telefonos from "./Telefonos";
+      import BackButton from "../common/BackButton";
       import "./Hardware.css";
       
       const summaryData = [
@@ -53,7 +54,7 @@
         }
       ];
 
-      const Computers = () => {
+      const Computers = ({ onBack }) => {
         const [view, setView] = useState("summary");
         const idxPCItems = summaryData.findIndex(item => item.title === "PC Items");
         const idxLicencias = summaryData.findIndex(item => item.title === "Software Licencias");
@@ -81,7 +82,10 @@
 
         return (
           <div>
-            <h2 style={{marginBottom: '2rem'}}>Computers</h2>
+            <div style={{display:'flex', alignItems:'center', gap:'1rem', marginBottom:'2rem'}}>
+              <BackButton onBack={onBack} />
+              <h2 style={{margin:0, color:'#FFD600'}}>Computers</h2>
+            </div>
             <div className="hardware-summary-grid">
         {summaryData.map((item, idx) => {
                 if (idx === idxTelefonos) {

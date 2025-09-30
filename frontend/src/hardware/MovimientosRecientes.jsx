@@ -4,6 +4,7 @@ import { showToast } from "../common/toastNotify";
 import ModalConfirm from "../common/ModalConfirm";
 import { FaListOl } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
+import BackButton from "../common/BackButton";
 import "./MovimientosRecientes.css";
 
 const movimientosMock = Array.from({ length: 320 }, (_, i) => ({
@@ -33,7 +34,7 @@ function exportToCSV(data) {
 
 const PAGE_SIZE = 50;
 
-const MovimientosRecientes = () => {
+const MovimientosRecientes = ({ onBack }) => {
   const [movimientos, setMovimientos] = useState(movimientosMock);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -139,7 +140,10 @@ function exportToExcel(data) {
 
   return (
     <div>
-      <h2 className="movimientos-titulo">Movimientos Recientes</h2>
+      <div style={{display:'flex', alignItems:'center', gap:'1rem', marginBottom:'1.5rem'}}>
+        <BackButton onBack={onBack} />
+        <h2 className="movimientos-titulo" style={{margin:0}}>Movimientos Recientes</h2>
+      </div>
       <div className="movimientos-flex-row">
         <div className="movimientos-flex-left">
           <div className="movimientos-botones">

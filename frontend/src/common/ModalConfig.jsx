@@ -76,7 +76,7 @@ const ModalConfig = ({ open, onClose, fontSize, setFontSize, onLogout }) => {
               </header>
               <div className="modal-config-section">
                 <p>¿Seguro que deseas cerrar sesión?</p>
-                <button className="modal-btn apply" style={{marginTop: '1rem', alignSelf: 'flex-start', background: '#c00', color: '#fff'}} onClick={() => {
+                <button className="modal-btn apply" style={{marginTop: '1rem', alignSelf: 'flex-start', background: '#FFD600', color: '#000000ff'}} onClick={() => {
                   showToast({
                     message: 'Sesión cerrada correctamente',
                     type: 'success',

@@ -13,83 +13,110 @@ import Reportes from "./Reportes";
 import PCTypes from "../hardware/PCTypes";
 import Telefonos from "../hardware/Telefonos";
 import "./Dashboard.css";
-// los datos de las kips  
-const Dashboard = ({ onLogout }) => {
-  const [view, setView] = useState("dashboard");
 
-  const handleSidebarClick = (item) => {
-    if (item === "Inventario") {
-      return;
-    }
-    if (item === "EquiposAsignados") {
-      setView("equipos-asignados");
-    } else if (item === "IPs") {
-      setView("ips");
-    } else {
-      setView(item.toLowerCase());
+const Dashboard = ({ onLogout }) => {
+  const [currentView, setCurrentView] = useState("dashboard");
+
+  const handleNavigationClick = (selectedItem) => {
+    switch (selectedItem) {
+      case "Inventario":
+        // Mantenemos la vista actual si es inventario
+        break;
+      case "EquiposAsignados":
+        setCurrentView("equipos-asignados");
+        break;
+      case "IPs":
+        setCurrentView("ips");
+        break;
+      default:
+        setCurrentView(selectedItem.toLowerCase());
     }
   };
 
+  const handleKpiCardClick = (cardType) => {
+    const viewMap = {
+      "equipos": "equipos",
+      "licencias": "licencias",
+      "reportes": "reportes",
+      "ips": "ips",
+      "movimientos": "movimientos"
+    };
+    
+    if (viewMap[cardType]) {
+      setCurrentView(viewMap[cardType]);
+    }
+  };
+
+  const returnToDashboard = () => setCurrentView("dashboard");
+
   return (
     <div className="dashboard-root">
-    <BackButton />
+      <BackButton />
       <Navbar onLogout={onLogout} />
       <div className="dashboard-flex">
-        <Sidebar onNavigate={handleSidebarClick} />
+        <Sidebar onNavigate={handleNavigationClick} />
         <main className="dashboard-container">
-          {view === "dashboard" && (
+          {currentView === "dashboard" && (
             <>
-              <h1 style={{ marginBottom: "2rem" }}>Dashboard de Inventario</h1>
-              <KpiGrid onCardClick={(card) => {
-                if(card === "equipos") setView("equipos");
-                if(card === "licencias") setView("licencias");
-                if(card === "reportes") setView("reportes");
-                if(card === "ips") setView("ips");
-                if(card === "movimientos") setView("movimientos");
-              }} />
+              <h1 className="dashboard-title">Panel de Control de Inventario</h1>
+              <KpiGrid onCardClick={handleKpiCardClick} />
             </>
           )}
-          {view === "licencias" && <LicenciasOffice onBack={() => setView("dashboard")} />}
-          {view === "reportes" && <Reportes onBack={() => setView("dashboard")} />}
-          {view === "usuarios" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Usuarios</h2>
-              <UserList />
+          
+          {currentView === "licencias" && (
+            <LicenciasOffice onBack={returnToDashboard} />
+          )}
+          
+          {currentView === "reportes" && (
+            <Reportes onBack={returnToDashboard} />
+          )}
+          
+          {currentView === "usuarios" && (
+            <section className="dashboard-section">
+              <h2>Gestión de Usuarios</h2>
+              <UserList onBack={returnToDashboard} />
             </section>
           )}
-          {view === "equipos-asignados" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Equipos</h2>
-              <p>No hay equipos registrados aún.</p>
+          
+          {currentView === "equipos-asignados" && (
+            <section className="dashboard-section">
+              <h2>Equipos Asignados</h2>
+              <p className="empty-message">No hay equipos registrados aún.</p>
             </section>
           )}
-          {view === "equipos" && <EquiposView />}
-          {view === "ips" && (
-            <section style={{ margin: "2rem 0" }}>
-              <IPsView />
+          
+          {currentView === "equipos" && <EquiposView onBack={returnToDashboard} />}
+          
+          {currentView === "ips" && (
+            <section className="dashboard-section">
+              <IPsView onBack={returnToDashboard} />
             </section>
           )}
-          {view === "movimientos" && (
-            <section style={{ margin: "2rem 0" }}>
+          
+          {currentView === "movimientos" && (
+            <section className="dashboard-section">
+              <MovimientosRecientes onBack={returnToDashboard} />
+            </section>
+          )}
+          
+          {currentView === "movimientos_recientes" && (
+            <section className="dashboard-section">
+              <h2>Historial de Movimientos</h2>
               <MovimientosRecientes />
             </section>
           )}
-          {view === "movimientos_recientes" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Movimientos Recientes</h2>
-              <MovimientosRecientes />
+          
+          {currentView === "tipos_pc" && (
+            <section className="dashboard-section">
+              <h2>Tipos de Equipos</h2>
+              <PCTypes onBack={returnToDashboard} />
             </section>
           )}
-          {view === "tipos_pc" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Tipos de PC</h2>
-              <PCTypes onBack={() => setView("dashboard")} />
-            </section>
-          )}
-          {view === "telefonos" && (
-            <section style={{ margin: "2rem 0" }}>
-              <h2>Teléfonos</h2>
-              <Telefonos />
+          
+          {currentView === "telefonos" && (
+            <section className="dashboard-section">
+              <h2>Gestión de Teléfonos</h2>
+              <Telefonos onBack={returnToDashboard} />
             </section>
           )}
         </main>

@@ -1,24 +1,23 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import "./BackButton.css";
 
-const BackButton = ({ to, onBack }) => {
-  const navigate = useNavigate();
-  const isDark = document.body.classList.contains('dark-theme');
+const BackButton = ({ onBack, to }) => {
   const handleClick = () => {
     if (onBack) {
       onBack();
     } else if (to) {
-      navigate(to);
+      // Si se especifica una ruta específica
+      window.history.pushState({}, '', to);
     } else {
-      navigate(-1);
+      // Ir a la página anterior
+      window.history.back();
     }
   };
+
   return (
     <button className="back-btn" onClick={handleClick} title="Volver">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 18L9 12L15 6" stroke={isDark ? '#fff' : '#333'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      <FaArrowLeft size={18} color="#FFD600" />
     </button>
   );
 };

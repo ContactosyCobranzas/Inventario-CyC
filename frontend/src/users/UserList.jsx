@@ -5,7 +5,7 @@ import UserModal from "./UserModal";
 import "./user.css";
 import ModalConfirm from '../common/ModalConfirm';
 import { showToast } from '../common/toastNotify';
-const UserList = () => {
+const UserList = ({ onBack }) => {
   const [users, setUsers] = useState([
     { id: 1, nombre: "Maicol", correo: "Aux.ti@contactosycobranzas.com", rol: "Admin" },
     { id: 2, nombre: "Aka", correo: "aka@contactosycobranzas.com", rol: "Usuario" }
@@ -45,20 +45,13 @@ const UserList = () => {
     }
     setModalOpen(false);
   };
-// 
+
   return (
     <div className="user-list-container">
-      <BackButton />
       <div className="user-list">
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button
-              style={{ background: 'none', border: 'none', cursor: 'pointer', marginRight: '1rem' }}
-              title="Volver"
-              onClick={() => window.history.back()}
-            >
-              <FaArrowLeft size={22} />
-            </button>
+            <BackButton onBack={onBack} />
             <h2 style={{ margin: 0 }}><FaUsers style={{ marginRight: '0.5rem' }} />Lista de Usuarios</h2>
           </div>
           <button

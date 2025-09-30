@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { showToast } from '../common/toastNotify';
+import BackButton from '../common/BackButton';
 import './Hardware.css';
 
 const initialTelefonos = [
@@ -17,7 +18,7 @@ const initialTelefonos = [
   },
 ];
 
-const Telefonos = () => {
+const Telefonos = ({ onBack }) => {
   const [telefonos, setTelefonos] = useState(initialTelefonos);
   const [editId, setEditId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -160,7 +161,10 @@ const Telefonos = () => {
 
   return (
     <div className="hardware-container">
-      
+      <div style={{display:'flex', alignItems:'center', gap:'1rem', marginBottom:'1.5rem'}}>
+        <BackButton onBack={onBack} />
+        <h2 style={{color:'#FFD600', margin:0}}>Gestión de Teléfonos</h2>
+      </div>
       <div style={{display:'flex',gap:'1.5rem',marginBottom:'1.5rem',alignItems:'center'}}>
         <button className="hardware-btn" style={{background:'#ffd600',color:'#222',fontWeight:700}} onClick={()=>setAddModalOpen(true)}>Añadir</button>
         <input type="text" placeholder="Buscar por equipo o número" value={search} onChange={e=>setSearch(e.target.value)} 

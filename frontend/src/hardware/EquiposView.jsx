@@ -2,11 +2,11 @@ import React from "react";
 import Computers from "../hardware/Computers";
 import Telefonos from "../hardware/Telefonos";
 
-const EquiposView = ({ view }) => {
+const EquiposView = ({ view, onBack }) => {
   if (view === "telefonos") {
-    return <Telefonos />;
+    return <Telefonos onBack={onBack} />;
   }
-  return <Computers />;
+  return <Computers onBack={onBack} />;
 };
 
 export default EquiposView;

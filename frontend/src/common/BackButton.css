@@ -1,20 +1,27 @@
 .back-btn {
-  background: none;
-  border: none;
+  background: #23272b;
+  border: 1.5px solid #FFD600;
   cursor: pointer;
-  padding: 8px;
-  margin-bottom: 12px;
+  padding: 8px 10px;
+  margin-right: 12px;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 6px;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
+  min-width: 36px;
+  height: 36px;
 }
-
 
 .back-btn:hover {
-  background: #e0e0e0;
+  background: #FFD600;
+  transform: translateX(-2px);
 }
 
-body.dark-theme .back-btn:hover {
-  background: #333;
+.back-btn:hover svg {
+  color: #23272b !important;
+}
+
+.back-btn:active {
+  transform: translateX(-1px);
 }

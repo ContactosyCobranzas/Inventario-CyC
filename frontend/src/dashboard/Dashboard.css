@@ -119,3 +119,55 @@ body.dark-theme .dashboard-container {
     padding-left: 0.5rem;
   }
 }
+
+/* Dashboard Specific Styles */
+.dashboard-title {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: left;
+}
+
+body.dark-theme .dashboard-title {
+  color: #FFD600;
+}
+
+.dashboard-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .dashboard-section {
+  background: #25282d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+body.dark-theme .dashboard-section h2 {
+  color: #FFD600;
+}
+
+.empty-message {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+body.dark-theme .empty-message {
+  color: #999;
+  background: #34495e;
+}

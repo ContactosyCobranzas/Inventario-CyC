@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getMovimientosGlobal, setMovimientosGlobal, getMovimientosCount } from './common/MovimientosGlobal';
 import { showToast } from './common/toastNotify';
 import './App.css';
@@ -8,50 +7,57 @@ import Dashboard from './dashboard/Dashboard';
 import GlobalToastContainer from './common/GlobalToastContainer';
 
 function App() {
-  const toastShownRef = React.useRef({ warning: false, error: false });
+  const toastAlertShown = useRef({ warning: false, error: false });
+
   useEffect(() => {
-    const count = getMovimientosCount();
-    if (count >= 400 && !toastShownRef.current.error) {
+    const movementCount = getMovimientosCount();
+    
+    // Alerta crítica si se superan 400 movimientos
+    if (movementCount >= 400 && !toastAlertShown.current.error) {
       showToast({
-        message: `¡Has superado el límite de 400 movimientos! Debes vaciar la lista para evitar problemas.`,
+        message: 'Se ha alcanzado el límite máximo de 400 movimientos. Es necesario vaciar la lista.',
         type: 'error',
         theme: 'dark',
       });
-      toastShownRef.current.error = true;
-    } else if (count >= 300 && !toastShownRef.current.warning) {
+      toastAlertShown.current.error = true;
+    } 
+    // Advertencia si se acerca al límite
+    else if (movementCount >= 300 && !toastAlertShown.current.warning) {
       showToast({
-        message: `¡Advertencia! Estás cerca del límite (400) de movimientos. Considera vaciar la lista pronto.`,
+        message: 'Advertencia: Se está acercando al límite de movimientos (400). Considere limpiar la lista.',
         type: 'warning',
         theme: 'dark',
       });
-      toastShownRef.current.warning = true;
+      toastAlertShown.current.warning = true;
     }
-    if (count < 300) {
-      toastShownRef.current.warning = false;
-      toastShownRef.current.error = false;
+    
+    // Reset de alertas si el número baja
+    if (movementCount < 300) {
+      toastAlertShown.current.warning = false;
+      toastAlertShown.current.error = false;
     }
-  }, [getMovimientosCount()]);
-  const [isLogged, setIsLogged] = useState(() => {
+  }, []);
+
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(() => {
     return localStorage.getItem('isLogged') === 'true';
   });
-  const handleLogout = () => {
-    setIsLogged(false);
+
+  const handleUserLogout = () => {
+    setIsUserAuthenticated(false);
     localStorage.setItem('isLogged', 'false');
   };
+
   useEffect(() => {
-    localStorage.setItem('isLogged', isLogged ? 'true' : 'false');
-  }, [isLogged]);
+    localStorage.setItem('isLogged', isUserAuthenticated ? 'true' : 'false');
+  }, [isUserAuthenticated]);
 
   return (
     <>
       <GlobalToastContainer />
-      {isLogged ? (
-        <Dashboard onLogout={handleLogout} />
+      {isUserAuthenticated ? (
+        <Dashboard onLogout={handleUserLogout} />
       ) : (
-        <Login onLogin={() => {
-          setIsLogged(true);
-          localStorage.setItem('isLogged', 'true');
-        }} />
+        <Login onLogin={() => setIsUserAuthenticated(true)} />
       )}
     </>
   );

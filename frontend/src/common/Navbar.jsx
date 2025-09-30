@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaBell, FaCog, FaSignOutAlt } from "react-icons/fa";
-
+import React, { useState, useEffect } from "react";
+import { FaBell, FaCog } from "react-icons/fa";
 import ModalNotifications from "./ModalNotifications";
 import ModalConfirm from "./ModalConfirm";
 import ModalConfig from "./ModalConfig";
@@ -8,82 +7,105 @@ import { showToast } from "./toastNotify";
 import "./Navbar.css";
 
 const Navbar = ({ onLogout }) => {
-  const [showConfig, setShowConfig] = useState(false);
-  const [fontSize, setFontSizeState] = useState(() => localStorage.getItem("uiFontSize") || "100%");
-  const setFontSize = (val) => {
-    setFontSizeState(val);
-    if (window.setGlobalFontSize) window.setGlobalFontSize(val);
-  };
-  const dark = true;
-  const [showModal, setShowModal] = useState(false);
-  const [showNotifications, setShowNotifications] = useState(false);
+  const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
+  const [currentFontSize, setCurrentFontSize] = useState(() => 
+    localStorage.getItem("uiFontSize") || "100%"
+  );
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+  const isDarkTheme = true;
+
   useEffect(() => {
     document.body.classList.add("dark-theme");
     localStorage.setItem("theme", "dark");
   }, []);
-  const handleTheme = () => {
+
+  const handleFontSizeChange = (newFontSize) => {
+    setCurrentFontSize(newFontSize);
+    if (window.setGlobalFontSize) {
+      window.setGlobalFontSize(newFontSize);
+    }
+  };
+
+  const handleThemeToggle = () => {
     showToast({
-      message: 'Solo está disponible el tema oscuro',
+      message: 'El tema claro no está disponible en esta versión',
       type: 'info',
       theme: 'dark',
     });
   };
-  const handleLogoutClick = () => {
-    setShowModal(true);
+
+  const handleLogoutRequest = () => {
+    setIsLogoutModalOpen(true);
   };
-  const handleConfirmLogout = () => {
-    setShowModal(false);
+
+  const confirmLogout = () => {
+    setIsLogoutModalOpen(false);
     showToast({
-      message: 'Sesión cerrada correctamente',
+      message: 'Sesión cerrada exitosamente',
       type: 'success',
       theme: 'dark',
     });
-    onLogout && onLogout();
+    
+    if (onLogout) {
+      onLogout();
+    }
   };
-  const notifications = [
-    { id: 1, text: "Nuevo usuario registrado" },
-    { id: 2, text: "Equipo asignado" },
-    { id: 3, text: "Inventario actualizado" },
+
+  const sampleNotifications = [
+    { id: 1, text: "Nuevo usuario registrado", timestamp: "Hace 5 min" },
+    { id: 2, text: "Equipo PC-001 asignado", timestamp: "Hace 15 min" },
+    { id: 3, text: "Inventario actualizado", timestamp: "Hace 1 hora" },
   ];
   return (
     <nav className="navbar">
-      <span className="navbar-title">Inventario CyC</span>
-      <div className="navbar-actions" style={{ position: 'relative', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.5rem' }}>
-        <div style={{ position: 'relative', display: 'inline-block' }}>
+      <span className="navbar-title">Sistema de Inventario CyC</span>
+      
+      <div className="navbar-actions">
+        <div className="notifications-container">
           <button
             className="navbar-icon-btn"
-            title="Notificaciones"
-            onClick={() => setShowNotifications(true)}
+            title="Ver notificaciones"
+            onClick={() => setIsNotificationsOpen(true)}
             aria-haspopup="true"
-            aria-expanded={showNotifications}
+            aria-expanded={isNotificationsOpen}
           >
-            <FaBell size={22} />
+            <FaBell size={20} />
           </button>
+          
           <ModalNotifications
-            open={showNotifications}
-            notifications={notifications}
-            onClose={() => setShowNotifications(false)}
-            dark={dark}
-            fontSize={fontSize}
+            open={isNotificationsOpen}
+            notifications={sampleNotifications}
+            onClose={() => setIsNotificationsOpen(false)}
+            dark={isDarkTheme}
+            fontSize={currentFontSize}
           />
         </div>
-        <button className="navbar-icon-btn" title="Configuración" onClick={() => setShowConfig(true)}>
-          <FaCog size={22} />
+        
+        <button 
+          className="navbar-icon-btn" 
+          title="Configuración de la aplicación" 
+          onClick={() => setIsConfigModalOpen(true)}
+        >
+          <FaCog size={20} />
         </button>
       </div>
+
       <ModalConfirm
-        open={showModal}
-        title="Cerrar sesión"
-        message="¿Desea cerrar la sesión de la cuenta?"
-        onConfirm={handleConfirmLogout}
-        onCancel={() => setShowModal(false)}
+        open={isLogoutModalOpen}
+        title="Confirmar cierre de sesión"
+        message="¿Está seguro que desea cerrar la sesión actual?"
+        onConfirm={confirmLogout}
+        onCancel={() => setIsLogoutModalOpen(false)}
       />
+      
       <ModalConfig
-        open={showConfig}
-        onClose={() => setShowConfig(false)}
-        fontSize={fontSize}
-        setFontSize={setFontSize}
-        onLogout={handleLogoutClick}
+        open={isConfigModalOpen}
+        onClose={() => setIsConfigModalOpen(false)}
+        fontSize={currentFontSize}
+        setFontSize={handleFontSizeChange}
+        onLogout={handleLogoutRequest}
       />
     </nav>
   );
